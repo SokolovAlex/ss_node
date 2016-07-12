@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    .site {
+        width: 60%;
+        margin: auto;
+        border: 1px solid red;
+        height: 1200px;
+    }
+    .cards_container {
+        border: 1px solid blue;
+
+        transition: height 5s;
+    }
+    .card_wr {
+        width: 100px;
+        height: 150px;
+        display: inline-block;
+        position: relative;
+
+        margin: 20px;
+        transition: width 5s, margin 5s;
+    }
+
+    .card {
+         display: inline-block;
+         position: relative;
+         width: 100px;
+         height: 150px;
+         margin: 20px;
+         border: 1px dotted green;
+         top: 0;
+        left: 0;
+         transition: top 5s, left 5s;
+     }
+    .card.open {
+        border: 3px dotted green;
+
+    }
+</style>
+
+<div class="site">
+    <div class="cards_container">
+        <div class="card_wr">
+            <div class="card">
+                1
+            </div>
+        </div>
+        <div class="card_wr">
+            <div class="card">
+               2
+            </div>
+        </div>
+        <div class="card_wr">
+            <div class="card">
+                3
+            </div>
+        </div>
+        <div class="card_wr">
+            <div class="card">
+                4
+            </div>
+        </div>
+        <div class="card_wr">
+            <div class="card">
+               5
+            </div>
+        </div>
+        <div class="card_wr">
+            <div class="card">
+                6
+            </div>
+        </div>
+        <div class="card_wr">
+            <div class="card">
+               7
+            </div>
+        </div>
+        <div class="card_wr">
+            <div class="card">
+               8
+            </div>
+        </div>
+        <div class="card_wr">
+            <div class="card">
+                9
+            </div>
+        </div>
+    </div>
+</div>
+
+<script   src="https://code.jquery.com/jquery-3.1.0.js"   integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="   crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function() {
+        var h = 190;
+        var container = $('.cards_container');
+        var cards = $('.card');
+        var hc = container.height();
+        container.height(hc);
+
+//        cards.each(function(i, el) {
+//
+//            el = $(el);
+//
+//            console.log(i, el.position(), el.offset());
+//
+//            el.css({position: 'absolute',top: el.offset().top, left: el.offset().left });
+//        });
+
+        cards.on('click', function(e) {
+            var el = $(e.currentTarget);
+
+            console.log(el.position(), el.offset());
+
+            container.height(hc +190);
+
+            var i = el.text();
+            var row = Math.floor(i / 5);
+            var column = i % 5;
+
+            console.log(i ,row, column);
+
+            el.toggleClass('open');
+            var el_wr = $(el.closest('.card_wr'));
+
+           // el_wr.css({width: 0, margin: 0});
+
+
+
+            el.css({top: (2 - row) * 190, left: (column - 1) * -140 });
+        });
+
+
+
+    });
+
+</script>
+
+</body>
+</html>

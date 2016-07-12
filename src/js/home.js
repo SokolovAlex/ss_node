@@ -1,3 +1,12 @@
-/**
- * Created by alexs_000 on 09.07.2016.
- */
+//export default function (text) {
+module.exports = function (text) {
+
+    if(NODE_ENV === "dev") {
+        console.log("@@@@");
+    }
+
+
+
+    return console.log(`welcome ${text}`);
+};
+    

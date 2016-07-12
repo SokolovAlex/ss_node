@@ -1,0 +1,2 @@
+var about=webpackJsonp_name_([0],[function(e,n,t){"use strict";function u(e){return e&&e.__esModule?e:{"default":e}}var a=t(1),o=(u(a),t(2));u(o)}]);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYWJvdXQuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vYWJvdXQuanMiXSwibWFwcGluZ3MiOiJBQUFBIiwic291cmNlUm9vdCI6IiJ9

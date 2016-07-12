@@ -1,3 +1,11 @@
-/**
- * Created by alexs_000 on 09.07.2016.
- */
+//import config from './config.js';
+//import home from './home.js';
+
+const home = require('./home.js');
+const config = require('./config.js');
+
+let x = 10;
+
+console.log("!!!", config);
+
+console.log(`home ${x}`, home);
