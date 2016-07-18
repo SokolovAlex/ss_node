@@ -43,6 +43,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: "babel-loader",
+                include: './src/',
                 query: {
                     plugins: ['transform-runtime'],
                     presets: ['es2015']
