@@ -1,3 +1,3 @@
-module.exports = {
-    "smth": "123"
-};
+//module.exports = {
+//    "smth": "123"
+//};

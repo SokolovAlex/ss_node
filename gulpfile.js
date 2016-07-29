@@ -1,53 +1,31 @@
 var gulp = require("gulp"),
-    concat = require("gulp-concat"),
-    jade = require('gulp-jade'),
+    browser_sync = require('browser-sync').create(),
     server = require("gulp-express");
 
-var libs = [
-    'node_modules/html5shiv/dist/html5shiv.js'
-];
+require('./tasks/copy')();
 
-var css = [
-    'node_modules/bootstrap/dist/css/bootstrap.css',
-    'node_modules/font-awesome/css/css/font-awesome.css',
-    'src/css/libs/**/*.css'
-];
+require('./tasks/views')();
 
-var views = [
-    'src/views/**/*.html'
-];
+require('./tasks/js')();
 
-var client_src = [
-    'src/js/**/*.js'
-];
-
-gulp.task("css", () => {
-    return gulp.src(css)
-        .pipe(concat('styles_libs.css'))
-        .pipe(gulp.dest('build/css'))
-});
-
-gulp.task('lib_js', () => {
-    return gulp.src(libs)
-        .pipe(concat('libs.js'))
-        .pipe(gulp.dest('build/js/'));
-});
-
-gulp.task('content', () => {
-    return gulp.src('src/images/*')
-        .pipe(gulp.dest('build/images/'));
-});
-
-gulp.task('templates', function() {
-    gulp.src('./src/views/*.jade')
-        .pipe(jade({
-            locals: {}
-        }))
-        .pipe(gulp.dest('./build/views/'))
-});
+require('./tasks/css')();
 
 gulp.task("server", () => {
     return server.run(['server.js']);
 });
 
-gulp.task("default", ['templates', 'content', "css", 'lib_js', 'server']);
+gulp.task("watch", (next) => {
+    gulp.watch('src/css/**/*.css', ['css']);
+    gulp.watch('src/js/**/*.js', ['js']);
+    gulp.watch('src/**/*.html', ['views']);
+    next();
+});
+
+gulp.task("browser-sync", (next) => {
+    browser_sync.init({
+        proxy: 'localhost:3000'
+    });
+    browser_sync.watch('build/**/*.*').on('change', browser_sync.reload);
+});
+
+gulp.task("default", ['views', "css", 'js', 'watch', 'server']);
