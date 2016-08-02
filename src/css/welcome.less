@@ -1,0 +1,33 @@
+@rotate1: rotate(-10deg);
+@rotate2: rotate(5deg);
+@rotate3: rotate(-15deg);
+
+.ss-logo-wrapper{
+  height: 50px;
+}
+
+.ss-logo{
+  height: 50px;
+}
+
+.ss-old-card {
+  display: inline-block;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+  &__image {
+    height: 400px;
+    width: 300px;
+  }
+
+  &:first-child{
+    -ms-transform: @rotate1; /* IE 9 */
+    -webkit-transform: @rotate1; /* Safari */
+    transform: @rotate1;
+  }
+
+  &:last-child{
+    -ms-transform: @rotate2; /* IE 9 */
+    -webkit-transform: @rotate2; /* Safari */
+    transform: @rotate2;
+  }
+}

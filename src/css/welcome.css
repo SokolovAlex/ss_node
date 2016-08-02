@@ -1,9 +1,28 @@
-.ss-logo-wrapper{
-    height: 50px;
+.ss-logo-wrapper {
+  height: 50px;
 }
-
-.ss-logo{
-    height: 50px;
+.ss-logo {
+  height: 50px;
 }
-
-
+.ss-old-card {
+  display: inline-block;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.ss-old-card__image {
+  height: 400px;
+  width: 300px;
+}
+.ss-old-card:first-child {
+  -ms-transform: rotate(-10deg);
+  /* IE 9 */
+  -webkit-transform: rotate(-10deg);
+  /* Safari */
+  transform: rotate(-10deg);
+}
+.ss-old-card:last-child {
+  -ms-transform: rotate(5deg);
+  /* IE 9 */
+  -webkit-transform: rotate(5deg);
+  /* Safari */
+  transform: rotate(5deg);
+}
