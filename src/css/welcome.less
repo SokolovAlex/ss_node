@@ -2,6 +2,14 @@
 @rotate2: rotate(5deg);
 @rotate3: rotate(-15deg);
 
+@color-gray: gray;
+
+@font-color: #0004b9;
+
+body {
+  font-family: 'El Messiri', sans-serif;
+}
+
 .ss-logo-wrapper{
   height: 50px;
 }
@@ -13,6 +21,23 @@
 .ss-old-card {
   display: inline-block;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+
+  &__text{
+    margin-top: -65px;
+    font-family: 'Marck Script', cursive;
+  }
+
+  &__title{
+    color: @font-color;
+    font-size: 28px;
+    line-height: 25px;
+  }
+
+  &__cost{
+    color: @color-gray;
+    font-size: 25px;
+  }
 
   &__image {
     height: 400px;

@@ -1,3 +1,6 @@
+body {
+  font-family: 'El Messiri', sans-serif;
+}
 .ss-logo-wrapper {
   height: 50px;
 }
@@ -7,6 +10,19 @@
 .ss-old-card {
   display: inline-block;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.ss-old-card__text {
+  margin-top: -65px;
+  font-family: 'Marck Script', cursive;
+}
+.ss-old-card__title {
+  color: #0004b9;
+  font-size: 28px;
+  line-height: 25px;
+}
+.ss-old-card__cost {
+  color: gray;
+  font-size: 25px;
 }
 .ss-old-card__image {
   height: 400px;
