@@ -42,7 +42,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Chelsea Market', cursive;
   text-transform: uppercase;
   font-weight: 700;
 }
@@ -258,8 +258,8 @@ header .intro-text .intro-heading {
 }
 @media (min-width: 768px) {
   header .intro-text {
-    padding-top: 200px;
-    padding-bottom: 200px;
+    padding-top: 150px;
+    padding-bottom: 50px;
   }
   header .intro-text .intro-lead-in {
     font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -278,7 +278,7 @@ header .intro-text .intro-heading {
   }
 }
 section {
-  padding: 100px 0;
+  padding: 50px 0;
 }
 section h2.section-heading {
   font-size: 40px;
@@ -295,7 +295,7 @@ section h3.section-subheading {
 }
 @media (min-width: 768px) {
   section {
-    padding: 150px 0;
+    padding: 50px 0;
   }
 }
 .service-heading {
@@ -496,14 +496,14 @@ section h3.section-subheading {
 }
 @media (min-width: 992px) {
   .timeline > li {
-    min-height: 150px;
+    min-height: 120px;
   }
   .timeline > li .timeline-panel {
     padding: 0 20px 20px;
   }
   .timeline > li .timeline-image {
     width: 150px;
-    height: 150px;
+    height: 120px;
     margin-left: -75px;
   }
   .timeline > li .timeline-image h4 {
