@@ -2,7 +2,7 @@
  * Created by alexs_000 on 21.05.2016.
  */
 var express = require('express');
-var app = express.createServer();
+var app = express();
 
 app.use(express.static(__dirname + '/build'));
 
