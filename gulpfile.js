@@ -28,4 +28,4 @@ gulp.task("browser-sync", (next) => {
     browser_sync.watch('build/**/*.*').on('change', browser_sync.reload);
 });
 
-gulp.task("default", ['views', "css", 'js', 'watch', 'server']);
+gulp.task("default", ['copy', 'views', "css", 'js', 'watch', 'server']);
