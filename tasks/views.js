@@ -2,6 +2,7 @@
  * Created by alexs_000 on 27.07.2016.
  */
 var gulp = require('gulp');
+var $ = require('gulp-load-plugins')();
 
 module.exports = function() {
 
@@ -12,4 +13,9 @@ module.exports = function() {
             .pipe(gulp.dest('build/views'))
     });
 
+    gulp.task('jade', function() {
+        return gulp.src('src/views/welcome.jade')
+            .pipe($.jade({pretty: true}))
+            .pipe(gulp.dest('build/views'))
+    });
 };

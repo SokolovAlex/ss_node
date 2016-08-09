@@ -1,0 +1,356 @@
+
+//- index.jade
+extends ./components/layout.jade
+
+block body
+   // Navigation
+   nav#mainNav.navbar.navbar-default.navbar-custom.navbar-fixed-top
+       .container
+           // Brand and toggle get grouped for better mobile display
+           .navbar-header.page-scroll
+               button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                   span.sr-only Toggle navigation
+                   |  Menu
+                   i.fa.fa-bars
+               a.page-scroll.ss-logo-wrapper(href='#page-top')
+                   img.ss-logo(alt='', src='images/logoStolicaSibiri.gif')
+           // Collect the nav links, forms, and other content for toggling
+           #bs-example-navbar-collapse-1.collapse.navbar-collapse
+               ul.nav.navbar-nav.navbar-right
+                   li.hidden
+                       a(href='#page-top')
+                   li
+                       a.page-scroll(href='#hot') Туры
+                   li
+                       a.page-scroll(href='#about') О нас
+                   li
+                       a.page-scroll(href='#team') Команда
+                   li
+                       a.page-scroll(href='#contact') Заявка
+                   li
+                       a.login(href='#loginModal', data-toggle='modal') Войти
+           // /.navbar-collapse
+       // /.container-fluid
+       // Header
+       header
+           .container
+               .intro-text
+                   div
+                       .ss-old-card
+                           div
+                               img.ss-old-card__image(alt='', src='images/presents/uk.jpg')
+                           .ss-old-card__text
+                               .ss-old-card__title
+                                   | Шоппинг в Лондоне
+                               .ss-old-card__cost
+                                   | от 52 000 р.
+                       .ss-old-card
+                           div
+                               img.ss-old-card__image(alt='', src='images/presents/oae.jpg')
+                           .ss-old-card__text
+                               .ss-old-card__title
+                                   | Туры в ОАЭ
+                               .ss-old-card__cost
+                                   | от 30 000 р.
+                       .ss-old-card
+                           div
+                               img.ss-old-card__image(alt='', src='images/presents/ch.jpg')
+                           .ss-old-card__text
+                               .ss-old-card__title
+                                   | Секреты Китая
+                               .ss-old-card__cost
+                                   | от 35 000 р.
+       // Services Section
+       section#hot.first_section
+           .container
+               .row
+                   .col-lg-12.text-center
+                       h2.section-heading Горящие туры
+                       h3.section-subheading.text-muted Выберете путешествие для себя
+               .row
+                   .col-md-6.col-sm-6.col-xs-12.col-lg-4
+                       .ss-tour-card
+                           .ss-tour-card__container
+                               .ss-tour-card__image
+                                   img.img-rounded(alt='', src='images/tours/philippine.jpg')
+                               .ss-tour-card__info
+                                   .ss-tour-card__title
+                                       | Филлипины
+                                   .ss-tour-card__line
+                                   .ss-tour-card__tags
+                                       | Пляж Море
+                                   .ss-tour-card__cost
+                                       | 53 т. р.
+                                   .ss-tour-card__hotel
+                                       | Grand Hotel
+                                   .ss-tour-card__long
+                                       | 7 ночей
+                                   .ss-tour-card__like
+                                       i.fa.fa-heart-o.fa-lg(aria-hidden='true')
+                                       |  3
+                   .col-md-6.col-sm-6.col-xs-12.col-lg-4
+                       .ss-tour-card
+                           .ss-tour-card__container
+                               .ss-tour-card__image
+                                   img.img-rounded(alt='', src='images/tours/paris.jpg')
+                               .ss-tour-card__info
+                                   .ss-tour-card__title
+                                       | Париж
+                                   .ss-tour-card__line
+                                   .ss-tour-card__tags
+                                       | Экскурсии, море, дегустации, шоппинг
+                                   .ss-tour-card__cost
+                                       | 62 т. р.
+                                   .ss-tour-card__hotel
+                                       | Grand Hotel
+                                   .ss-tour-card__long
+                                       | 14 ночей
+                                   .ss-tour-card__like
+                                       i.fa.fa-heart-o.fa-lg(aria-hidden='true')
+                                       |  1
+                   .col-md-6.col-sm-6.col-xs-12.col-lg-4
+                       .ss-tour-card
+                           .ss-tour-card__container
+                               .ss-tour-card__image
+                                   img.img-rounded(alt='', src='images/tours/rome.jpg')
+                               .ss-tour-card__info
+                                   .ss-tour-card__title
+                                       | Рим
+                                   .ss-tour-card__line
+                                   .ss-tour-card__tags
+                                       | Экскурсии, с детьми
+                                   .ss-tour-card__cost
+                                       | 41 т. р.
+                                   .ss-tour-card__hotel
+                                       | Grand Hotel
+                                   .ss-tour-card__long
+                                       | 5 ночей
+                                   .ss-tour-card__like
+                                       i.fa.fa-heart-o.fa-lg(aria-hidden='true')
+                                       |  1
+                   .col-md-6.col-sm-6.col-xs-12.col-lg-4
+                       .ss-tour-card
+                           .ss-tour-card__container
+                               .ss-tour-card__image
+                                   img.img-rounded(alt='', src='images/tours/bali.jpg')
+                               .ss-tour-card__info
+                                   .ss-tour-card__title
+                                       | Бали
+                                   .ss-tour-card__line
+                                   .ss-tour-card__tags
+                                       | Пляж Море
+                                   .ss-tour-card__cost
+                                       | 61 т. р.
+                                   .ss-tour-card__hotel
+                                       | Grand Hotel
+                                   .ss-tour-card__long
+                                       | 7 ночей
+                                   .ss-tour-card__like
+                                       i.fa.fa-heart-o.fa-lg(aria-hidden='true')
+                                       |  6
+                   .col-md-6.col-sm-6.col-xs-12.col-lg-4
+                       .ss-tour-card
+                           .ss-tour-card__container
+                               .ss-tour-card__image
+                                   img.img-rounded(alt='', src='images/tours/amsterdam.jpg')
+                               .ss-tour-card__info
+                                   .ss-tour-card__title
+                                       | Амстердам
+                                   .ss-tour-card__line
+                                   .ss-tour-card__tags
+                                       | Экскурсии, молодежный отдых, шоппинг
+                                   .ss-tour-card__cost
+                                       | 43 т. р.
+                                   .ss-tour-card__hotel
+                                       | Grand Hotel
+                                   .ss-tour-card__long
+                                       | 7 ночей
+                                   .ss-tour-card__like
+                                       i.fa.fa-heart-o.fa-lg(aria-hidden='true')
+                                       |  4
+                   .col-md-6.col-sm-6.col-xs-12.col-lg-4
+                       .ss-tour-card
+                           .ss-tour-card__container
+                               .ss-tour-card__image
+                                   img.img-rounded(alt='', src='images/tours/london.jpg')
+                               .ss-tour-card__info
+                                   .ss-tour-card__title
+                                       | Лондон
+                                   .ss-tour-card__line
+                                   .ss-tour-card__tags
+                                       | Экскурсии, Шоппинг
+                                   .ss-tour-card__cost
+                                       | 70 т. р.
+                                   .ss-tour-card__hotel
+                                       | Grand Hotel
+                                   .ss-tour-card__long
+                                       | 8 ночей
+                                   .ss-tour-card__like
+                                       i.fa.fa-heart-o.fa-lg(aria-hidden='true')
+                                       |  10
+       // About Section
+       section#about
+           .container
+               .row
+                   .col-lg-12.text-center
+                       h2.section-heading О нас
+                       h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
+               .row
+                   .col-lg-12
+                       ul.timeline
+                           li
+                               .timeline-image
+                                   img.img-circle.img-responsive(src='images/about/1.jpg', alt='')
+                               .timeline-panel
+                                   .timeline-heading
+                                       h4 2009-2011
+                                       h4.subheading Our Humble Beginnings
+                                   .timeline-body
+                                       p.text-muted
+                                           | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!
+                           li.timeline-inverted
+                               .timeline-image
+                                   img.img-circle.img-responsive(src='images/about/2.jpg', alt='')
+                               .timeline-panel
+                                   .timeline-heading
+                                       h4 March 2011
+                                       h4.subheading An Agency is Born
+                                   .timeline-body
+                                       p.text-muted
+                                           | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!
+                           li
+                               .timeline-image
+                                   img.img-circle.img-responsive(src='images/about/3.jpg', alt='')
+                               .timeline-panel
+                                   .timeline-heading
+                                       h4 December 2012
+                                       h4.subheading Transition to Full Service
+                                   .timeline-body
+                                       p.text-muted
+                                           | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!
+                           li.timeline-inverted
+                               .timeline-image
+                                   img.img-circle.img-responsive(src='images/about/4.jpg', alt='')
+                               .timeline-panel
+                                   .timeline-heading
+                                       h4 July 2014
+                                       h4.subheading Phase Two Expansion
+                                   .timeline-body
+                                       p.text-muted
+                                           | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!
+                           li.timeline-inverted
+                               .timeline-image
+                                   h4.timeline-slogan
+                                       | Летим
+                                       br
+                                       | Вместе
+                                       br
+                                       | С нами!
+       // Team Section
+       section#team.bg-light-gray
+           .container
+               .row
+                   .col-lg-12.text-center
+                       h2.section-heading Наши специалисты
+                       h3.section-subheading.text-muted Мы гордимся своими работниками.
+               .row
+                   .col-sm-4
+                       .team-member
+                           img.img-responsive.img-circle(src='../images/team/elena.jpg', alt='')
+                           h4 Елена Викторовна
+                           p.text-muted Генеральный Директор
+                           ul.list-inline.social-buttons
+                               li
+                                   a(href='https://new.vk.com/id144666515')
+                                       i.fa.fa-vk
+                               li
+                                   a(href='https://ok.ru/')
+                                       i.fa.fa-odnoklassniki
+                   .col-sm-4
+                       .team-member
+                           img.img-responsive.img-circle(src='../images/team/alina.jpg', alt='')
+                           h4 Сторожук Алина
+                           p.text-muted Специалист по Европе
+                           ul.list-inline.social-buttons
+                               li
+                                   a(href='https://new.vk.com/storozhuk')
+                                       i.fa.fa-vk
+                   .col-sm-4
+                       .team-member
+                           img.img-responsive.img-circle(src='images/team/irina.jpg', alt='')
+                           h4 Ирина Науменко
+                           p.text-muted Специалист по Востоку
+                           ul.list-inline.social-buttons
+                               li
+                                   a(href='https://new.vk.com/naumenko')
+                                       i.fa.fa-vk
+               .row
+                   .col-lg-8.col-lg-offset-2.text-center
+                       p.large.text-muted
+                           | Наши специалисты помогут вам в любом вопросе по турам и перелетам, по направлениям и странам. Помогут оформить все документы и подготовиться к путешествию.
+       // Contact Section
+       section#contact
+           .container
+               .row
+                   .col-lg-12.text-center
+                       h2.section-heading Заявка
+                       h3.section-subheading.text-muted Напишите нам свои вопросы и мы подскажем Вам.
+               .row
+                   .col-lg-12
+                       form#contactForm(name='sentMessage', novalidate='')
+                           .row
+                               .col-md-6
+                                   .form-group
+                                       input#name.form-control(type='text', placeholder='Ваше имя +', required='', data-validation-required-message='Please enter your name.')
+                                       p.help-block.text-danger
+                                   .form-group
+                                       input#email.form-control(type='email', placeholder='Почтовый адрес *', required='', data-validation-required-message='Please enter your email address.')
+                                       p.help-block.text-danger
+                                   .form-group
+                                       input#phone.form-control(type='tel', placeholder='Телефон', required='', data-validation-required-message='Please enter your phone number.')
+                                       p.help-block.text-danger
+                               .col-md-6
+                                   .form-group
+                                       textarea#message.form-control(placeholder='Ваш вопрос *', required='', data-validation-required-message='Please enter a message.')
+                                       p.help-block.text-danger
+                               .clearfix
+                               .col-lg-12.text-center
+                                   #success
+                                   button.btn.btn-xl(type='submit') Отправить
+       footer
+           .container
+               .row
+                   .col-md-4
+                       span.copyright Copyright © Stolica Sibiri 2016
+                   .col-md-4
+                       ul.list-inline.social-buttons
+                           li
+                               a(href='https://new.vk.com/ssibir')
+                                   i.fa.fa-vk
+                           li
+                               a(href='https://ok.ru/group/52476079571194')
+                                   i.fa.fa-odnoklassniki
+       #loginModal.portfolio-modal.modal.fade(tabindex='-1', role='dialog', aria-hidden='true')
+           .modal-dialog
+               .modal-content
+                   .close-modal(data-dismiss='modal')
+                       .lr
+                           .rl
+                   .container
+                       form#contactForm(name='sentMessage', novalidate='')
+                           .row
+                               h1.title
+                                   | Войти
+                           .row
+                               .col-md-6.col-md-offset-3
+                                   .form-group
+                                       input#name.form-control(type='text', placeholder='Логин', required='', data-validation-required-message='Please enter your name.')
+                                       p.help-block.text-danger
+                                   .form-group
+                                       input#email.form-control(type='email', placeholder='Пароль', required='', data-validation-required-message='Please enter your email address.')
+                                       p.help-block.text-danger
+                               .clearfix
+                               .col-lg-12.text-center.form-group
+                                   button#login.btn.btn-xl(type='submit') Войти
+                                   .btn
+                                       a(href='#')  Зарегистрироваться

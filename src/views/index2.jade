@@ -1,22 +1,12 @@
-html
-    head
-        meta(http-equiv="Content-Type" content="text/html" charset=UTF-8)
-        meta(name="viewport" content="width=device-width, initial-scale=1.0")
-        title Stlica Sibiri - travel agency
-        link(href="css/styles_libs.css" rel="stylesheet" media="screen")
-        link(rel="icon" type="image/png" href="images/logo.ico")
+//- index.jade
+extends ./components/layout.jade
 
-        script(src="https://code.jquery.com/jquery-2.2.4.min.js"
-            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-            crossorigin="anonymous")
+block title
+    title Article Title
 
-        script(src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
-            integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
-            crossorigin="anonymous")
+block content
+    h1 My Article
 
-        script(src="js/libs.js")
-
-    body(id="top")
         div.navbar-wrapper2.navbar-fixed-top(style="min-height: 110px;")
             div.container
                 div.navbar.mtnav(style="top: 30px;")
