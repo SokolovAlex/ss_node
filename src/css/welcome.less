@@ -1,7 +1,3 @@
-@rotate1: rotate(-10deg);
-@rotate2: rotate(5deg);
-@rotate3: rotate(-15deg);
-
 body {
   font-family: 'El Messiri', sans-serif;
 }
@@ -14,61 +10,7 @@ body {
   height: 50px;
 }
 
-.ss-old-card {
-  display: inline-block;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-
-
-  &__text{
-    margin-top: -65px;
-    font-family: 'Marck Script', cursive;
-  }
-
-  &__title{
-    color: @font-color;
-    font-size: 28px;
-    line-height: 25px;
-  }
-
-  &__cost{
-    color: @color-gray;
-    font-size: 25px;
-  }
-
-  &__image {
-    height: 400px;
-    width: 300px;
-  }
-
-  &:first-child{
-    -ms-transform: @rotate1; /* IE 9 */
-    -webkit-transform: @rotate1; /* Safari */
-    transform: @rotate1;
-  }
-
-  &:last-child{
-    -ms-transform: @rotate2; /* IE 9 */
-    -webkit-transform: @rotate2; /* Safari */
-    transform: @rotate2;
-  }
-}
-
 .timeline-slogan {
   font-family: @font-chelsea;
-}
-
-@startColor: rgba(255,255,255,1);
-@endColor: rgba(255,255,255,0);
-
-.first_section{
-  //background: url(../images/sea_half.jpg) no-repeat;
-  //
-  //background: url(../images/sea_half.jpg) 0px 0px no-repeat, -moz-linear-gradient(center, @startColor, @endColor); // FF 3.6+
-  //background: url(../images/sea_half.jpg) 0px 0px no-repeat, -webkit-gradient(linear, 0 200px, 0 30%, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
-  //background: url(../images/sea_half.jpg) 0px 0px no-repeat, -webkit-linear-gradient(center, @startColor, @endColor); // Safari 5.1+, Chrome 10+
-  //background: url(../images/sea_half.jpg) 0px 0px no-repeat, -o-linear-gradient(center, @startColor, @endColor); // Opera 11.10
-  //background: url(../images/sea_half.jpg) 0px 0px no-repeat, linear-gradient(to center, @startColor, @endColor); // Standard, IE10
-  //
-  //background-size: 1200px 200px;
 }
 

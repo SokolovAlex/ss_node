@@ -10,7 +10,7 @@ module.exports = function() {
     var isProd = process.env.NODE_ENV === "prod";
 
     gulp.task('css', function() {
-        return gulp.src(['src/css/theme.css', 'src/css/*.less'])
+        return gulp.src(['src/css/theme.css', 'src/css/**/*.less'])
             .pipe($.sourcemaps.init())
             .pipe($.concat('styles.css'))
             .pipe($.less())

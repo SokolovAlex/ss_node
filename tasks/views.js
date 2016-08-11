@@ -9,13 +9,13 @@ module.exports = function() {
     var isProd = process.env.NODE_ENV === "prod";
 
     gulp.task('views', function() {
-        return gulp.src('src/views/*.html')
+        return gulp.src('src/views/**/*.jade')
             .pipe(gulp.dest('build/views'))
     });
 
     gulp.task('jade', function() {
-        return gulp.src('src/views/welcome.jade')
-            .pipe($.jade({pretty: true}))
+        return gulp.src('src/views/**/*.jade')
+            .pipe($.jade())
             .pipe(gulp.dest('build/views'))
     });
 };

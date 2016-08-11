@@ -35,11 +35,7 @@ module.exports = function() {
             .pipe(gulp.dest('build/images/'));
     });
 
-    gulp.task('rmrf', function (cb) {
-        return $.rimraf('./build', cb);
-    });
-
     // Copy all third party dependencies from node_modules to vendor directory
-    gulp.task('copy', ['rmrf', 'bootstrap', 'jquery', 'fontawesome', 'images']);
+    gulp.task('copy', ['bootstrap', 'jquery', 'fontawesome', 'images']);
 
 };

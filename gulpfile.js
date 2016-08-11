@@ -1,6 +1,6 @@
 var gulp = require("gulp"),
-    browser_sync = require('browser-sync').create(),
-    server = require("gulp-express");
+    server = require("gulp-express"),
+    $ = require('gulp-load-plugins')();
 
 require('./tasks/copy')();
 
@@ -17,15 +17,13 @@ gulp.task("server", () => {
 gulp.task("watch", (next) => {
     gulp.watch('src/css/**/*.{css,less}', ['css']);
     gulp.watch('src/js/**/*.js', ['js']);
-    gulp.watch('src/**/*.html', ['views']);
+    gulp.watch('src/**/*.jade', ['views']);
     next();
 });
 
-gulp.task("browser-sync", (next) => {
-    browser_sync.init({
-        proxy: 'localhost:3000'
-    });
-    browser_sync.watch('build/**/*.*').on('change', browser_sync.reload);
+gulp.task('clean', function() {
+    return gulp.src('./build/*', { read: false }) // much faster
+        .pipe($.rimraf());
 });
 
 gulp.task("default", ['copy', 'views', "css", 'js', 'watch', 'server']);

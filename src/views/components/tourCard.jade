@@ -1,0 +1,25 @@
+mixin tourCard(params)
+
+    - var params = params || {};
+
+    - var title = params.title || '';
+    - var img = params.img || '';
+    - var tags = params.tags || '';
+    - var cost = params.cost || '';
+    - var hotel = params.hotel || '';
+    - var duration = params.duration || '';
+    - var likes = params.likes || '';
+
+    .ss-tour-card
+        .ss-tour-card__container
+            .ss-tour-card__image
+                img.img-rounded(alt='', src=img)
+            .ss-tour-card__info
+                .ss-tour-card__title= title
+                .ss-tour-card__line
+                .ss-tour-card__tags= tags
+                .ss-tour-card__cost= cost
+                .ss-tour-card__hotel= hotel
+                .ss-tour-card__long= long
+                .ss-tour-card__like
+                    i.fa.fa-heart-o.fa-lg(aria-hidden='true')= likes
