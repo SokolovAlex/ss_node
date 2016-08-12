@@ -11,18 +11,18 @@ require('./tasks/js')();
 require('./tasks/css')();
 
 gulp.task("server", () => {
-    return server.run(['server.js']);
+    return server.run(['server/app.js']);
 });
 
 gulp.task("watch", (next) => {
-    gulp.watch('src/css/**/*.{css,less}', ['css']);
-    gulp.watch('src/js/**/*.js', ['js']);
-    gulp.watch('src/**/*.jade', ['views']);
+    gulp.watch('client/css/**/*.{css,less}', ['css']);
+    gulp.watch('client/js/**/*.js', ['js']);
+    gulp.watch('client/**/*.jade', ['views']);
     next();
 });
 
 gulp.task('clean', function() {
-    return gulp.src('./build/*', { read: false }) // much faster
+    return gulp.src('./build/*', { read: false })
         .pipe($.rimraf());
 });
 

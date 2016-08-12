@@ -6,7 +6,7 @@ var browserSync = require('browser-sync').create();
 var $ = require('gulp-load-plugins')();
 
 var client_js = [
-    'src/js/**/*.js'
+    'client/js/**/*.js'
 ];
 
 module.exports = function() {

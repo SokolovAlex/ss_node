@@ -9,12 +9,12 @@ module.exports = function() {
     var isProd = process.env.NODE_ENV === "prod";
 
     gulp.task('views', function() {
-        return gulp.src('src/views/**/*.jade')
+        return gulp.src('client/views/**/*.jade')
             .pipe(gulp.dest('build/views'))
     });
 
     gulp.task('jade', function() {
-        return gulp.src('src/views/**/*.jade')
+        return gulp.src('client/views/**/*.jade')
             .pipe($.jade())
             .pipe(gulp.dest('build/views'))
     });

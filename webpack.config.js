@@ -10,7 +10,7 @@ var node_env = process.env.NODE_ENV || 'dev',
 node_env = 'prod';
 
 module.exports = {
-    context: __dirname + '/src/js',
+    context: __dirname + '/client/js',
     entry: {
         app: './app',
         about: './about',
@@ -43,7 +43,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: "babel-loader",
-                include: './src/',
+                include: './client/',
                 query: {
                     plugins: ['transform-runtime'],
                     presets: ['es2015']

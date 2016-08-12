@@ -31,7 +31,7 @@ module.exports = function() {
     });
 
     gulp.task('images', () => {
-        return gulp.src('src/images/**/*')
+        return gulp.src('client/images/**/*')
             .pipe(gulp.dest('build/images/'));
     });
 
