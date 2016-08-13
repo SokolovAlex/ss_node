@@ -1,0 +1,22 @@
+extends ./components/layout.jade
+
+block scripts
+    // Theme JavaScript
+    script(src='js/bundle.js')
+
+block styles
+    // Theme JavaScript
+    script(src='js/bundle.js')
+
+block body
+
+    img.backMenuImage(src="images/backImages/1.jpg" )
+
+    // Aviakassa.Form
+    script(charset='utf-8', src='//apps.aviakassa.ru/partner.form.js')
+    #ak-app-da9ec832d10c3
+    script.
+        new Aviakassa.Form("ak-app-da9ec832d10c3",{"client_key":606314,"utm_source":"da9ec832d10c3","aviaDefaultFrom":{"ccode":"ru","iata":"OVB","country":"Россия","value":"Новосибирск"},"aviaTitle":"Столица Сибири. Авиабилеты"})
+    // End Aviakassa.Form
+
+

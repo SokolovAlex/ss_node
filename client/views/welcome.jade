@@ -3,42 +3,13 @@ include components/photoCard
 
 extends ./components/layout.jade
 
+block scripts
+    // Theme JavaScript
+    script(src='js/bundle.js')
+
+block styles
+
 block body
-   nav#mainNav.navbar.navbar-default.navbar-custom.navbar-fixed-top
-        .container
-            // Brand and toggle get grouped for better mobile display
-            .navbar-header.page-scroll
-                button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
-                    span.sr-only Toggle navigation
-                    |  Menu
-                    i.fa.fa-bars
-                a.page-scroll.ss-logo-wrapper(href='#page-top')
-                    img.ss-logo(alt='', src='images/logoStolicaSibiri.gif')
-            // Collect the nav links, forms, and other content for toggling
-            #bs-example-navbar-collapse-1.collapse.navbar-collapse
-                ul.nav.navbar-nav.navbar-right
-                    li.hidden
-                        a(href='#page-top')
-                    li
-                        a.page-scroll(href='#hot') Туры
-                    li
-                        a.page-scroll(href='#about') О нас
-                    li
-                        a.page-scroll(href='#team') Команда
-                    li
-                        a.page-scroll(href='#contact') Заявка
-                    li.dropdown
-                        a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                            | Прочее
-                            span.caret
-                        ul.dropdown-menu
-                            li
-                                a(href='#') Поиск авиабилетов
-                            li.divider(role='separator')
-                            li
-                                a(href='#') Туристические игры
-                    li
-                        a.login(href='#loginModal', data-toggle='modal') Войти
 
    header
        .container
@@ -254,7 +225,7 @@ block body
                         .row
                             .col-md-6
                                 .form-group
-                                    input#name.form-control(type='text', placeholder='Ваше имя +', required='', data-validation-required-message='Please enter your name.')
+                                    input#name.form-control(type='text', placeholder='Ваше имя *', required='', data-validation-required-message='Please enter your name.')
                                     p.help-block.text-danger
                                 .form-group
                                     input#email.form-control(type='email', placeholder='Почтовый адрес *', required='', data-validation-required-message='Please enter your email address.')
