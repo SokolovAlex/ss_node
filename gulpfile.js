@@ -27,3 +27,8 @@ gulp.task('clean', function() {
 });
 
 gulp.task("default", ['copy', 'views', "css", 'js', 'watch', 'server']);
+
+gulp.task("prod", () => {
+    process.env.NODE_ENV = "prod";
+    gulp.start('default');
+});
