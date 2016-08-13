@@ -1,0 +1,15 @@
+mixin photoCard(params)
+
+    - var params = params || {};
+
+    - var title = params.title || '';
+    - var img = params.img || '';
+    - var cost = params.cost || '';
+
+    .ss-photoCard
+        div
+            img.ss-photoCard__image(alt='', src=img)
+        .ss-photoCard__text
+            .ss-photoCard__title= title
+            .ss-photoCard__cost= cost
+
