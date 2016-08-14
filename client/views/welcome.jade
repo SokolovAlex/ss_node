@@ -18,17 +18,17 @@ block body
                    +photoCard({
                        title: 'Шоппинг в Лондоне',
                        cost: 'от 52 000 р.',
-                       img: 'images/presents/uk.jpg'
+                       img: 'images/presents/uk-md.jpg'
                    })
                    +photoCard({
                        title: 'Туры в ОАЭ',
                        cost: 'от 35 000 р.',
-                       img: 'images/presents/oae.jpg'
+                       img: 'images/presents/oae-md.jpg'
                    })
                    +photoCard({
                        title: 'Шоппинг в Лондоне',
                        cost: 'от 30 000 р.',
-                       img: 'images/presents/ch.jpg'
+                       img: 'images/presents/ch-md.jpg'
                    })
 
    section#hot.first_section
@@ -255,30 +255,6 @@ block body
                             a(href='https://ok.ru/group/52476079571194')
                                 i.fa.fa-odnoklassniki
 
-   #loginModal.portfolio-modal.modal.fade(tabindex='-1', role='dialog', aria-hidden='true')
-        .modal-dialog
-            .modal-content
-                .close-modal(data-dismiss='modal')
-                    .lr
-                        .rl
-                .container
-                    form#contactForm(name='sentMessage', novalidate='')
-                        .row
-                            h1.title
-                                | Войти
-                        .row
-                            .col-md-6.col-md-offset-3
-                                .form-group
-                                    input#name.form-control(type='text', placeholder='Логин', required='', data-validation-required-message='Please enter your name.')
-                                    p.help-block.text-danger
-                                .form-group
-                                    input#email.form-control(type='email', placeholder='Пароль', required='', data-validation-required-message='Please enter your email address.')
-                                    p.help-block.text-danger
-                            .clearfix
-                            .col-lg-12.text-center.form-group
-                                button#login.btn.btn-xl(type='submit') Войти
-                                .btn
-                                    a(href='#')  Зарегистрироваться
 
 
 
