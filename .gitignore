@@ -29,6 +29,9 @@ build/Release
 # Dependency directories
 node_modules/
 build/
+submodules/couples/node_modules/
+submodules/couples/build/
+
 jspm_packages
 .idea/
 

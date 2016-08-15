@@ -33,7 +33,7 @@ const welcome = () => {
     }];
 };
 
-const back = () => {
+const back = (current) => {
     return [{
         title: 'Назад',
         link: '/'

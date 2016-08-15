@@ -35,6 +35,14 @@ module.exports = function() {
             .pipe(gulp.dest('build/images/'));
     });
 
+    gulp.task('couples', () => {
+        return gulp.src('submodules/couples/src/build/**/*')
+            .on('data', (f) => console.log(f.relative))
+            .pipe(gulp.dest('build/games/couples'));
+    });
+
+    gulp.task('games', ['couples']);
+
     // Copy all third party dependencies from node_modules to vendor directory
     gulp.task('copy', ['bootstrap', 'jquery', 'fontawesome', 'images']);
 

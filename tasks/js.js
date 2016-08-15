@@ -2,7 +2,6 @@
  * Created by alexs_000 on 27.07.2016.
  */
 var gulp = require('gulp');
-var browserSync = require('browser-sync').create();
 var $ = require('gulp-load-plugins')();
 
 var client_js = [
@@ -19,10 +18,7 @@ module.exports = function() {
             .pipe($.if(isProd, $.uglify()))
             .pipe($.concat('bundle.js'))
             .pipe($.sourcemaps.write())
-            .pipe(gulp.dest('build/js/'))
-            .pipe(browserSync.reload({
-                stream: true
-            }));
+            .pipe(gulp.dest('build/js/'));
     });
 
 };

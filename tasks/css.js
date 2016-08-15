@@ -3,7 +3,6 @@
  */
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
-var browserSync = require('browser-sync').create();
 
 module.exports = function() {
 
@@ -15,10 +14,7 @@ module.exports = function() {
             .pipe($.concat('styles.css'))
             .pipe($.less())
             .pipe($.sourcemaps.write())
-            .pipe(gulp.dest('build/css'))
-            .pipe(browserSync.reload({
-                stream: true
-            }));
+            .pipe(gulp.dest('build/css'));
     });
 };
 
