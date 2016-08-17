@@ -4,7 +4,7 @@
 import _ from 'lodash';
 import {createCards} from "../utils/couplesUtils";
 
-const couples = (state = {cards: [], theme: "tourism", questionCard: null, answerCard: null, score: 0}, action) => {
+const couples = (state = {cards: [], theme: "tourism", questionCard: null, answerCard: null, score: 0, fails: 0, startTime: null}, action) => {
     switch (action.type) {
         case 'open_card':
             let card = action.card;
@@ -26,12 +26,18 @@ const couples = (state = {cards: [], theme: "tourism", questionCard: null, answe
         case 'check_answer':
             if (state.questionCard && state.answerCard) {
                 if (state.questionCard.key !== state.answerCard.key) {
+                    state.fails++;
                     state.questionCard.opened = false;
                     state.answerCard.opened = false;
                 } else {
                     state.score += 2;
                     if (state.score === state.size) {
-                        alert("WIN!");
+                        let endGameDate = new Date();
+                        var gameDuration = endGameDate - state.startTime;
+                        console.log('end', gameDuration);
+                        var event = new CustomEvent("endGame", { 'detail': { gameDuration, fails: state.fails } });
+                        document.dispatchEvent(event);
+                        //document.addEventListener("endGame", function(e) { process(e.detail) });
                     }
                 }
                 state.questionCard = null;
@@ -39,9 +45,11 @@ const couples = (state = {cards: [], theme: "tourism", questionCard: null, answe
             }
             return state;
         case 'start_game':
+            let rows = 4, cols = 4;
             state.theme = "tourism";
-            state.cards = createCards(4, 5, state.theme);
-            state.size = 3 * 4;
+            state.cards = createCards(rows, cols, state.theme);
+            state.size = rows * cols;
+            state.startTime = new Date();
             return state;
         default:
             return state;

@@ -28,12 +28,12 @@ gulp.task("watch", () => {
 });
 
 gulp.task("css", () => {
-    return gulp.src('src/css/*.css')
+    return gulp.src(['src/css/couples.css'])
         .pipe(concat('styles.css'))
-        .pipe(gulp.dest('src/build/'))
+        .pipe(gulp.dest('src/build/'));
 });
 
-gulp.task('webserver', () =>{
+gulp.task('webserver', () => {
     return gulp.src('./')
         .pipe(webserver({
             livereload: true,
@@ -43,7 +43,9 @@ gulp.task('webserver', () =>{
         }));
 });
 
-gulp.task('copy', () =>{
+gulp.task('copy', () => {
+    gulp.src('src/js/customEventPolyfil.js')
+        .pipe(gulp.dest('src/build/'));
     return gulp.src('src/images/**/*')
         .pipe(gulp.dest('src/build/images'));
 });

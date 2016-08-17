@@ -16,6 +16,7 @@ export default class CouplesCard extends Component {
         this.store = this.props.store;
 
         const imagePath = (name) => {
+            //return `build/images/${theme}/${name}.jpg`;
             return `games/couples/images/${theme}/${name}.jpg`;
         };
 
@@ -73,11 +74,10 @@ export default class CouplesGame extends Component {
             <div className="inner cover">
                 <div className={className}>
                     {
-                        cardRows.map(row =>
-                            <div className="row">
-                                {
+                        cardRows.map((row, i)=>
+                            <div className="row" key={i}> {
                                     row.map(card =>
-                                        <CouplesCard
+                                        <CouplesCard key={card.r + '_' + card.c}
                                             card={card}
                                             theme={theme}
                                             store={store}

@@ -22,7 +22,7 @@ module.exports = function() {
         return gulp.src([
                 'node_modules/font-awesome/**',
                 '!node_modules/font-awesome/**/*.map',
-                '!node_modules/font-awesome/.npmignore',
+                '!node_modules/font-awesome/.ignore',
                 '!node_modules/font-awesome/*.txt',
                 '!node_modules/font-awesome/*.md',
                 '!node_modules/font-awesome/*.json'
