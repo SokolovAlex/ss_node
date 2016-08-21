@@ -8,4 +8,13 @@ router.get('/', function (req, res) {
     });
 });
 
+router.post('/registration', function (req, res) {
+
+    console.log("REgistration body", res.body);
+
+    res.json({
+        msg: 'API is running'
+    });
+});
+
 module.exports = router;

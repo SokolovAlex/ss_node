@@ -6,15 +6,30 @@
   border-radius: 3px;
 }
 
-.dropdown-menu{
-  background-color: @color-orange;
-  border-radius: 3px;
-  color: @color-white;
-  border-radius: 3px;
+.navbar-custom {
+
+  .dropdown-menu{
+    background-color: @color-orange;
+    border-radius: 3px;
+    color: @color-white;
+    border-radius: 3px;
+  }
+
 }
 
 .navbar-nav>li>.dropdown-menu {
   border-radius: 3px;
+}
+
+.navbar-simple {
+  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255,255,255,0.9);
+  padding: 10px 0;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+  .nav li a {
+    color: dimgray;
+  }
 }
 
 p {
@@ -27,7 +42,7 @@ p {
 }
 
 .rootContainer{
-  padding: @md @lg*4;
+  padding: @lg*4 @lg*6 @md;
   text-align: center;
 }
 

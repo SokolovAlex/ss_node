@@ -3,13 +3,14 @@ extends ./components/layout.jade
 block styles
     link(href='./games/couples/styles.css', rel='stylesheet')
 
+block menu
+    +ss-menu(menu, true)
+
 block scripts
     script(src='./games/couples/app.jsx')
     script(src='js/bundle.js')
 
 block body
-
-    img.backMenuImage(src="images/backImages/1.jpg" )
 
     #root.site-wrapper.rootContainer
 

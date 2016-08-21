@@ -29,7 +29,27 @@ mixin ss-dropdownMenuItem(data)
                     li
                         a(href=submenuItem.link)= submenuItem.title
 
-mixin ss-menu(data)
+
+mixin ss-menu-simple(data)
+    // Navigation
+    nav.navbar.navbar-default.navbar-fixed-top.navbar-custom.navbar-simple(role='navigation')
+        .container
+            // Brand and toggle get grouped for better mobile display
+            .navbar-header
+                button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                    span.sr-only Toggle navigation
+                a.page-scroll.ss-logo-wrapper(href='/')
+                    img.ss-logo(alt='', src='images/logoStolicaSibiri.gif')
+            // Collect the nav links, forms, and other content for toggling
+            #bs-example-navbar-collapse-1.collapse.navbar-collapse
+                ul.nav.navbar-nav.navbar-right
+                    each item in data
+                        if (!item.submenu)
+                            +ss-simpleMenuItem(item)
+                        else
+                            +ss-dropdownMenuItem(item)
+
+mixin ss-menu-complicated(data)
 
     - var data = data || [];
 
@@ -55,27 +75,8 @@ mixin ss-menu(data)
                         else
                             +ss-dropdownMenuItem(item)
 
-
-                            //ul.nav.navbar-nav.navbar-right
-                                             li.hidden
-                                                 a(href='#page-top')
-                                             li
-                                                 a.page-scroll(href='#hot') Туры
-                                             li
-                                                 a.page-scroll(href='#about') О нас
-                                             li
-                                                 a.page-scroll(href='#team') Команда
-                                             li
-                                                 a.page-scroll(href='#contact') Заявка
-                                             li.dropdown
-                                                 a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                                                     | Прочее
-                                                     span.caret
-                                                 ul.dropdown-menu
-                                                     li
-                                                         a(href='#') Поиск авиабилетов
-                                                     li.divider(role='separator')
-                                                     li
-                                                         a(href='#') Туристические игры
-                                             li
-                                                 a.login(href='#loginModal', data-toggle='modal') Войти
+mixin ss-menu(data, isSimple)
+    if(isSimple)
+        +ss-menu-simple(data)
+    else
+        +ss-menu-complicated(data)

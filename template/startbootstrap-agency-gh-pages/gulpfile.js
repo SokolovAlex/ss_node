@@ -44,7 +44,7 @@ gulp.task('minify-css', function() {
 
 // Minify JS
 gulp.task('minify-js', function() {
-    return gulp.src('js/theme.js')
+    return gulp.src('js/menu.js')
         .pipe(uglify())
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('js'))

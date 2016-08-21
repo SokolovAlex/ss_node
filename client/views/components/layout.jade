@@ -10,10 +10,9 @@ html(lang='en')
         meta(name='Sokolov', content='')
         title Stolica Sibiri
         // Bootstrap Core CSS
-        link(href='vendor/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+        link(href='css/libs.css', rel='stylesheet')
         link(rel='shortcut icon', type='image/x-icon', href='/images/logo.ico')
-        // Custom Fonts
-        link(href='vendor/font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
+
         link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
         link(href='https://fonts.googleapis.com/css?family=Marck+Script&subset=cyrillic', rel='stylesheet', type='text/css')
         link(href='https://fonts.googleapis.com/css?family=Chelsea+Market', rel='stylesheet', type='text/css')
@@ -24,18 +23,9 @@ html(lang='en')
 
     body#page-top.index
 
-        +ss-menu(menu)
+        block menu
 
         block body
-
-        // jQuery
-        script(src='vendor/jquery/jquery.min.js')
-        // Bootstrap Core JavaScript
-        script(src='vendor/bootstrap/js/bootstrap.min.js')
-        // Plugin JavaScript
-        script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js')
-
-        block scripts
 
         #loginModal.login-modal.modal.fade(tabindex='-1', role='dialog', aria-hidden='true')
             .modal-dialog
@@ -44,21 +34,53 @@ html(lang='en')
                         .lr
                             .rl
                     .container
-                        form#contactForm(name='sentMessage', novalidate='')
+                        form#authForm(name='sentMessage', novalidate='')
                             .row
                                 h1.title
                                     | Войти
                             .row
                                 .col-md-6.col-md-offset-3
                                     .form-group
-                                        input#name.form-control(type='text', placeholder='Логин', required='', data-validation-required-message='Please enter your name.')
+                                        input#name.form-control(type='text', name="email" placeholder='Email', required='', data-validation-required-message='Please enter your email.')
                                         p.help-block.text-danger
                                     .form-group
-                                        input#email.form-control(type='email', placeholder='Пароль', required='', data-validation-required-message='Please enter your email address.')
+                                        input#email.form-control(type='text', name="password" placeholder='Пароль', required='', data-validation-required-message='Please enter your password.')
                                         p.help-block.text-danger
-                                .clearfix
+
+
+                            .row.login-add
+
                                 .col-lg-12.text-center.form-group
-                                    button#login.btn.btn-xl(type='submit') Войти
-                                    .btn
+                                    button.login-submit.btn.btn-xl Войти
+                                    .btn.registration-toggler
                                         a(href='#')  Зарегистрироваться
 
+                            .row
+
+                                .col-md-6.col-md-offset-3.reg-add
+
+                                    .form-group
+                                        input#reply-password.form-control(type='text', name="repetpassword" placeholder='Повторите пароль', required='', data-validation-required-message='Please repeat your password.')
+                                        p.help-block.text-danger
+
+                                    .form-group
+                                        input#fname.form-control(type='text', name="fname" placeholder='Имя', required='', data-validation-required-message='Please enter your name.')
+                                        p.help-block.text-danger
+
+                                    .form-group
+                                        input#lname.form-control(type='text', name="lname" placeholder='Фамилия', required='', data-validation-required-message='Please enter your name.')
+                                        p.help-block.text-danger
+
+                                    .form-group
+                                        input#birthdate.form-control(type='text', name="bdate" placeholder='День Рождения', required='', data-validation-required-message='Please enter your birth date.')
+                                        p.help-block.text-danger
+
+                                    .col-lg-12.text-center.form-group
+                                        button.registration-submit.btn.btn-xl Зарегистрироваться
+                                        .btn.registration-toggler
+                                            a(href='#')  Уже есть аккаунт
+
+        // jQuery // Bootstrap // jquery.easing // lodash
+        script(src='js/libs.js')
+
+        block scripts

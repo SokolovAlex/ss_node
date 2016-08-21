@@ -147,7 +147,7 @@ fieldset[disabled] .btn-xl.active {
   background-color: white;
 }
 .navbar-custom {
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(255,255,255,0.7);
   border-color: transparent;
 }
 .navbar-custom .navbar-brand {
@@ -181,7 +181,13 @@ fieldset[disabled] .btn-xl.active {
   font-weight: 400;
   letter-spacing: 1px;
   color: white;
+  transition: oolor 1s ease-out 0.5s;
 }
+
+.navbar-custom.affix .nav li a {
+  color: dimgray;
+}
+
 .navbar-custom .nav li a:hover,
 .navbar-custom .nav li a:focus {
   color: #fed136;
@@ -203,7 +209,7 @@ fieldset[disabled] .btn-xl.active {
     padding: 25px 0;
     -webkit-transition: padding 0.3s;
     -moz-transition: padding 0.3s;
-    transition: padding 0.3s;
+    transition: all 0.3s;
     border: none;
   }
   .navbar-custom .navbar-brand {
@@ -218,8 +224,10 @@ fieldset[disabled] .btn-xl.active {
 }
 @media (min-width: 768px) {
   .navbar-custom.affix {
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(255,255,255,0.9);
+    color: gray;
     padding: 10px 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
   }
   .navbar-custom.affix .navbar-brand {
     font-size: 1.5em;
