@@ -17,6 +17,7 @@ gulp.task("server", () => {
 gulp.task("watch", (next) => {
     gulp.watch('client/css/**/*.{css,less}', ['css']);
     gulp.watch('client/js/**/*.js', ['js']);
+    gulp.watch('server/**/*.js', ['server']);
     gulp.watch('client/**/*.jade', ['views']);
     next();
 });
@@ -26,9 +27,11 @@ gulp.task('clean', function() {
         .pipe($.rimraf());
 });
 
-gulp.task("default", ['copy', 'views', "css", 'js', 'watch', 'server']);
+gulp.task("default", ['views', "css", 'js', 'watch', 'server']);
+
+gulp.task("all", ['copy', 'views', "css:all", 'js:all', 'watch', 'server']);
 
 gulp.task("prod", () => {
     process.env.NODE_ENV = "prod";
-    gulp.start('default');
+    gulp.start('all');
 });

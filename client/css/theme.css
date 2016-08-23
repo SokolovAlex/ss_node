@@ -687,8 +687,8 @@ ul.social-buttons li a:active {
 }
 .login-modal .close-modal {
   position: absolute;
-  width: 75px;
-  height: 75px;
+  width: 45px;
+  height: 45px;
   background-color: transparent;
   top: 25px;
   right: 25px;
@@ -698,7 +698,7 @@ ul.social-buttons li a:active {
   opacity: 0.3;
 }
 .login-modal .close-modal .lr {
-  height: 75px;
+  height: 45px;
   width: 1px;
   margin-left: 35px;
   background-color: #222222;
@@ -710,7 +710,7 @@ ul.social-buttons li a:active {
   z-index: 1051;
 }
 .login-modal .close-modal .lr .rl {
-  height: 75px;
+  height: 45px;
   width: 1px;
   background-color: #222222;
   transform: rotate(90deg);

@@ -9,14 +9,16 @@ html(lang='en')
         meta(name='Tour agency', content='')
         meta(name='Sokolov', content='')
         title Stolica Sibiri
-        // Bootstrap Core CSS
-        link(href='css/libs.css', rel='stylesheet')
+
         link(rel='shortcut icon', type='image/x-icon', href='/images/logo.ico')
 
+        //fonts
         link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
         link(href='https://fonts.googleapis.com/css?family=Marck+Script&subset=cyrillic', rel='stylesheet', type='text/css')
         link(href='https://fonts.googleapis.com/css?family=Chelsea+Market', rel='stylesheet', type='text/css')
+
         // Theme CSS
+        link(href='css/libs.css', rel='stylesheet')
         link(href='css/styles.css', rel='stylesheet')
 
         block styles
@@ -44,7 +46,7 @@ html(lang='en')
                                         input#name.form-control(type='text', name="email" placeholder='Email', required='', data-validation-required-message='Please enter your email.')
                                         p.help-block.text-danger
                                     .form-group
-                                        input#email.form-control(type='text', name="password" placeholder='Пароль', required='', data-validation-required-message='Please enter your password.')
+                                        input#email.form-control(type='password', name="password" placeholder='Пароль', required='', data-validation-required-message='Please enter your password.')
                                         p.help-block.text-danger
 
 
@@ -60,7 +62,7 @@ html(lang='en')
                                 .col-md-6.col-md-offset-3.reg-add
 
                                     .form-group
-                                        input#reply-password.form-control(type='text', name="repetpassword" placeholder='Повторите пароль', required='', data-validation-required-message='Please repeat your password.')
+                                        input#reply-password.form-control(type='password', name="repeat" placeholder='Повторите пароль', required='', data-validation-required-message='Please repeat your password.')
                                         p.help-block.text-danger
 
                                     .form-group
@@ -72,7 +74,7 @@ html(lang='en')
                                         p.help-block.text-danger
 
                                     .form-group
-                                        input#birthdate.form-control(type='text', name="bdate" placeholder='День Рождения', required='', data-validation-required-message='Please enter your birth date.')
+                                        input#birthdate.form-control(type='text', name="birthDate" placeholder='День Рождения', required='', data-validation-required-message='Please enter your birth date.')
                                         p.help-block.text-danger
 
                                     .col-lg-12.text-center.form-group
@@ -81,6 +83,8 @@ html(lang='en')
                                             a(href='#')  Уже есть аккаунт
 
         // jQuery // Bootstrap // jquery.easing // lodash
-        script(src='js/libs.js')
+        script(src='js/libs.js' type='text/javascript')
+
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js' type='text/javascript')
 
         block scripts

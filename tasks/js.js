@@ -16,13 +16,13 @@ module.exports = function() {
         return gulp.src([
                 'client/libs/js/jquery.js',
                 'client/libs/js/jquery.easing.js',
-                'client/libs/js/lodash.js',
+                //'client/libs/js/lodash.js',
                 'client/libs/js/bootstrap.js',
                 'client/libs/js/bootstrap-datepicker.js'
             ])
             .pipe($.sourcemaps.init())
             .pipe($.if(isProd, $.uglify()))
-            //.on('data', f => console.log('libs --> ', f.relative))
+            .on('data', f => console.log('libs --> ', f.relative))
             .pipe($.concat('libs.js'))
             .pipe($.sourcemaps.write())
             .pipe(gulp.dest('build/js/'));
@@ -37,6 +37,7 @@ module.exports = function() {
             .pipe(gulp.dest('build/js/'));
     });
 
-    gulp.task('js', ['libs', 'scripts']);
+    gulp.task('js:all', ['libs', 'scripts']);
 
+    gulp.task('js', ['scripts']);
 };

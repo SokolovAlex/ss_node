@@ -18,6 +18,8 @@
   "dependencies": {
     "bootstrap": "^3.3.6",
     "bootstrap-datepicker": "^1.6.4",
+    "crypto": "0.0.3",
+    "express-session": "^1.14.0",
     "font-awesome": "^4.6.3",
     "gulp-concat": "^2.6.0",
     "gulp-express": "^0.3.5",
@@ -30,7 +32,9 @@
     "jugglingdb": "^1.0.2",
     "jugglingdb-mysql": "^0.2.3",
     "lodash": "^4.15.0",
+    "moment": "^2.14.1",
     "mysql": "^2.11.1",
+    "passport": "^0.3.2",
     "webpack": "^1.13.1"
   },
   "devDependencies": {

@@ -1,0 +1,14 @@
+.ss-alert {
+  position: fixed;
+  display: inline-block;
+  padding: 15px;
+  top: 30px;
+  right: 30px;
+  z-index: 2000;
+}
+.ss-alert.success {
+  background-color: #dff0d8;
+}
+.ss-alert.error {
+  background-color: #f2dede;
+}

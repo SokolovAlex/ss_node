@@ -1,5 +1,9 @@
 var schemaInit = require('./schema');
 
-module.exports = {
-    schema: schemaInit
+module.exports = app => {
+
+    app.models = schemaInit();
+
+    require('./models_extend')(app);
+
 };

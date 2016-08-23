@@ -19,10 +19,11 @@ module.exports = () => {
 
     var User = schema.define('User', {
         id: {type: Number, index: true},
-        email: {type: String, limit: 150, index: true},
-        firstName: {type: String, limit: 150},
-        lastName: {type: String, limit: 150},
-        password: {type: String, limit: 50},
+        email: {type: String, limit: 50, index: true},
+        firstName: {type: String, limit: 50},
+        lastName: {type: String, limit: 50},
+        password: {type: String, limit: 150},
+        salt: {type: String, limit: 50},
         birthDate: Date,
         created: {
             type: Date,
@@ -80,5 +81,5 @@ module.exports = () => {
         }
     });
 
-    return schema;
+    return schema.models;
 };
