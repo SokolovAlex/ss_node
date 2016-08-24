@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var crypter = require('./../helpers/crypter');
 var validators = require('./../helpers/validators');
+var auth_cookie = 'x-auth';
 //var _ = require('lodash');
 
 module.exports = app => {
@@ -44,12 +45,48 @@ module.exports = app => {
     });
 
     router.post('/login', function (req, res) {
-        console.log("login body", req.body);
 
-        res.json({
-            msg: 'API is running'
+        var email = req.body.email;
+        var validResult = validators.checkEmail(email);
+
+        if(!validResult.valid) {
+            return res.json({success: false, message: validResult.messages });
+        }
+
+        User.findOne({where: {email: email}}, (err, user) => {
+
+            if (!user) {
+                return res.json({success: false, message: 'No users with such email!'});
+            }
+
+            if (!crypter.compare(req.body.password, user.password, user.salt)) {
+                return res.json({success: false, message: 'Password incorrect!'});
+            }
+
+            console.log('!!', user);
+
+            console.log(JSON.stringify({
+                hash: user.hash,
+                lname: user.lname,
+                fname: user.fname,
+                birthdate: user.birthdate,
+                role: user.role
+            }));
+
+
+            console.log(user);
+
+            res.cookie(auth_cookie, {
+                hash: user.hash,
+                lname: user.lastName,
+                email: user.email,
+                fname: user.firstName,
+                birthDate: user.birthDate,
+                role: user.role
+            }, {maxAge: 60 * 1000 * 60 * 24});
+
+            return res.json({success: true, redirect: '/profile'});
         });
-
     });
 
     return router;

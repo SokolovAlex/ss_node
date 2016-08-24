@@ -39,7 +39,8 @@
 
         var formData = getFormJson($form);
 
-        var checkResult = ss.validators.checkUserData(formData.email, formData.password, formData.repeat);
+        var checkResult = ss.validators.checkUserData(formData.email, formData.password, formData.repeat
+                ,formData.fname, formData.lname, formData.birthDate);
 
         if(!checkResult.valid) {
             return ss.alert.error(checkResult.messages);
@@ -48,7 +49,7 @@
         $.ajax({
             url: '/auth/registration',
             method: 'post',
-            data: getFormJson($form)
+            data: formData
         }).then(function(response) {
 
             if(!response.success) {
@@ -70,7 +71,11 @@
             data: getFormJson($form)
         }).then(function(response) {
 
-            console.log('response', response);
+            if(!response.success) {
+                return ss.alert.error(response.message);
+            }
+
+            window.location = response.redirect;
         });
 
     });

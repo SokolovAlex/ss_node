@@ -23,13 +23,18 @@ const md5 = (text) => {
         .digest('hex');
 };
 
-const compare = (pasw, hashPassword, salt, next) => {
+const compareAsync = (pasw, hashPassword, salt, next) => {
     return next(null, sha(pasw, salt) === hashPassword);
+};
+
+const compare = (pasw, hashPassword, salt) => {
+    return sha(pasw, salt) === hashPassword;
 };
 
 module.exports = {
     sha: sha,
     salt: salt,
     md5: md5,
+    compareAsync: compareAsync,
     compare: compare
 };

@@ -7,8 +7,8 @@
   z-index: 2000;
 }
 .ss-alert.success {
-  background-color: #dff0d8;
+  background-color: #5cb85c;
 }
 .ss-alert.error {
-  background-color: #f2dede;
+  background-color: #d9534f;
 }

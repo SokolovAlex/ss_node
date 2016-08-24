@@ -28,23 +28,56 @@ const checkPassword = (password, repeat) => {
     };
 };
 
-const checkUserData = (email, pswd, repeat) => {
+const checkBirth = (bdate) => {
+    return {
+        valid: !!bdate,
+        message: 'bdate required'
+    };
+};
+
+const checkNames = (fname, lname) => {
+    return {
+        valid: fname && lname,
+        message: 'Names required'
+    };
+};
+
+const checkUserData = (email, pswd, repeat, fname, lname, bdate) => {
     var valid = true,
         messages = [];
 
-    var emailResult = checkEmail(email);
+    var rules = [
+        checkEmail.bind(null, email),
+        checkPassword.bind(null, pswd, repeat),
+        checkBirth.bind(null, bdate),
+        checkNames.bind(null, fname, lname)
+    ];
 
-    if(!emailResult.valid) {
-        messages.push(emailResult.message);
-        valid = false;
-    }
+    $.each(rules, function(i, rule) {
+        var res = rule();
+        if(!res.valid) {
+            messages.push(res.message);
+            valid = false;
+        }
+    });
 
-    var pswdResult = checkPassword(pswd, repeat);
+    //var emailResult = checkEmail(email);
+    //
+    //if(!emailResult.valid) {
+    //    messages.push(emailResult.message);
+    //    valid = false;
+    //}
+    //
+    //var pswdResult = checkPassword(pswd, repeat);
+    //
+    //if(!pswdResult.valid) {
+    //    messages.push(pswdResult.message);
+    //    valid = false;
+    //}
 
-    if(!pswdResult.valid) {
-        messages.push(pswdResult.message);
-        valid = false;
-    }
+
+
+
 
     return {
         valid,
