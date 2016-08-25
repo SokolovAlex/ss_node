@@ -9,6 +9,7 @@ module.exports = (app) => {
             if (!ctx.created) {
                 ctx.created = new Date();
             }
+
             ctx.modified = new Date();
 
             next();

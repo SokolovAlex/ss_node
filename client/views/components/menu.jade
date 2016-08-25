@@ -17,9 +17,16 @@ mixin ss-dropdownMenuItem(data)
     -var data = data || {};
     -var title = data.title || false;
     -var submenu = data.submenu || [];
+    -var icon = data.icon || [];
 
     li.dropdown
-        a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')= title
+        a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+            if(icon)
+                i(
+                    class=`fa fa-${icon}`
+                    aria-hidden="true"
+                ) &nbsp;
+            = title
             span.caret
         ul.dropdown-menu
             each submenuItem in submenu

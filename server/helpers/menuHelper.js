@@ -1,5 +1,35 @@
-const welcome = () => {
-    return [{
+var addAuth = (menu, user) => {
+
+    if(!user) {
+        return menu.concat([{
+            title: 'Войти',
+            modal: true,
+            link: '#loginModal'
+        }]);
+    }
+    return menu.concat([{
+        title: `${user.fname} ${user.lname}`,
+        icon: 'user',
+        submenu: [{
+            title: 'Профиль',
+            link: '/profile'
+        }, {
+            title: 'Фотографии',
+            link: '/photos'
+        }, {
+            title: 'результаты игр',
+            link: '/game_results'
+        }, {
+            separator: true
+        }, {
+            title: 'Выйти',
+            link: '/auth/logout'
+        }]
+    }]);
+};
+
+const welcome = (user) => {
+    var menu = [{
         title: 'Туры',
         link: '#hot',
         scroll: true
@@ -26,15 +56,15 @@ const welcome = () => {
             title: 'Туристические игры',
             link: '/games'
         }]
-    }, {
-        title: 'Войти',
-        modal: true,
-        link: '#loginModal'
     }];
+
+    menu = addAuth(menu, user);
+
+    return menu;
 };
 
-const back = (current) => {
-    return [{
+const back = (user, current) => {
+    var menu = [{
         title: 'Назад',
         link: '/'
     }, {
@@ -48,11 +78,11 @@ const back = (current) => {
             title: 'Туристические игры',
             link: '/games'
         }]
-    }, {
-        title: 'Войти',
-        modal: true,
-        link: '#loginModal'
     }];
+
+    menu = addAuth(menu, user);
+
+    return menu;
 };
 
 module.exports = {

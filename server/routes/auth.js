@@ -45,7 +45,6 @@ module.exports = app => {
     });
 
     router.post('/login', function (req, res) {
-
         var email = req.body.email;
         var validResult = validators.checkEmail(email);
 
@@ -63,19 +62,6 @@ module.exports = app => {
                 return res.json({success: false, message: 'Password incorrect!'});
             }
 
-            console.log('!!', user);
-
-            console.log(JSON.stringify({
-                hash: user.hash,
-                lname: user.lname,
-                fname: user.fname,
-                birthdate: user.birthdate,
-                role: user.role
-            }));
-
-
-            console.log(user);
-
             res.cookie(auth_cookie, {
                 hash: user.hash,
                 lname: user.lastName,
@@ -87,6 +73,11 @@ module.exports = app => {
 
             return res.json({success: true, redirect: '/profile'});
         });
+    });
+
+    router.get('/logout', function (req, res) {
+        res.clearCookie(auth_cookie);
+        return res.redirect('/');
     });
 
     return router;

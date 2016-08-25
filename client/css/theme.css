@@ -180,7 +180,7 @@ fieldset[disabled] .btn-xl.active {
   text-transform: uppercase;
   font-weight: 400;
   letter-spacing: 1px;
-  color: white;
+  color: gray;
   transition: oolor 1s ease-out 0.5s;
 }
 
@@ -220,6 +220,10 @@ fieldset[disabled] .btn-xl.active {
   }
   .navbar-custom .navbar-nav > .active > a {
     border-radius: 3px;
+  }
+
+  .navbar-custom .nav li a {
+    color: white;
   }
 }
 @media (min-width: 768px) {

@@ -5,10 +5,12 @@
 
     var registrationMode = false;
 
-    $datepicker.datepicker();
+    $datepicker.datepicker({
+        startView: 2
+    });
 
     $datepicker.on('changeDate', function() {
-            $datepicker.datepicker('hide');
+        $datepicker.datepicker('hide');
     });
 
     var getFormJson = function($form) {

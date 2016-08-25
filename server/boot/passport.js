@@ -2,7 +2,6 @@ const passport = require('passport');
 
 module.exports = (app) => {
 
-
     app.use(express.session({ secret: 'SECRET' }));
 
     app.use(passport.initialize());
