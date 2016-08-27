@@ -20,18 +20,27 @@
         $el.fadeIn(duration, function() {
             setTimeout(function() {
                 $el.fadeOut(duration);
-            }, 2000)
+            }, delay)
         });
+    }
+
+    function getMessage(msg) {
+        if(_.isArray(msg)) {
+            return msg = msg.join(' ');
+        }
+        return msg;
     }
 
     window.ss.alert = {
         success: function(msg) {
+            msg = getMessage(msg);
             init(msg);
             $el.removeClass('error');
             $el.addClass('success');
             show();
         },
         error: function(msg) {
+            msg = getMessage(msg);
             init(msg);
             $el.removeClass('success');
             $el.addClass('error');

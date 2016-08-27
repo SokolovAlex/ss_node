@@ -228,22 +228,22 @@ block body
                         .row
                             .col-md-6
                                 .form-group
-                                    input#name.form-control(type='text', placeholder='Ваше имя *', required='', data-validation-required-message='Please enter your name.')
+                                    input#name.form-control(name='name' type='text', placeholder='Ваше имя *', required='', data-validation-required-message='Please enter your name.')
                                     p.help-block.text-danger
                                 .form-group
-                                    input#email.form-control(type='email', placeholder='Почтовый адрес *', required='', data-validation-required-message='Please enter your email address.')
+                                    input#email.form-control(name='email' type='email', placeholder='Почтовый адрес *', required='', data-validation-required-message='Please enter your email address.')
                                     p.help-block.text-danger
                                 .form-group
-                                    input#phone.form-control(type='tel', placeholder='Телефон', required='', data-validation-required-message='Please enter your phone number.')
+                                    input#phone.form-control(name='phone' type='tel', placeholder='Телефон', required='', data-validation-required-message='Please enter your phone number.')
                                     p.help-block.text-danger
                             .col-md-6
                                 .form-group
-                                    textarea#message.form-control(placeholder='Ваш вопрос *', required='', data-validation-required-message='Please enter a message.')
+                                    textarea#message.form-control(name='message' placeholder='Ваш вопрос *', required='', data-validation-required-message='Please enter a message.')
                                     p.help-block.text-danger
                             .clearfix
                             .col-lg-12.text-center
                                 #success
-                                button.btn.btn-xl(type='submit') Отправить
+                                button.btn.btn-xl.contactForm_submit Отправить
    footer
         .container
             .row

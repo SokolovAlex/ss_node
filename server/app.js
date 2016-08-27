@@ -10,6 +10,7 @@ boot(app);
 
 var auth = require('./routes/auth');
 var pages = require('./routes/pages');
+var api = require('./routes/api');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -17,6 +18,7 @@ app.use(cookieParser());
 
 app.use('/', pages);
 app.use('/auth', auth(app));
+app.use('/api', api(app));
 
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/../build/views');

@@ -32,6 +32,7 @@ module.exports = function() {
         return gulp.src(client_js)
             .pipe($.sourcemaps.init())
             .pipe($.if(isProd, $.uglify()))
+            //.on('data', f => console.log('libs --> ', f.relative))
             .pipe($.concat('bundle.js'))
             .pipe($.sourcemaps.write())
             .pipe(gulp.dest('build/js/'));

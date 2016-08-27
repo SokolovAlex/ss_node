@@ -1,8 +1,8 @@
-const checkEmail = (email) => {
+var checkEmail = (email) => {
     if (!email) {
         return {
             valid: false,
-            message: 'email required'
+            message: 'Email required.'
         };
     }
 
@@ -13,7 +13,7 @@ const checkEmail = (email) => {
     };
 };
 
-const checkPassword = (password, repeat) => {
+var checkPassword = (password, repeat) => {
 
     if(!password || !repeat) {
         return {
@@ -28,30 +28,30 @@ const checkPassword = (password, repeat) => {
     };
 };
 
-const checkBirth = (bdate) => {
+var checkBirth = (bdate) => {
     return {
         valid: !!bdate,
         message: 'bdate required'
     };
 };
 
-const checkNames = (fname, lname) => {
+var checkNames = (fname, lname) => {
     return {
         valid: fname && lname,
         message: 'Names required'
     };
 };
 
-const checkUserData = (email, pswd, repeat, fname, lname, bdate) => {
+var checkRequired = (value, name) => {
+    return {
+        valid: !!value,
+        message: name +  ' required.'
+    };
+};
+
+var aggregateResults = function(rules) {
     var valid = true,
         messages = [];
-
-    var rules = [
-        checkEmail.bind(null, email),
-        checkPassword.bind(null, pswd, repeat),
-        checkBirth.bind(null, bdate),
-        checkNames.bind(null, fname, lname)
-    ];
 
     $.each(rules, function(i, rule) {
         var res = rule();
@@ -61,33 +61,33 @@ const checkUserData = (email, pswd, repeat, fname, lname, bdate) => {
         }
     });
 
-    //var emailResult = checkEmail(email);
-    //
-    //if(!emailResult.valid) {
-    //    messages.push(emailResult.message);
-    //    valid = false;
-    //}
-    //
-    //var pswdResult = checkPassword(pswd, repeat);
-    //
-    //if(!pswdResult.valid) {
-    //    messages.push(pswdResult.message);
-    //    valid = false;
-    //}
-
-
-
-
-
     return {
-        valid,
-        messages
+        valid: valid,
+        messages: messages
     };
+};
+
+var checkUserData = function(email, pswd, repeat, fname, lname, bdate) {
+    return aggregateResults([
+        checkEmail.bind(null, email),
+        checkPassword.bind(null, pswd, repeat),
+        checkBirth.bind(null, bdate),
+        checkNames.bind(null, fname, lname)
+    ]);
+};
+
+var checkContactForm = function(email, name, message) {
+    return aggregateResults([
+        checkEmail.bind(null, email),
+        checkRequired.bind(null, message, 'Message'),
+        checkRequired.bind(null, name, 'Name')
+    ]);
 };
 
 window.ss = window.ss || {};
 window.ss.validators = {
     checkUserData: checkUserData,
     checkEmail: checkEmail,
-    checkPassword: checkPassword
+    checkPassword: checkPassword,
+    checkContactForm: checkContactForm
 };

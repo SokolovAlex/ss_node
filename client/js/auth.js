@@ -2,6 +2,7 @@
 
     var $form = $('#authForm');
     var $datepicker = $('#birthdate', $form);
+    var dur = 500;
 
     var registrationMode = false;
 
@@ -12,13 +13,6 @@
     $datepicker.on('changeDate', function() {
         $datepicker.datepicker('hide');
     });
-
-    var getFormJson = function($form) {
-        var data = $form.serializeArray();
-        return _.zipObject(_.map(data, 'name'), _.map(data, 'value'));
-    };
-
-    var dur = 500;
 
     var forLogin = $('.login-add', $form),
         forReg = $('.reg-add', $form);
@@ -39,7 +33,7 @@
     $('.registration-submit', $form).on('click', function(e) {
         e.preventDefault();
 
-        var formData = getFormJson($form);
+        var formData = ss.getFormJson($form);
 
         var checkResult = ss.validators.checkUserData(formData.email, formData.password, formData.repeat
                 ,formData.fname, formData.lname, formData.birthDate);
@@ -70,7 +64,7 @@
         $.ajax({
             url: '/auth/login',
             method: 'post',
-            data: getFormJson($form)
+            data: ss.getFormJson($form)
         }).then(function(response) {
 
             if(!response.success) {
