@@ -25,7 +25,6 @@ app.set('views', __dirname + '/../build/views');
 
 app.use(express.static(__dirname + '/../build'));
 
-
 var isProd = process.env.NODE_ENV === "prod";
 var port = isProd ? 80 : 3000;
 

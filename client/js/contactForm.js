@@ -21,7 +21,7 @@
                 return ss.alert.error(response.message);
             }
 
-            $form.reset();
+            $form[0].reset();
             return ss.alert.success(response.message);
         });
 

@@ -34,6 +34,7 @@
     "lodash": "^4.15.0",
     "moment": "^2.14.1",
     "mysql": "^2.11.1",
+    "nodemailer": "^2.5.0",
     "passport": "^0.3.2",
     "webpack": "^1.13.1"
   },
