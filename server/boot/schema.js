@@ -2,7 +2,7 @@ var Schema = require('jugglingdb').Schema;
 var _ = require('lodash');
 
 module.exports = () => {
-    var schema = new Schema('mySql', {
+    var schema = new Schema('mysql', {
         host: 'localhost',
         port: 3306,
         database: 'ssdb',
