@@ -18,6 +18,11 @@ router.get('/aviakassa', function (req, res) {
     res.render('aviakassa', { menu: menuHelper.back(user)});
 });
 
+router.get('/cruises', function (req, res) {
+    var user = req.cookies[auth_cookie];
+    res.render('cruises', { menu: menuHelper.back(user)});
+});
+
 router.get('/profile', function (req, res) {
     var user = req.cookies[auth_cookie];
     res.render('profile', { user , menu: menuHelper.back(user)});

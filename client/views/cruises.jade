@@ -1,0 +1,23 @@
+extends ./components/layout.jade
+
+block scripts
+    script(src='js/bundle.js')
+
+
+block styles
+
+block menu
+    +ss-menu(menu, true)
+
+block body
+
+    .rootContainer.cruises
+        script(src='http://gocruise.ru/outside/', type='text/javascript')
+        script(type='text/javascript')
+            | cesSettings = {
+            |    email : 's5sibir[dog]yandex.ru',
+            |    defaultPage : 'index',
+            |    isRur : 1
+            | };
+
+
