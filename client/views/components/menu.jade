@@ -37,7 +37,7 @@ mixin ss-dropdownMenuItem(data)
                         a(href=submenuItem.link)= submenuItem.title
 
 
-mixin ss-menu-simple(data)
+mixin ss-menu-simple(data, title)
     // Navigation
     nav.navbar.navbar-default.navbar-fixed-top.navbar-custom.navbar-simple(role='navigation')
         .container
@@ -45,8 +45,11 @@ mixin ss-menu-simple(data)
             .navbar-header
                 button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
                     span.sr-only Toggle navigation
+                    |  Menu
+                    i.fa.fa-bars
                 a.page-scroll.ss-logo-wrapper(href='/')
                     img.ss-logo(alt='', src='images/logoStolicaSibiri.gif')
+                .navbar-title= title
             // Collect the nav links, forms, and other content for toggling
             #bs-example-navbar-collapse-1.collapse.navbar-collapse
                 ul.nav.navbar-nav.navbar-right
@@ -82,8 +85,8 @@ mixin ss-menu-complicated(data)
                         else
                             +ss-dropdownMenuItem(item)
 
-mixin ss-menu(data, isSimple)
+mixin ss-menu(data, isSimple, title)
     if(isSimple)
-        +ss-menu-simple(data)
+        +ss-menu-simple(data, title)
     else
         +ss-menu-complicated(data)
