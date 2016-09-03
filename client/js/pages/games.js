@@ -7,7 +7,6 @@ $(document).ready(function() {
         var time = Math.round(e.detail.gameDuration / 1000) + ' с';
         var fails = e.detail.fails;
         var $modal = $('#resultModal');
-        debugger;
         $modal.find('.js-time').html(time);
         $modal.find('.js-fails').html(fails);
         $modal.modal('show')

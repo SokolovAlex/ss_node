@@ -36526,7 +36526,34 @@ function warning(message) {
 }
 },{}],260:[function(require,module,exports){
 module.exports={
-  "tourism": ["paris1", "barcelona1", "moscow1", "piza1", "piza2", "rio1", "russia1", "oae1", "rome1", "amsterdam1", "egypt1"]
+  "tourism": [
+    "paris1",
+    "barcelona1",
+    "moscow1",
+    "piza1",
+    "piza2",
+    "rio1",
+    "russia1",
+    "oae1",
+    "rome1",
+    "amsterdam1",
+    "egypt1",
+    "china3",
+    "goa",
+    "horvatiya",
+    "indonez",
+    "japan1",
+    "kordoba1",
+    "london2",
+    "moskow",
+    "niagara_falls1",
+    "rus1",
+    "rus2",
+    "rus3",
+    "rus4",
+    "spb",
+    "unknown"
+  ]
 }
 },{}],261:[function(require,module,exports){
 'use strict';
@@ -36554,6 +36581,19 @@ var openCard = exports.openCard = function openCard(card) {
     return {
         type: 'open_card',
         card: card
+    };
+};
+
+var createCards = exports.createCards = function createCards(theme) {
+    return {
+        type: 'create_cards',
+        theme: theme
+    };
+};
+
+var hideAll = exports.hideAll = function hideAll() {
+    return {
+        type: 'hide_all'
     };
 };
 
@@ -36648,7 +36688,11 @@ var renderApp = function renderApp() {
 renderApp();
 appStore.subscribe(renderApp);
 
-appStore.dispatch((0, _actions.startGame)());
+appStore.dispatch((0, _actions.createCards)('tourism'));
+
+setTimeout(function () {
+    appStore.dispatch((0, _actions.startGame)());
+}, 3000);
 
 },{"./actions":261,"./couplesGame.jsx":263,"./reducers":265,"babel-runtime/core-js/object/get-prototype-of":3,"babel-runtime/helpers/classCallCheck":7,"babel-runtime/helpers/createClass":8,"babel-runtime/helpers/inherits":9,"babel-runtime/helpers/possibleConstructorReturn":10,"react":252,"react-dom":117,"react-redux":120,"redux":258}],263:[function(require,module,exports){
 'use strict';
@@ -36708,8 +36752,8 @@ var CouplesCard = function (_Component) {
             this.store = this.props.store;
 
             var imagePath = function imagePath(name) {
-                //return `build/images/${theme}/${name}.jpg`;
-                return 'games/couples/images/' + theme + '/' + name + '.jpg';
+                return 'build/images/' + theme + '/' + name + '.jpg';
+                //return `games/couples/images/${theme}/${name}.jpg`;
             };
 
             var cardClick = this.onClick.bind(this, card);
@@ -36872,12 +36916,18 @@ var couples = function couples() {
             }
             return state;
         case 'start_game':
+            state.cards.forEach(function (row) {
+                return row.forEach(function (card) {
+                    return card.opened = false;
+                });
+            });
+            state.startTime = new Date();
+            return state;
+        case 'create_cards':
             var rows = 4,
-                cols = 4;
-            state.theme = "tourism";
+                cols = 5;
             state.cards = (0, _couplesUtils.createCards)(rows, cols, state.theme);
             state.size = rows * cols;
-            state.startTime = new Date();
             return state;
         default:
             return state;
@@ -36937,6 +36987,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var CoupleCard = function CoupleCard(id, key) {
     return {
         id: id,
+        opened: true,
         key: key
     };
 };

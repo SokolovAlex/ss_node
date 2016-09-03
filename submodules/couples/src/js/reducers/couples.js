@@ -45,11 +45,13 @@ const couples = (state = {cards: [], theme: "tourism", questionCard: null, answe
             }
             return state;
         case 'start_game':
-            let rows = 4, cols = 4;
-            state.theme = "tourism";
+            state.cards.forEach(row => row.forEach(card => card.opened = false));
+            state.startTime = new Date();
+            return state;
+        case 'create_cards':
+            let rows = 4, cols = 5;
             state.cards = createCards(rows, cols, state.theme);
             state.size = rows * cols;
-            state.startTime = new Date();
             return state;
         default:
             return state;

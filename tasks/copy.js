@@ -47,7 +47,7 @@ module.exports = function() {
     gulp.task('couples', () => {
         return gulp.src('submodules/couples/src/build/**/*')
             .on('data', (f) => console.log(f.relative))
-            .pipe(gulp.dest('client/games/couples'));
+            .pipe(gulp.dest('build/games/couples'));
     });
 
     gulp.task('games', ['couples']);

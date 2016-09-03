@@ -16,8 +16,8 @@ export default class CouplesCard extends Component {
         this.store = this.props.store;
 
         const imagePath = (name) => {
-            //return `build/images/${theme}/${name}.jpg`;
-            return `games/couples/images/${theme}/${name}.jpg`;
+            return `build/images/${theme}/${name}.jpg`;
+            //return `games/couples/images/${theme}/${name}.jpg`;
         };
 
         const cardClick = this.onClick.bind(this, card);

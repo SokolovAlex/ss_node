@@ -21,6 +21,19 @@ export const openCard = (card) => {
     };
 };
 
+export const createCards = (theme) => {
+    return {
+        type: 'create_cards',
+        theme
+    };
+};
+
+export const hideAll = () => {
+    return {
+        type: 'hide_all'
+    };
+};
+
 export const checkAnswer = () => {
     return {
         type: 'check_answer'

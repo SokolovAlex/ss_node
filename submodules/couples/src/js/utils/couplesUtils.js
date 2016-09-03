@@ -7,6 +7,7 @@ import imagesCollection from '../../images/storage.json';
 const CoupleCard = (id, key) => {
     return {
         id: id,
+        opened: true,
         key: key
     };
 };

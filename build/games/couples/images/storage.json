@@ -1,3 +1,30 @@
 {
-  "tourism": ["paris1", "barcelona1", "moscow1", "piza1", "piza2", "rio1", "russia1", "oae1", "rome1", "amsterdam1", "egypt1"]
+  "tourism": [
+    "paris1",
+    "barcelona1",
+    "moscow1",
+    "piza1",
+    "piza2",
+    "rio1",
+    "russia1",
+    "oae1",
+    "rome1",
+    "amsterdam1",
+    "egypt1",
+    "china3",
+    "goa",
+    "horvatiya",
+    "indonez",
+    "japan1",
+    "kordoba1",
+    "london2",
+    "moskow",
+    "niagara_falls1",
+    "rus1",
+    "rus2",
+    "rus3",
+    "rus4",
+    "spb",
+    "unknown"
+  ]
 }
