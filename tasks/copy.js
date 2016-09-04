@@ -47,12 +47,17 @@ module.exports = function() {
     gulp.task('couples', () => {
         return gulp.src('submodules/couples/src/build/**/*')
             .on('data', (f) => console.log(f.relative))
-            .pipe(gulp.dest('build/games/couples'));
+            .pipe(gulp.dest('client/games/couples'));
+    });
+
+    gulp.task('games:inbuild', () => {
+        return gulp.src('client/games/*')
+            .pipe(gulp.dest('build/games/'));
     });
 
     gulp.task('games', ['couples']);
 
     // Copy all third party dependencies from node_modules to vendor directory
-    gulp.task('copy', ['vendor:css', 'fonts', 'vendor:js', 'jquery', 'lodash', 'images']);
+    gulp.task('copy', ['games:inbuild', 'vendor:css', 'fonts', 'vendor:js', 'jquery', 'lodash', 'images']);
 
 };

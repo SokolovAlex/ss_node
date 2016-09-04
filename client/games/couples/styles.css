@@ -1,0 +1,49 @@
+.cover {
+    height: 400px;
+}
+
+.couples {
+    width: 766px;
+    height: 766px;
+}
+
+.flipper {
+    position: relative;
+    display: inline-block;
+    perspective: 800px;
+    width: 150px;
+    height: 150px;
+    margin: 0 2px;
+}
+
+.couples .card {
+    border: 1px solid white;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.couples .card figure {
+    background-size: 100% 100%;
+    margin: 0;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.couples .card.opened {
+    transform: rotateY( 180deg );
+}
+
+.couples .card .forward {
+    transform: rotateY( 180deg );
+}
+
+.couples .card .back {
+    cursor: pointer
+}

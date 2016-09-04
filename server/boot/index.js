@@ -6,7 +6,7 @@ module.exports = app => {
 
     app.config = config;
 
-    app.models = schemaInit();
+    app.models = schemaInit().models;
 
     require('./models_extend')(app);
 

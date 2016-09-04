@@ -1,10 +1,9 @@
-const moment = require('moment');
-
-const checkEmail = (email) => {
+var checkEmail = (email) => {
+    console.log('email',email );
     if (!email) {
         return {
             valid: false,
-            message: 'email required'
+            message: 'Email required.'
         };
     }
 
@@ -15,10 +14,10 @@ const checkEmail = (email) => {
     };
 };
 
-const checkPassword = (password, repeat) => {
+var checkPassword = (password, repeat) => {
     if(!password || !repeat) {
         return {
-            valid: password === repeat && password.length >= 8,
+            valid: false,
             message: 'password and repeat required'
         };
     }
@@ -29,41 +28,65 @@ const checkPassword = (password, repeat) => {
     };
 };
 
-const checkBirthDate = (date) => {
-    var now = moment();
+var checkBirth = (bdate) => {
     return {
-        valid: (moment(date) - now).year() > 18,
-        message: 'Invalid birth date'
+        valid: !!bdate,
+        message: 'bdate required'
     };
 };
 
-const checkUserData = (email, pswd, repeat) => {
+var checkNames = (fname, lname) => {
+    return {
+        valid: fname && lname,
+        message: 'Names required'
+    };
+};
+
+var checkRequired = (value, name) => {
+    return {
+        valid: !!value,
+        message: name +  ' required.'
+    };
+};
+
+var aggregateResults = function(rules) {
     var valid = true,
         messages = [];
 
-    var emailResult = checkEmail(email);
-
-    if(!emailResult.valid) {
-        messages.push(emailResult.message);
-        valid = false;
-    }
-
-    var pswdResult = checkPassword(pswd, repeat);
-
-    if(!pswdResult.valid) {
-        messages.push(pswdResult.message);
-        valid = false;
-    }
+    rules.forEach(function(rule) {
+        var res = rule();
+        if(!res.valid) {
+            messages.push(res.message);
+            valid = false;
+        }
+    });
 
     return {
-        valid,
-        messages
+        valid: valid,
+        messages: messages
     };
+};
+
+var checkUserData = function(email, pswd, repeat, fname, lname, bdate) {
+    return aggregateResults([
+        checkEmail.bind(null, email),
+        checkPassword.bind(null, pswd, repeat),
+        checkBirth.bind(null, bdate),
+        checkNames.bind(null, fname, lname)
+    ]);
+};
+
+var checkContactForm = function(email, name, message) {
+    return aggregateResults([
+        checkEmail.bind(null, email),
+        checkRequired.bind(null, message, 'Message'),
+        checkRequired.bind(null, name, 'Name')
+    ]);
 };
 
 module.exports = {
     checkUserData: checkUserData,
     checkEmail: checkEmail,
     checkPassword: checkPassword,
-    checkBirthDate: checkBirthDate
+    checkContactForm: checkContactForm
 };

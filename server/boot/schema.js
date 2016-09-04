@@ -1,14 +1,9 @@
 var Schema = require('jugglingdb').Schema;
 var _ = require('lodash');
+var config = require('../config');
 
 module.exports = () => {
-    var schema = new Schema('mysql', {
-        host: 'localhost',
-        port: 3306,
-        database: 'ssdb',
-        "username": "root",
-        "password": "Xx102030"
-    });
+    var schema = new Schema('mysql', config.db_connect);
 
     schema.on('connected', function() {
         console.log("db connected");
@@ -47,10 +42,10 @@ module.exports = () => {
         table: 'users'
     });
 
-    var Role = schema.define('Role', _.extend(baseModel,{
+    var Role = schema.define('Role', _.extend({
         id: {type: Number, limit: 50},
         name: {type: String, limit: 50}
-    }), {
+    }, baseModel), {
         table: 'roles'
     });
 
@@ -72,18 +67,22 @@ module.exports = () => {
     var GameResult = schema.define('GameResult', _.extend({
         id: {type: Number, limit: 50},
         gameId: {type: Number, limit: 10},
+        rules: {type: String, limit: 50},
         result: {type: Object}
     }, baseModel), {
         table: 'game_results'
     });
 
+    User.belongsTo(Role, {as: 'role', foreignKey: 'roleId'});
+    //User.belongsTo(Role, {as: 'role', foreignKey: 'roleId'});
+
     schema.isActual(function (err, actual) {
         if (!actual) {
-            console.log("db automigrate");
+            console.log("db autoupdate");
             //schema.automigrate();
             schema.autoupdate();
         }
     });
 
-    return schema.models;
+    return schema;
 };

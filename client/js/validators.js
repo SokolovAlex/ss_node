@@ -17,7 +17,7 @@ var checkPassword = (password, repeat) => {
 
     if(!password || !repeat) {
         return {
-            valid: password === repeat && password.length >= 8,
+            valid: false,
             message: 'password and repeat required'
         };
     }
