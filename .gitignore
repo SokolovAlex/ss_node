@@ -31,6 +31,7 @@ node_modules/
 submodules/couples/node_modules/
 submodules/couples/build/
 build/*
+server/config.js
 
 # But not these files...
 

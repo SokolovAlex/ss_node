@@ -51,7 +51,7 @@ module.exports = function() {
     });
 
     gulp.task('games:inbuild', () => {
-        return gulp.src('client/games/*')
+        return gulp.src('client/games/**/*')
             .pipe(gulp.dest('build/games/'));
     });
 
