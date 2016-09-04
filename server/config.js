@@ -13,6 +13,6 @@ module.exports = {
         port: 3306,
         database: 'ssdb',
         "username": "root",
-        "password": "Xx102030"
+        "password": "*"
     }
 };

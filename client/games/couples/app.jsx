@@ -36752,8 +36752,8 @@ var CouplesCard = function (_Component) {
             this.store = this.props.store;
 
             var imagePath = function imagePath(name) {
-                return 'build/images/' + theme + '/' + name + '.jpg';
-                //return `games/couples/images/${theme}/${name}.jpg`;
+                //return `build/images/${theme}/${name}.jpg`;
+                return 'games/couples/images/' + theme + '/' + name + '.jpg';
             };
 
             var cardClick = this.onClick.bind(this, card);
