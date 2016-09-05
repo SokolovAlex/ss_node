@@ -60,6 +60,28 @@ module.exports = () => {
         table: 'requests'
     });
 
+    var Tour = schema.define('Tour', _.extend({
+        id: {type: Number, limit: 50},
+        title: {type: String, limit: 100},
+        description: {type: String},
+        cost: {type: String, limit: 50},
+        nights: {type: Number, limit: 50},
+        tags: {type: String},
+        hotel: {type: String, limit: 50},
+        startDate: {type: Date}
+    }, baseModel), {
+        table: 'tours'
+    });
+
+    var Hotel = schema.define('Hotel', _.extend({
+        id: {type: Number, limit: 50},
+        title: {type: String, limit: 100},
+        stars: {type: Number, limit: 10},
+        address: {type: String, limit: 50}
+    }, baseModel), {
+        table: 'hotels'
+    });
+
     var games = {
         couples: {id: 1}
     };
@@ -74,6 +96,11 @@ module.exports = () => {
     });
 
     User.belongsTo(Role, {as: 'role', foreignKey: 'roleId'});
+
+    GameResult.belongsTo(User, {as: 'user', foreignKey: 'userId'});
+
+    Hotel.belongsTo(Tour, {as: 'tour', foreignKey: 'tourId'});
+    
     //User.belongsTo(Role, {as: 'role', foreignKey: 'roleId'});
 
     schema.isActual(function (err, actual) {

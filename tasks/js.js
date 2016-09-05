@@ -5,7 +5,7 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
 var client_js = [
-    'client/js/**/*.js'
+    'client/js/*.js'
 ];
 
 module.exports = function() {
@@ -38,7 +38,21 @@ module.exports = function() {
             .pipe(gulp.dest('build/js/'));
     });
 
+    gulp.task('js:pages', () => {
+        return gulp.src(['client/js/pages/*.js'])
+            .pipe(gulp.dest('build/js/pages'));
+    });
+
+    gulp.task('tags', () => {
+        gulp.src('client/js/tags/*.tag')
+            .pipe($.riot({
+                compact: true
+            }))
+            .pipe($.concat('tags.js'))
+            .pipe(gulp.dest('build/js'));
+    });
+
     gulp.task('js:all', ['libs', 'scripts']);
 
-    gulp.task('js', ['scripts']);
+    gulp.task('js', ['scripts', 'js:pages', 'tags']);
 };

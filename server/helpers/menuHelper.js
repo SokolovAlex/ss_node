@@ -50,7 +50,7 @@ const welcome = (user) => {
         submenu: [{
             title: 'Поиск авиабилетов',
             link: '/aviakassa'
-        },{
+        }, {
             title: 'Круизы',
             link: '/cruises'
         }, {

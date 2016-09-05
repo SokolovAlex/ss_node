@@ -1,12 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var mailer = require('../helpers/mailer');
-var auth_cookie = 'x-auth';
+var authenticate = require('../helpers/authenticate');
+var toursApi = require('./api/tours');
 
 module.exports = app => {
 
     var User = app.models.User;
     var Request = app.models.Request;
+    var GameResult = app.models.GameResult;
 
     router.post('/request', function (req, res) {
         var body = req.body;
@@ -26,9 +28,28 @@ module.exports = app => {
             mailer.sendRequest(requestModel);
 
             return res.json({success: true, message: 'Ваша заявка принята. Наши менеджеры ответят Вам в ближайшее время.'});
-
         });
     });
+
+    router.get('/gameresult', authenticate((req, res, user) => {
+        var body = req.body;
+        var score = body.score;
+        var game = body.gameId;
+        var rules = body.rules;
+
+        GameResult.create({
+            game: game,
+            userId: user.id,
+            score: score,
+            rules: rules
+        }, (err, result) => {
+            if(err) throw err;
+
+            return res.json({success: true, message: 'Результат сохранен'});
+        });
+    }));
+
+    router = toursApi(router);
 
     return router;
 };

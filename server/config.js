@@ -1,6 +1,5 @@
 module.exports = {
     mailTo: 's5sibir@yandex.ru',
-   // mailTo: 'alex.sklv85@gmail.com',
     mailServer: {
         service: 'Gmail',
         auth: {
@@ -13,6 +12,7 @@ module.exports = {
         port: 3306,
         database: 'ssdb',
         "username": "root",
-        "password": "*"
-    }
+        "password": "Xx102030"
+    },
+    auth_cookie: 'x-auth'
 };
