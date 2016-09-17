@@ -49,7 +49,7 @@ module.exports = app => {
         });
     }));
 
-    router = toursApi(router);
+    router = toursApi(router, app);
 
     return router;
 };

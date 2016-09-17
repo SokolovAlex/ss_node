@@ -1,6 +1,7 @@
 extends ../../build/views/components/layout
 
 block scripts
+    script(src='js/bundle.js')
     script(type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/riot/2.6.1/riot.min.js")
     script(type='text/javascript' src="/js/tags.js")
     script(type='text/javascript' src="/js/pages/tours.js")
@@ -12,9 +13,10 @@ block menu
 
 block body
     .rootContainer
-        tours
-
-
+        .container
+            tours
+            edit_tour
+            details_tour
 
 
 

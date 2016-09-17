@@ -33,9 +33,10 @@ submodules/couples/build/
 build/*
 server/config.js
 
-# But not these files...
+upload/tours/*
+!upload/tours/default.jpg
 
-!build/games/
+# But not these files...
 
 jspm_packages
 .idea/

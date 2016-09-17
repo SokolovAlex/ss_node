@@ -1,6 +1,7 @@
 var Schema = require('jugglingdb').Schema;
 var _ = require('lodash');
 var config = require('../config');
+var enums = require('../enums');
 
 module.exports = () => {
     var schema = new Schema('mysql', config.db_connect);
@@ -43,14 +44,14 @@ module.exports = () => {
     });
 
     var Role = schema.define('Role', _.extend({
-        id: {type: Number, limit: 50},
+        id: {type: Number, limit: 50, index: true},
         name: {type: String, limit: 50}
     }, baseModel), {
         table: 'roles'
     });
 
     var Request = schema.define('Request', _.extend({
-        id: {type: Number, limit: 50},
+        id: {type: Number, limit: 50, index: true},
         userId: {type: Number, limit: 10},
         email: {type: String, limit: 50},
         name: {type: String, limit: 50},
@@ -60,8 +61,18 @@ module.exports = () => {
         table: 'requests'
     });
 
+    var Image = schema.define('Image', _.extend({
+        id: {type: Number, limit: 50, index: true},
+        name: {type: String, limit: 100},
+        description: {type: String},
+        type: {type: Number, default: enums.ImageTypes.Temp.id},
+        objectId: {type: Number}
+    }, baseModel), {
+        table: 'images'
+    });
+
     var Tour = schema.define('Tour', _.extend({
-        id: {type: Number, limit: 50},
+        id: {type: Number, limit: 50, index: true},
         title: {type: String, limit: 100},
         description: {type: String},
         cost: {type: String, limit: 50},
@@ -74,7 +85,7 @@ module.exports = () => {
     });
 
     var Hotel = schema.define('Hotel', _.extend({
-        id: {type: Number, limit: 50},
+        id: {type: Number, limit: 50, index: true},
         title: {type: String, limit: 100},
         stars: {type: Number, limit: 10},
         address: {type: String, limit: 50}
@@ -82,12 +93,8 @@ module.exports = () => {
         table: 'hotels'
     });
 
-    var games = {
-        couples: {id: 1}
-    };
-
     var GameResult = schema.define('GameResult', _.extend({
-        id: {type: Number, limit: 50},
+        id: {type: Number, limit: 50, index: true},
         gameId: {type: Number, limit: 10},
         rules: {type: String, limit: 50},
         result: {type: Object}
@@ -100,6 +107,8 @@ module.exports = () => {
     GameResult.belongsTo(User, {as: 'user', foreignKey: 'userId'});
 
     Hotel.belongsTo(Tour, {as: 'tour', foreignKey: 'tourId'});
+
+    Tour.belongsTo(Image, {as: 'image', foreignKey: 'imageId'});
     
     //User.belongsTo(Role, {as: 'role', foreignKey: 'roleId'});
 

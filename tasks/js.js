@@ -18,7 +18,9 @@ module.exports = function() {
                 'client/libs/js/jquery.easing.js',
                 //'client/libs/js/lodash.js',
                 'client/libs/js/bootstrap.js',
-                'client/libs/js/bootstrap-datepicker.js'
+                'client/libs/js/bootstrap-datepicker.js',
+                'client/libs/js/js.cookie.js',
+                //'client/libs/js/jquery.fileupload.js'
             ])
             .pipe($.sourcemaps.init())
             .pipe($.if(isProd, $.uglify()))

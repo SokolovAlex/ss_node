@@ -3,7 +3,7 @@ var router = express.Router();
 var crypter = require('./../helpers/crypter');
 var validators = require('./../helpers/validators');
 var auth_cookie = 'x-auth';
-//var _ = require('lodash');
+var auth_cookie_client = 'xx-auth';
 
 module.exports = app => {
 
@@ -19,8 +19,6 @@ module.exports = app => {
 
         var salt = crypter.salt();
         var hashed = crypter.sha(req.body.password, salt);
-
-        //console.log("User", _.keys(User));
 
         User.findOne({where: {email: email}}, (err, user) => {
 
@@ -62,14 +60,16 @@ module.exports = app => {
                 return res.json({success: false, message: 'Password incorrect!'});
             }
 
-            res.cookie(auth_cookie, {
+            var userModel = {
                 hash: user.hash,
                 lname: user.lastName,
                 email: user.email,
                 fname: user.firstName,
                 birthDate: user.birthDate,
                 role: user.role
-            }, {maxAge: 60 * 1000 * 60 * 24});
+            };
+            res.cookie(auth_cookie, userModel, {maxAge: 60 * 1000 * 60 * 24});
+            res.cookie(auth_cookie_client, JSON.stringify(userModel), {maxAge: 60 * 1000 * 60 * 24});
 
             return res.json({success: true, redirect: '/profile'});
         });
@@ -77,6 +77,7 @@ module.exports = app => {
 
     router.get('/logout', function (req, res) {
         res.clearCookie(auth_cookie);
+        res.clearCookie(auth_cookie_client);
         return res.redirect('/');
     });
 

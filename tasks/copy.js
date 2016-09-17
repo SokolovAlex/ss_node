@@ -20,10 +20,19 @@ module.exports = function() {
             .pipe(gulp.dest('build/fonts/'))
     });
 
+    gulp.task('uploader', function() {
+        return gulp.src(['node_modules/fine-uploader/fine-uploader',
+                'node_modules/font-awesome/fonts/*'])
+            .pipe(gulp.dest('build/uploader/'))
+    });
+
     // Copy Bootstrap core files from node_modules to vendor directory
     gulp.task('vendor:js', function() {
-        return gulp.src(['node_modules/bootstrap/dist/js/bootstrap.js',
-                'node_modules/bootstrap-datepicker/js/bootstrap-datepicker.js'])
+        return gulp.src([
+                'node_modules/bootstrap/dist/js/bootstrap.js',
+                'node_modules/js-cookie/src/js.cookie.js',
+                'node_modules/bootstrap-datepicker/js/bootstrap-datepicker.js'
+            ])
             .pipe(gulp.dest('client/libs/js'))
     });
 

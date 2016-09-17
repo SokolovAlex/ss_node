@@ -11,23 +11,23 @@ block menu
 block body
 
     .rootContainer
+        .container
+            .profile
+                .profile__email
+                    label Адрес:
+                    span= user.email
 
-        .profile
-            .profile__email
-                label Адрес:
-                span= user.email
+                .profile__firstName
+                    label Имя:
+                    span= user.fname
 
-            .profile__firstName
-                label Имя:
-                span= user.fname
+                .profile__lastName
+                    label Фамилия:
+                    span= user.lname
 
-            .profile__lastName
-                label Фамилия:
-                span= user.lname
-
-            .profile__birthdate
-                label Дата Рождения:
-                span= user.birthDate
+                .profile__birthdate
+                    label Дата Рождения:
+                    span= user.birthDate
 
 
 

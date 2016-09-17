@@ -1,5 +1,6 @@
 (function(){
     var $el = null;
+    var defaultMessage = 'Успешно.';
     var duration = 1000;
     var delay = 2000;
 
@@ -28,7 +29,7 @@
         if(_.isArray(msg)) {
             return msg = msg.join(' ');
         }
-        return msg;
+        return msg || defaultMessage;
     }
 
     window.ss.alert = {

@@ -11,11 +11,12 @@ block menu
 block body
 
     .rootContainer
-        // Aviakassa.Form
-        script(charset='utf-8', src='//apps.aviakassa.ru/partner.form.js')
-        #ak-app-da9ec832d10c3
-        script.
-            new Aviakassa.Form("ak-app-da9ec832d10c3",{"client_key":606314,"utm_source":"da9ec832d10c3", "showAviakassaLogo":0, "aviaDefaultFrom":{"ccode":"ru","iata":"OVB","country":"Россия","value":"Новосибирск"},"aviaTitle":"Авиабилеты"})
-        // End Aviakassa.Form
+        .container
+            // Aviakassa.Form
+            script(charset='utf-8', src='//apps.aviakassa.ru/partner.form.js')
+            #ak-app-da9ec832d10c3
+            script.
+                new Aviakassa.Form("ak-app-da9ec832d10c3",{"client_key":606314,"utm_source":"da9ec832d10c3", "showAviakassaLogo":0, "aviaDefaultFrom":{"ccode":"ru","iata":"OVB","country":"Россия","value":"Новосибирск"},"aviaTitle":"Авиабилеты"})
+            // End Aviakassa.Form
 
 
