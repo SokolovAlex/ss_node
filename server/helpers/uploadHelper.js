@@ -1,8 +1,47 @@
+var fs = require("fs");
+var _ = require("lodash");
+var enums = require('../enums');
+
+var ImageTypesFolders = _.reduce(enums.ImageTypes, (memo, item) => {
+    memo[item.id] = item.folder || 'Temp';
+    return memo;
+}, {});
+
 module.exports = (app) => {
 
     const Image = app.models.Image;
 
-    function save(file, folder, next) {
+    const removeFile = (name, folder) => {
+        fs.unlink(`${app.upload_path}${folder}/${name}`, _.noop);
+    };
+
+    const remove = (id, next) => {
+        console.log("remove");
+        Image.find(id, (err, model) => {
+            removeFile(model.name, ImageTypesFolders[model.type]);
+            model.destroy(next);
+        });
+    };
+
+    const update = (id, file, folder, next) => {
+        console.log("update");
+
+        Image.find(id, (err, model) => {
+            if (model.name != file.name) {
+                removeFile(model.name, folder);
+            }
+
+            file.mv(app.upload_path + `${folder}/${file.name}`, _.noop);
+
+            model.updateAttributes({
+                name: file.name
+            }, next);
+        });
+    };
+
+    function create(file, folder, next) {
+        console.log("create");
+
         const saveDb = new Promise((resolve) => {
             Image.create({
                 name: file.name
@@ -27,13 +66,27 @@ module.exports = (app) => {
         });
     }
 
+    function save(id, file, folder, next) {
+        if(!id) {
+            create(file, folder, next);
+        } else {
+            if(file) {
+                update(id, file, folder, next);
+            } else {
+                //remove(id, next);
+                next(null, null)
+            }
+        }
+    }
+
     function saveFile(file, folder, next) {
         file.mv(app.upload_path + `${folder}/${file.name}`, next);
     }
 
     return {
-        save,
-        saveFile
+        create,
+        saveFile,
+        save
     };
 };
 

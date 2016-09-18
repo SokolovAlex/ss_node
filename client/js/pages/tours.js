@@ -3,6 +3,7 @@
     var user = null;
     var toursList = null;
     var editTag = null;
+    var detailsTag = null;
 
     function init(next) {
         if(toursData) {
@@ -17,9 +18,35 @@
         });
     }
 
+    function prepareView(id, isDetails) {
+        if(toursList) {
+            toursList.update({hidden: true});
+        }
+        if (isDetails) {
+            if(editTag) {
+                editTag.update({hidden: true});
+            }
+        } else {
+            if(detailsTag) {
+                detailsTag.update({hidden: true});
+            }
+        }
+
+        var tour = null;
+        if (id) {
+            tour = _.find(toursData, function (item) {
+                return item.id == id;
+            });
+        }
+        return tour;
+    }
+
     var routes = {
         index: function(){
             init(function() {
+                if(detailsTag) {
+                    detailsTag.update({hidden: true});
+                }
                 if(editTag) {
                     editTag.update({hidden: true});
                 }
@@ -33,15 +60,8 @@
         },
         edit: function(id){
             init(function() {
-                if(toursList) {
-                    toursList.update({hidden: true});
-                }
-                var tour = null;
-                if (id) {
-                    tour = _.find(toursData, function (item) {
-                        return item.id == id;
-                    });
-                }
+                var tour = prepareView(id);
+
                 if (editTag) {
                     editTag.refresh(tour);
                 } else {
@@ -50,7 +70,26 @@
             });
         },
         details: function(id){
+            init(function() {
+                var tour = prepareView(id, true);
+                if (detailsTag) {
+                    detailsTag.refresh(tour);
+                } else {
+                    detailsTag = riot.mount('details_tour', {tour: tour})[0];
+                }
+            });
+        }
+    };
 
+    var getNightsTextMixin = {
+        getNightsText: function(nights) {
+            if(nights == 1 || nights == 21) {
+                return nights + ' ночь';
+            } else if (nights < 5) {
+                return nights + ' ночи';
+            } else if (nights < 20) {
+                return nights + ' ночей';
+            }
         }
     };
 
@@ -61,10 +100,26 @@
                 routeFn(id);
             });
 
+            riot.mixin('getNightsText', getNightsTextMixin);
+
             riot.route.start(true);
         },
-        addTour: function(tour) {
-            toursData.push(tour);
+
+        updateCollection: function(tour, type) {
+            if (type == 'new') {
+                toursData.push(tour);
+            } else if (type == 'remove') {
+
+            } else {
+                var oldTour = _.find(toursData, function(item) {
+                    return item.id == tour.id;
+                });
+                oldTour.title = tour.title;
+                oldTour.description = tour.description;
+                oldTour.nights = tour.nights;
+                oldTour.cost = tour.cost;
+                oldTour.startDate = tour.startDate;
+            }
         }
     };
 

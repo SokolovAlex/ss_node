@@ -41,7 +41,7 @@
                                 <div class="form-group row">
                                         <label for="tour_desc" class="col-xs-3 col-form-label">Описание</label>
                                         <div class="col-xs-6">
-                                                <input class="form-control" name='description' type="text" value="{description}" id="tour_desc">
+                                                <textarea name='description' class="form-control" rows="3" id="tour_desc">{description}</textarea>
                                         </div>
                                 </div>
 
@@ -55,7 +55,7 @@
                                 <div class="form-group row">
                                         <label for="tour_duration" class="col-xs-3 col-form-label">Продолжительность</label>
                                         <div class="col-xs-6">
-                                                <input class="form-control" type="number" name='duration' value="{duration}" id="tour_duration">
+                                                <input class="form-control" type="number" name='nights' value="{nights}" id="tour_duration">
                                         </div>
                                 </div>
 
@@ -79,7 +79,7 @@
                         <div class="col-md-5 edit_tour__image-block">
                                 <input type="file" name="tourImage" id='edit-tour__fileinput' class='edit_tour__uploader' onchange={changeImage} />
 
-                                <img src="/upload/tours/{imagePath}" id='edit_tour__image' alt="" class="img-thumbnail">
+                                <img src="{imagePath}" id='edit_tour__image' alt="" class="img-thumbnail">
                         </div>
                 </div>
         </form>
@@ -89,17 +89,15 @@
         var data = this.opts.tour;
         this.hidden = this.opts.hidden;
 
-        if (data) {
-                this.id = data.id;
-                this.title = data.title;
-                this.description = data.description;
-                this.duration = data.duration;
-                this.cost = data.cost;
-                this.startDate = data.startDate;
-        }
+        this.id = data.id;
+        this.title = data.title;
+        this.description = data.description;
+        this.nights = data.nights;
+        this.cost = data.cost;
+        this.startDate = data.startDate;
 
         var image = data && data.image;
-        this.imagePath = image  ? image.name : "default.jpg";
+        this.imagePath = image  ? '/upload/tours/' + image.name : "/upload/tours/default.jpg";
 
         var selectedFile;
 
@@ -124,10 +122,10 @@
         };
 
         this.refresh = function(data) {
-                data = data || {id: '', title: '', description: '', duration: '', cost: '', startDate: '' };
+                data = data || {id: '', title: '', description: '', nights: '', cost: '', startDate: '' };
                 data.hidden = false;
                 var image = data.image;
-                data.imagePath = image  ? image.name : "default.jpg";
+                data.imagePath = image  ? '/upload/tours/' + image.name : "/upload/tours/default.jpg";
                 this.update(data);
         };
 
@@ -145,7 +143,7 @@
                                 var tourData = responseData.tour;
                                 if (tourData.id) {
                                         ss.alert.success();
-                                        app.addTour(tourData);
+                                        app.updateCollection(tourData, responseData.type);
                                         riot.route('edit/' + tourData.id);
                                 }
                         }
@@ -154,6 +152,7 @@
 
         this.changeImage = function() {
                 var uploadEl = $('#edit-tour__fileinput');
+                debugger;
                 if(uploadEl[0].files.length) {
                         var selectedFile = uploadEl[0].files[0];
                         self.imagePath = URL.createObjectURL(selectedFile);

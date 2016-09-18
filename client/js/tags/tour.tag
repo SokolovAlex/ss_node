@@ -1,4 +1,4 @@
-<tour class="tour">
+<tour>
     <style scoped>
     :scope {
         font-family: 'Chelsea Market', cursive;
@@ -23,6 +23,7 @@
     }
     .tour__image img {
         height: 150px;
+        width: 150px;
     }
     .tour__container{
         display: flex;
@@ -74,9 +75,10 @@
         <div class='tour__info'>
             <div class='tour__title'>{title}</div>
             <div class='tour__line'></div>
-            <div class='tour__tags'>{tags}</div>
+            <div class='tour__tags'>{tour_tags}</div>
             <div class='tour__cost'>{cost}</div>
             <div class='tour__hotel'>{hotel.title}</div>
+            <div class='tour__start-date'>{date}</div>
             <div class='tour__long'>{long}</div>
             <div class='tour__actions tour__actions_manager' if={editable}>
                 <a href='#details/{id}'><i class="fa fa-eye fa-lg tour__action" aria-hidden='true'></i></a>
@@ -92,6 +94,13 @@
             <script>
                 var self = this;
                 self.id = opts.id;
+
+                this.mixin('getNightsText');
+                self.long = this.getNightsText(self.nights);
+
+                var date = new Date(self.startDate);
+                self.date = date.toLocaleDateString();
+
                 var image = self.image;
                 self.imagePath = image ? image.name : "default.jpg";
 
@@ -104,6 +113,7 @@
                 self.remove = function() {
                     debugger;
                 };
+
 
             </script>
         </div>

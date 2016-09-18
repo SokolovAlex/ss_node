@@ -34,36 +34,54 @@ module.exports = (router, app) => {
         var tourImage;
         if (req.files) {
             tourImage = req.files.tourImage;
+            if(tourImage.data.length == 0) {
+                tourImage = null;
+            }
         }
 
         var body = req.body;
 
+        var dbData = {
+            title: body.title,
+            description: body.description,
+            cost: body.cost,
+            nights: body.nights,
+            startDate: body.start_date
+        };
+
         if(body.id) {
-
-
-        } else {
-            function createTour(data, image) {
-                Tour.create({
-                    imageId: image ? image.id : null,
-                    title: data.title,
-                    description: data.description,
-                    cost: data.cost,
-                    nights: data.duration,
-                    startDate: data.start_date
-                }, (err, result) => {
+            Tour.find(body.id, (err, tourModel) => {
+                uploadHelper.save(tourModel.imageId, tourImage, enums.ImageTypes.Tour.folder, (err, image) => {
                     if(err) {
-                        res.status(500).json({ error: err.message });
+                        return res.status(500).json({ error: err.message });
                     }
-                    res.json({message: 'Success', tour: result, error: false})
+                    if (!tourModel.imageId) {
+                        dbData.imageId = image ? image.id : null;
+                    }
+
+                    tourModel.updateAttributes(dbData, (err, result) => {
+                        return res.json({message: 'Success', tour: result, type: 'update', error: false})
+                    });
+                });
+            });
+        } else {
+            function createTour(image) {
+                dbData.imageId = image ? image.id : null;
+
+                Tour.create(dbData, (err, result) => {
+                    if(err) {
+                        return res.status(500).json({ error: err.message });
+                    }
+                    return res.json({message: 'Success', tour: result, type: 'new', error: false})
                 });
             }
 
             if(tourImage) {
-                uploadHelper.save(tourImage, enums.ImageTypes.Tour.folder, (err, image) => {
-                    createTour(body, image);
+                uploadHelper.create(tourImage, enums.ImageTypes.Tour.folder, (err, image) => {
+                    createTour(image);
                 });
             } else {
-                createTour(body);
+                createTour();
             }
         }
     });

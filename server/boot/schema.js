@@ -65,8 +65,7 @@ module.exports = () => {
         id: {type: Number, limit: 50, index: true},
         name: {type: String, limit: 100},
         description: {type: String},
-        type: {type: Number, default: enums.ImageTypes.Temp.id},
-        objectId: {type: Number}
+        type: {type: Number, default: enums.ImageTypes.Temp.id}
     }, baseModel), {
         table: 'images'
     });
@@ -74,10 +73,9 @@ module.exports = () => {
     var Tour = schema.define('Tour', _.extend({
         id: {type: Number, limit: 50, index: true},
         title: {type: String, limit: 100},
-        description: {type: String},
+        description: {type: String, limit: 2000},
         cost: {type: String, limit: 50},
         nights: {type: Number, limit: 50},
-        tags: {type: String},
         hotel: {type: String, limit: 50},
         startDate: {type: Date}
     }, baseModel), {
@@ -109,8 +107,6 @@ module.exports = () => {
     Hotel.belongsTo(Tour, {as: 'tour', foreignKey: 'tourId'});
 
     Tour.belongsTo(Image, {as: 'image', foreignKey: 'imageId'});
-    
-    //User.belongsTo(Role, {as: 'role', foreignKey: 'roleId'});
 
     schema.isActual(function (err, actual) {
         if (!actual) {
