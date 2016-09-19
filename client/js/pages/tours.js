@@ -92,6 +92,23 @@
             }
         }
     };
+    var removeMixin = {
+        remove: function() {
+            var id = this.id;
+            bootbox.confirm('Вы уверены?', function(result) {
+                if (result) {
+                    $.ajax({
+                        url: 'api/tours/' + id,
+                        method: "delete"
+                    }).then(function(res) {
+                        ss.alert.success();
+                        app.removeFromCollection(id);
+                        riot.route.exec('');
+                    });
+                }
+            });
+        }
+    };
 
     window.app = {
         init: function() {
@@ -101,15 +118,20 @@
             });
 
             riot.mixin('getNightsText', getNightsTextMixin);
+            riot.mixin('remove', removeMixin);
 
             riot.route.start(true);
+        },
+
+        removeFromCollection(id) {
+            toursData = _.reject(toursData, function(item) {
+                return item.id == id;
+            });
         },
 
         updateCollection: function(tour, type) {
             if (type == 'new') {
                 toursData.push(tour);
-            } else if (type == 'remove') {
-
             } else {
                 var oldTour = _.find(toursData, function(item) {
                     return item.id == tour.id;

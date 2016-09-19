@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/SokolovAlex/ss_node#readme",
   "dependencies": {
+    "bootbox": "^4.4.0",
     "bootstrap": "^3.3.6",
     "bootstrap-datepicker": "^1.6.4",
     "crypto": "0.0.3",

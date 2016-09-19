@@ -5,7 +5,6 @@
         padding: 10px 25px;
         color: white;
     }
-
     </style>
 
     <div class="tours__actions">
@@ -14,7 +13,7 @@
 
     <div>
         <div class="col-md-6 col-sm-6 col-xs-12 col-lg-4 " each="{ tours }">
-            <tour data="{ true }" isManager="{!opts.isManager}">
+            <tour>
             </tour>
         </div>
     </div>
@@ -22,6 +21,7 @@
     <script>
         this.tours = this.opts.tours;
         this.hidden = this.opts.hidden;
+        this.isManager = this.opts.isManager;
 
         this.create = function() {
             riot.route('edit')

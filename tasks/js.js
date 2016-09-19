@@ -20,6 +20,7 @@ module.exports = function() {
                 'client/libs/js/bootstrap.js',
                 'client/libs/js/bootstrap-datepicker.js',
                 'client/libs/js/js.cookie.js',
+                'client/libs/js/bootbox.js'
                 //'client/libs/js/jquery.fileupload.js'
             ])
             .pipe($.sourcemaps.init())

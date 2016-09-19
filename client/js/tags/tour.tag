@@ -96,7 +96,10 @@
                 self.id = opts.id;
 
                 this.mixin('getNightsText');
+                this.mixin('remove');
+
                 self.long = this.getNightsText(self.nights);
+
 
                 var date = new Date(self.startDate);
                 self.date = date.toLocaleDateString();
@@ -104,17 +107,11 @@
                 var image = self.image;
                 self.imagePath = image ? image.name : "default.jpg";
 
-                this.editable = !opts.isManager;
+                this.editable = this.parent.isManager;
 
                 self.like = function() {
                     debugger;
                 };
-
-                self.remove = function() {
-                    debugger;
-                };
-
-
             </script>
         </div>
     </div>

@@ -96,6 +96,8 @@
         this.cost = data.cost;
         this.startDate = data.startDate;
 
+        this.mixin('remove');
+
         var image = data && data.image;
         this.imagePath = image  ? '/upload/tours/' + image.name : "/upload/tours/default.jpg";
 
@@ -114,10 +116,6 @@
         });
 
         this.back = function() {
-                riot.route('');
-        };
-
-        this.remove = function() {
                 riot.route('');
         };
 

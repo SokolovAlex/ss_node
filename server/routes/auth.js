@@ -66,7 +66,7 @@ module.exports = app => {
                 email: user.email,
                 fname: user.firstName,
                 birthDate: user.birthDate,
-                role: user.role
+                role: user.roleId
             };
             res.cookie(auth_cookie, userModel, {maxAge: 60 * 1000 * 60 * 24});
             res.cookie(auth_cookie_client, JSON.stringify(userModel), {maxAge: 60 * 1000 * 60 * 24});

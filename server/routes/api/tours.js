@@ -24,13 +24,12 @@ module.exports = (router, app) => {
         });
     });
 
-    router.get('/tours/{id}', (req, res) => {
+    router.get('/tours/:id', (req, res) => {
 
         res.json({});
     });
 
-    //router.post('/tours/{id}', authenticate((req, res, user) => {
-    router.post('/tours', (req, res) => {
+    router.post('/tours', authenticate((req, res, user) => {
         var tourImage;
         if (req.files) {
             tourImage = req.files.tourImage;
@@ -84,14 +83,30 @@ module.exports = (router, app) => {
                 createTour();
             }
         }
-    });
+    }));
 
-    router.delete('/tours/{id}', authenticate((req, res, user) => {
+    router.delete('/tours/:id', authenticate((req, res, user) => {
+        var id = req.params.id;
+        Tour.find(id, (err, tourModel) => {
+            if(err) res.status(500).json({ error: err.message });
+            var imageId = tourModel.imageId;
+            if(imageId) {
+                uploadHelper.remove(imageId, destroy);
+            } else {
+                destroy(null);
+            }
 
-        res.json({});
+            function destroy(err) {
+                if(err) res.status(500).json({ error: err.message });
+                tourModel.destroy((err) => {
+                    if(err) res.status(500).json({ error: err.message });
+                    res.json({error: false});
+                });
+            }
+        });
+
     }));
 
     return router;
-
 };
 
