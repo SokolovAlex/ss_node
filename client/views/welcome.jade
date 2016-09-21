@@ -1,5 +1,6 @@
 include components/tourCard
 include components/photoCard
+include components/actions
 
 extends ./components/layout.jade
 
@@ -33,6 +34,8 @@ block body
                            cost: 'от 30 000 р.',
                            img: 'images/presents/ch-md.jpg'
                        })
+
+       +ss-actions(actions)
 
        section#hot.first_section
             .container

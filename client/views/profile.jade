@@ -29,5 +29,8 @@ block body
                     label Дата Рождения:
                     span= user.birthDate
 
-
-
+                .profile__actions
+                    each action in profileActions
+                        a.profile__action(href=action.href)
+                            span.fa(class=`fa-${action.icon}`)
+                            .profile__action-text= action.text

@@ -1,5 +1,22 @@
-var addAuth = (menu, user) => {
+var submenu = () => {
+    return [{
+        title: 'Профиль',
+        link: '/profile'
+    }, {
+        title: 'Фотографии',
+        link: '/photos'
+    }, {
+        title: 'результаты игр',
+        link: '/game_results'
+    }, {
+        separator: true
+    }, {
+        title: 'Выйти',
+        link: '/auth/logout'
+    }];
+};
 
+var addAuth = (menu, user) => {
     if(!user) {
         return menu.concat([{
             title: 'Войти',
@@ -10,21 +27,7 @@ var addAuth = (menu, user) => {
     return menu.concat([{
         title: `${user.fname} ${user.lname}`,
         icon: 'user',
-        submenu: [{
-            title: 'Профиль',
-            link: '/profile'
-        }, {
-            title: 'Фотографии',
-            link: '/photos'
-        }, {
-            title: 'результаты игр',
-            link: '/game_results'
-        }, {
-            separator: true
-        }, {
-            title: 'Выйти',
-            link: '/auth/logout'
-        }]
+        submenu: submenu()
     }]);
 };
 
@@ -47,18 +50,7 @@ const welcome = (user) => {
         scroll: true
     }, {
         title: 'Прочее',
-        submenu: [{
-            title: 'Поиск авиабилетов',
-            link: '/aviakassa'
-        }, {
-            title: 'Круизы',
-            link: '/cruises'
-        }, {
-            separator: true
-        }, {
-            title: 'Туристические игры',
-            link: '/games'
-        }]
+        submenu: submenu()
     }];
 
     menu = addAuth(menu, user);
@@ -72,18 +64,7 @@ const back = (user, current) => {
         link: '/'
     }, {
         title: 'Прочее',
-        submenu: [{
-            title: 'Поиск авиабилетов',
-            link: '/aviakassa'
-        }, {
-            title: 'Круизы',
-            link: '/cruises'
-        }, {
-            separator: true
-        }, {
-            title: 'Туристические игры',
-            link: '/games'
-        }]
+        submenu: submenu()
     }];
 
     menu = addAuth(menu, user);
@@ -91,7 +72,33 @@ const back = (user, current) => {
     return menu;
 };
 
+const profileActions = () => {
+    return [{
+        text: 'Туры',
+        href: '/tours',
+        icon: 'globe'
+    }];
+};
+
+const commonActions = () => {
+    return [{
+        text: 'Туры',
+        href: '/tours',
+        icon: 'globe'
+    },{
+        text: 'Авиабилеты',
+        href: '/aviakassa',
+        icon: 'plane'
+    },{
+        text: 'Круизы',
+        href: '/cruises',
+        icon: 'ship'
+    }];
+};
+
 module.exports = {
-    welcome: welcome,
-    back: back
+    welcome,
+    back,
+    profileActions,
+    commonActions
 };

@@ -4,7 +4,7 @@ var authenticate = require('../../helpers/authenticate');
 module.exports = (router) => {
 
     router.get('/profile', authenticate((req, res, user) => {
-        res.render('profile', { user , menu: menuHelper.back(user)});
+        res.render('profile', { user , menu: menuHelper.back(user), profileActions: menuHelper.profileActions(user)});
     }));
 
     router.get('/photos', authenticate((req, res, user) => {

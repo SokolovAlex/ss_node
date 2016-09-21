@@ -16,6 +16,10 @@ module.exports = (app) => {
     };
 
     const remove = (id, next) => {
+        if(!id) {
+            return next(null);
+        }
+
         Image.find(id, (err, model) => {
             removeFile(model.name, ImageTypesFolders[model.type]);
             model.destroy(next);
@@ -37,6 +41,10 @@ module.exports = (app) => {
     };
 
     function create(file, folder, next) {
+        if(!file) {
+            return next(null);
+        }
+
         const saveDb = new Promise((resolve) => {
             Image.create({
                 name: file.name

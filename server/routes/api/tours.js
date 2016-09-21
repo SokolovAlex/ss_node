@@ -64,7 +64,11 @@ module.exports = (router, app) => {
                 });
             });
         } else {
-            function createTour(image) {
+            function createTour(err, image) {
+                if(err) {
+                    return res.status(500).json({ error: err.message });
+                }
+
                 dbData.imageId = image ? image.id : null;
 
                 Tour.create(dbData, (err, result) => {
@@ -75,26 +79,16 @@ module.exports = (router, app) => {
                 });
             }
 
-            if(tourImage) {
-                uploadHelper.create(tourImage, enums.ImageTypes.Tour.folder, (err, image) => {
-                    createTour(image);
-                });
-            } else {
-                createTour();
-            }
+            uploadHelper.create(tourImage, enums.ImageTypes.Tour.folder, createTour);
         }
     }));
 
     router.delete('/tours/:id', authenticate((req, res, user) => {
         var id = req.params.id;
         Tour.find(id, (err, tourModel) => {
-            if(err) res.status(500).json({ error: err.message });
-            var imageId = tourModel.imageId;
-            if(imageId) {
-                uploadHelper.remove(imageId, destroy);
-            } else {
-                destroy(null);
-            }
+            if(err || !tourModel) res.status(500).json({ error: err.message });
+
+            uploadHelper.remove(tourModel.imageId, destroy);
 
             function destroy(err) {
                 if(err) res.status(500).json({ error: err.message });

@@ -8,7 +8,7 @@ var auth_cookie = 'x-auth';
 
 router.get('/', (req, res) => {
     var user = req.cookies[auth_cookie];
-    res.render('welcome', { menu: menuHelper.welcome(user)});
+    res.render('welcome', { menu: menuHelper.welcome(user), actions: menuHelper.commonActions()});
 });
 
 router.get('/games', (req, res) => {

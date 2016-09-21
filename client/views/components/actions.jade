@@ -1,0 +1,9 @@
+mixin ss-actions(actions)
+
+    - var actions = actions || [];
+
+    .ss-actions.row
+        each action in actions
+            a.ss-actions__action.col-xs-4(href=action.href)
+                span.fa(class=`fa-${action.icon}`)
+                .ss-actions__action-text= action.text
