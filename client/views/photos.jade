@@ -2,6 +2,7 @@ extends ../../build/views/components/layout
 
 block scripts
     script(src='js/bundle.js')
+    script(type='text/javascript' src="/js/pages/photos.js")
 
 block styles
 
@@ -12,7 +13,4 @@ block body
 
     .rootContainer
 
-        h2
-            | в разработке&nbsp;
-
-            span.glyphicon.glyphicon-wrench(aria-hidden="true")
+        photosList

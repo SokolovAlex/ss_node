@@ -8,6 +8,8 @@ require('./tasks/views')();
 
 require('./tasks/js')();
 
+require('./tasks/webpack')();
+
 require('./tasks/css')();
 
 gulp.task("server", () => {
@@ -28,7 +30,7 @@ gulp.task('clean', function() {
         .pipe($.rimraf());
 });
 
-gulp.task("default", ['views', "css", 'js', 'watch', 'server']);
+gulp.task("default", ['views', "css", 'js', 'webpack', 'watch', 'server']);
 
 gulp.task("all", ['copy', 'views', "css:all", 'js:all', 'watch', 'server']);
 

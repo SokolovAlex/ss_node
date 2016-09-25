@@ -26,7 +26,9 @@ module.exports = (app) => {
         });
     };
 
-    const update = (id, file, folder, next) => {
+    const update = (id, file, type, next) => {
+        var folder = ImageTypesFolders[type];
+
         Image.find(id, (err, model) => {
             if (model.name != file.name) {
                 removeFile(model.name, folder);
@@ -40,14 +42,24 @@ module.exports = (app) => {
         });
     };
 
-    function create(file, folder, next) {
+    function create(file, type, options, next) {
+        if (_.isFunction(options)) {
+            next = options;
+        }
+
+        options = options || {};
+
+        var folder = ImageTypesFolders[type];
+
         if(!file) {
             return next(null);
         }
 
         const saveDb = new Promise((resolve) => {
             Image.create({
-                name: file.name
+                name: file.name,
+                description: options.description,
+                type
             }, (err, result) => {
                 if (err) {
                     return next(err);
@@ -57,6 +69,9 @@ module.exports = (app) => {
         });
 
         return saveDb.then((result) => {
+
+            console.log("folder", folder);
+
             file.mv(app.upload_path + `${folder}/${file.name}`, function(err) {
                 if (err) {
                     next(err);
@@ -69,12 +84,12 @@ module.exports = (app) => {
         });
     }
 
-    function save(id, file, folder, next) {
+    function save(id, file, type, next) {
         if(!id) {
-            create(file, folder, next);
+            create(file, type, next);
         } else {
             if(file) {
-                update(id, file, folder, next);
+                update(id, file, type, next);
             } else {
                 //remove(id, next);
                 next(null, null)

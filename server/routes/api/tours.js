@@ -10,6 +10,8 @@ module.exports = (router, app) => {
 
     var Tour = app.models.Tour;
 
+    var tourImageId = enums.ImageTypes.Tour.id;
+
     router.get('/tours', (req, res) => {
         var body = req.body;
         var page = body.page || 1;
@@ -33,7 +35,7 @@ module.exports = (router, app) => {
         var tourImage;
         if (req.files) {
             tourImage = req.files.tourImage;
-            if(tourImage.data.length == 0) {
+            if(tourImage && tourImage.data.length == 0) {
                 tourImage = null;
             }
         }
@@ -50,7 +52,7 @@ module.exports = (router, app) => {
 
         if(body.id) {
             Tour.find(body.id, (err, tourModel) => {
-                uploadHelper.save(tourModel.imageId, tourImage, enums.ImageTypes.Tour.folder, (err, image) => {
+                uploadHelper.save(tourModel.imageId, tourImage, tourImageId, (err, image) => {
                     if(err) {
                         return res.status(500).json({ error: err.message });
                     }
@@ -79,7 +81,7 @@ module.exports = (router, app) => {
                 });
             }
 
-            uploadHelper.create(tourImage, enums.ImageTypes.Tour.folder, createTour);
+            uploadHelper.create(tourImage, tourImageId, createTour);
         }
     }));
 

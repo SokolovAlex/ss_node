@@ -99,7 +99,7 @@
         this.mixin('remove');
 
         var image = data && data.image;
-        this.imagePath = image  ? '/upload/tours/' + image.name : "/upload/tours/default.jpg";
+        this.imagePath = image  ? '/upload/tours/' + image.name : "/upload/default.jpg";
 
         var selectedFile;
 
@@ -150,7 +150,6 @@
 
         this.changeImage = function() {
                 var uploadEl = $('#edit-tour__fileinput');
-                debugger;
                 if(uploadEl[0].files.length) {
                         var selectedFile = uploadEl[0].files[0];
                         self.imagePath = URL.createObjectURL(selectedFile);

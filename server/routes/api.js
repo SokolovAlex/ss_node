@@ -3,6 +3,7 @@ var router = express.Router();
 var mailer = require('../helpers/mailer');
 var authenticate = require('../helpers/authenticate');
 var toursApi = require('./api/tours');
+var galleryApi = require('./api/gallery');
 
 module.exports = app => {
 
@@ -50,6 +51,8 @@ module.exports = app => {
     }));
 
     router = toursApi(router, app);
+
+    router = galleryApi(router, app);
 
     return router;
 };

@@ -77,6 +77,10 @@ const profileActions = () => {
         text: 'Туры',
         href: '/tours',
         icon: 'globe'
+    }, {
+        text: 'Фотографии',
+        href: '/photos',
+        icon: 'photo'
     }];
 };
 

@@ -8,7 +8,7 @@ module.exports = (router) => {
     }));
 
     router.get('/photos', authenticate((req, res, user) => {
-        res.render('profile', { user , menu: menuHelper.back(user)});
+        res.render('photos', { user , menu: menuHelper.back(user)});
     }));
 
     router.get('/game_results', authenticate((req, res, user) => {

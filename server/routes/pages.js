@@ -31,6 +31,10 @@ router.get('/tours', (req, res) => {
     res.render('tours', { menu: menuHelper.back(user)});
 });
 
+router.get('/401', (req, res) => {
+    res.render('401');
+});
+
 router = profilePages(router);
 router = errorPages(router);
 
