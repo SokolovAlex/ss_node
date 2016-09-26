@@ -1,0 +1,17 @@
+.gallery {
+  height: 600px;
+}
+.gallery__item {
+  height: 0px;
+  width: 0px;
+  padding: 5px;
+}
+.gallery__item img {
+  height: 100%;
+  width: 100%;
+}
+.gallery__thumbnail {
+  height: 100px;
+  width: 150px;
+  padding: 5px;
+}

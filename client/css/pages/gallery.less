@@ -1,0 +1,54 @@
+.gallery{
+  height: 430px;
+
+  &__item {
+    height: 0px;
+    width: 0px;
+    padding: 5px;
+
+    img{
+      height: 400px;
+      width: 100%;
+    }
+
+    &:hover {
+      .gallery__description{
+        opacity: 1;
+      }
+    }
+  }
+
+  &__thumbnail {
+    height: 100px;
+    width: 150px;
+    padding: 5px;
+  }
+
+  &__description{
+    color: @color-white;
+    background-color: @color-gray;
+    display: inline-block;
+    position: relative;
+    top: -30px;
+    padding: 0 10px;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+    border: 1px solid white;
+    border-radius: 2px;
+  }
+
+  &__line {
+    height: 1px;
+    width: 100%;
+    border: 1px solid lightgrey;
+    border-radius: 1px;
+  }
+
+  .slick-next,
+  .slick-prev{
+    &:before {
+      color: @color-green;
+    }
+  }
+}

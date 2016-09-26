@@ -1,7 +1,7 @@
 extends ../../build/views/components/layout
 
 block scripts
-    script(src='js/bundle.js')
+    script(type="text/javascript" src='js/bundle.js')
     script(type='text/javascript' src="/js/pages/photos.js")
 
 block styles
@@ -12,5 +12,5 @@ block menu
 block body
 
     .rootContainer
-
-        photosList
+        .container
+            photosList

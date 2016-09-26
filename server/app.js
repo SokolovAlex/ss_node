@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(fileUpload());
 
-app.use('/', pages);
+app.use('/', pages(app));
 app.use('/auth', auth(app));
 app.use('/api', api(app));
 app.use('/upload', upload(app));

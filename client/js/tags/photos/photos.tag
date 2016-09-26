@@ -17,7 +17,6 @@
 
 
     <div>
-
         <div class="row">
             <form id='image__form'>
 

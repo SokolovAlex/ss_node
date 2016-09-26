@@ -69,9 +69,6 @@ module.exports = (app) => {
         });
 
         return saveDb.then((result) => {
-
-            console.log("folder", folder);
-
             file.mv(app.upload_path + `${folder}/${file.name}`, function(err) {
                 if (err) {
                     next(err);

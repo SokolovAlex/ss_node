@@ -18,7 +18,6 @@
 
 
     <script>
-        var self = this;
 
         this.description = this.opts.description;
         this.name = this.opts.name;

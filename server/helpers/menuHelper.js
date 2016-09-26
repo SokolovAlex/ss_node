@@ -4,7 +4,7 @@ var submenu = () => {
         link: '/profile'
     }, {
         title: 'Фотографии',
-        link: '/photos'
+        link: '/gallery'
     }, {
         title: 'результаты игр',
         link: '/game_results'
@@ -89,7 +89,10 @@ const commonActions = () => {
         text: 'Туры',
         href: '/tours',
         icon: 'globe'
-    },{
+    }, {
+        title: 'Галерея',
+        link: '/gallery'
+    }, {
         text: 'Авиабилеты',
         href: '/aviakassa',
         icon: 'plane'

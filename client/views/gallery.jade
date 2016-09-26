@@ -1,0 +1,33 @@
+extends ../../build/views/components/layout
+
+block scripts
+    script(type="text/javascript" src='js/bundle.js')
+    script(type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js")
+    script(type="text/javascript" src='js/pages/gallery.js')
+
+block styles
+    link(rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css")
+    link(rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css")
+
+block menu
+    +ss-menu(menu, true, 'Галерея')
+
+block body
+    .rootContainer
+        .container
+            .row.gallery
+                each item in images
+                    .gallery__item
+                        img.img-rounded(data-lazy=`/upload/gallery/${item.name}`)
+                        .gallery__description= item.description
+
+            .gallery__line
+
+            .row.gallery__previews
+                h3 Все фотографии
+                each item in images
+                    .gallery__thumbnail.col-sm-6.col-md-4.col-lg-2
+                        img.img-thumbnail(src=`/upload/gallery/${item.name}`)
+
+
+
