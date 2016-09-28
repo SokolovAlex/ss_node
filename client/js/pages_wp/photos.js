@@ -37,6 +37,13 @@ $(document).ready(function() {
 
             riot.route.start(true);
         },
+        deleteFromCollection: function(id) {
+            imagesData = _.reject(imagesData, function(item) {
+                return item.id == id;
+            });
+
+            imageTag.update({ images: imagesData });
+        },
         updateCollection: function(image) {
             imagesData.push(image);
             imageTag.update({ images: imagesData });

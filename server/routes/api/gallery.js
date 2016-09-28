@@ -50,6 +50,16 @@ module.exports = (router, app) => {
     }));
 
     router.delete('/photos/:id', authenticate((req, res, user) => {
+        var id = req.params.id;
+
+        Image.find(id, (err, imageModel) => {
+            if(err || !imageModel) res.status(500).json({ error: err.message });
+
+            uploadHelper.remove(imageModel.id, () => {
+                if(err) res.status(500).json({ error: err.message });
+                res.json({error: false});
+            });
+        });
     }));
 
     return router;

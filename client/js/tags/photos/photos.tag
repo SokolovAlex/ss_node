@@ -70,7 +70,12 @@
         };
 
         this.removeImage = function (id) {
-            debugger;
+            $.ajax({
+                url: 'api/photos/' + id,
+                method: 'delete'
+            }).then(function() {
+                app.deleteFromCollection(id);
+            });
         };
 
         this.clear = function() {
