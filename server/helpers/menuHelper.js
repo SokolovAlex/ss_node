@@ -90,9 +90,6 @@ const commonActions = () => {
         href: '/tours',
         icon: 'globe'
     }, {
-        title: 'Галерея',
-        link: '/gallery'
-    }, {
         text: 'Авиабилеты',
         href: '/aviakassa',
         icon: 'plane'
