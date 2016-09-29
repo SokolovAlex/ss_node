@@ -11,6 +11,15 @@ module.exports = (app) => {
 
     const Image = app.models.Image;
 
+    function getRandomInt() {
+        return parseInt(Math.random() * 1000, 10);
+    }
+
+    const addNum = (name) => {
+        var fields = name.split('.');
+        return [fields[0] + '_' + getRandomInt(), fields[1]].join('.');
+    };
+
     const removeFile = (name, folder) => {
         fs.unlink(`${app.upload_path}${folder}/${name}`, _.noop);
     };
@@ -34,10 +43,12 @@ module.exports = (app) => {
                 removeFile(model.name, folder);
             }
 
-            file.mv(app.upload_path + `${folder}/${file.name}`, _.noop);
+            var name = addNum(file.name);
+
+            file.mv(app.upload_path + `${folder}/${name}`, _.noop);
 
             model.updateAttributes({
-                name: file.name
+                name: name
             }, next);
         });
     };
@@ -55,9 +66,11 @@ module.exports = (app) => {
             return next(null);
         }
 
+        var name = addNum(file.name);
+
         const saveDb = new Promise((resolve) => {
             Image.create({
-                name: file.name,
+                name: name,
                 description: options.description,
                 type
             }, (err, result) => {
@@ -69,7 +82,7 @@ module.exports = (app) => {
         });
 
         return saveDb.then((result) => {
-            file.mv(app.upload_path + `${folder}/${file.name}`, function(err) {
+            file.mv(app.upload_path + `${folder}/${name}`, function(err) {
                 if (err) {
                     next(err);
                 } else {

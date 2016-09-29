@@ -16,10 +16,12 @@
   },
   "homepage": "https://github.com/SokolovAlex/ss_node#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "bootbox": "^4.4.0",
     "bootstrap": "^3.3.6",
     "bootstrap-datepicker": "^1.6.4",
     "crypto": "0.0.3",
+    "express": "^4.14.0",
     "express-fileupload": "0.0.5",
     "express-session": "^1.14.0",
     "font-awesome": "^4.6.3",
