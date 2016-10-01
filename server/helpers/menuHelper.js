@@ -1,4 +1,4 @@
-const submenu = () => {
+const submenu = (user) => {
     var menu = [, {
         title: 'Фотографии',
         link: '/gallery'
