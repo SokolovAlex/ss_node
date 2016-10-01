@@ -1,5 +1,5 @@
 const submenu = (user) => {
-    var menu = [, {
+    var menu = [{
         title: 'Фотографии',
         link: '/gallery'
     }, {
@@ -65,6 +65,8 @@ const welcome = (user) => {
     }];
 
     menu = addAuth(menu, user);
+
+    console.log(menu);
 
     return menu;
 };
