@@ -47,8 +47,10 @@ module.exports = (router, app) => {
             description: body.description,
             cost: body.cost,
             nights: body.nights,
-            startDate: body.start_date
+            startDate: body.start_date || new Date()
         };
+
+        console.log("body", body);
 
         if(body.id) {
             Tour.find(body.id, (err, tourModel) => {
@@ -72,6 +74,8 @@ module.exports = (router, app) => {
                 }
 
                 dbData.imageId = image ? image.id : null;
+
+                console.log('dbData', dbData);
 
                 Tour.create(dbData, (err, result) => {
                     if(err) {

@@ -15,7 +15,10 @@ var pages = require('./routes/pages');
 var api = require('./routes/api');
 var upload = require('./routes/upload');
 
-app.use(bodyParser.json());
+//var connect = require('connect');
+//connect().use(connect.limit('5.5mb'));
+
+app.use(bodyParser.json({limit: '150mb'}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(fileUpload());

@@ -90,6 +90,7 @@
         this.hidden = this.opts.hidden;
 
         var isNew = !data;
+        this.id = '';
 
         if(!isNew) {
                 this.id = data.id;
@@ -99,7 +100,6 @@
                 this.cost = data.cost;
                 this.startDate = data.startDate;
         }
-
 
         this.mixin('remove');
 
@@ -128,7 +128,7 @@
                 data = data || {id: '', title: '', description: '', nights: '', cost: '', startDate: '' };
                 data.hidden = false;
                 var image = data.image;
-                data.imagePath = image  ? '/upload/tours/' + image.name : "/upload/tours/default.jpg";
+                data.imagePath = image  ? '/upload/tours/' + image.name : "/upload/default.jpg";
                 this.update(data);
         };
 
@@ -139,6 +139,9 @@
                 var request = new XMLHttpRequest();
                 request.open("POST", "api/tours");
                 request.send(formData);
+
+        console.log("this," , this);
+        debugger;
 
                 request.onreadystatechange = function() {
                         if (request.readyState == 4 && request.status == 200) {

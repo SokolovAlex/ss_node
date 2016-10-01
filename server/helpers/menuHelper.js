@@ -1,35 +1,29 @@
 const submenu = (user) => {
-    var menu = [{
-        title: 'Фотографии',
-        link: '/gallery'
-    }, {
-        title: 'Игры',
-        link: '/games'
-    }, {
-        title: 'Наши партнеры',
-        link: '/partners'
-    }, {
-        separator: true
-    }, {
-        title: 'Выйти',
-        link: '/auth/logout'
-    }];
+    var menu = user ? [{
+        title: 'Профиль',
+        link: '/profile'
+    }] : [];
 
-    if(user) {
-        return menu.concat(
-            [{
-                title: 'Профиль',
-                link: '/profile'
-            }]);
-    }
-
-    return menu;
+    return menu.concat([{
+            title: 'Фотографии',
+            link: '/gallery'
+        }, {
+            title: 'Игры',
+            link: '/games'
+        }, {
+            title: 'Наши партнеры',
+            link: '/partners'
+        }, {
+            separator: true
+        }, {
+            title: 'Выйти',
+            link: '/auth/logout'
+    }]);
 };
 
 var addAuth = (menu, user) => {
     if(!user) {
-        return menu.concat(
-            [{
+        return menu.concat([{
                 title: 'Прочее',
                 submenu: submenu(user)
             }, {
@@ -41,7 +35,7 @@ var addAuth = (menu, user) => {
     return menu.concat([{
         title: `${user.fname} ${user.lname}`,
         icon: 'user',
-        submenu: submenu()
+        submenu: submenu(user)
     }]);
 };
 
@@ -65,8 +59,6 @@ const welcome = (user) => {
     }];
 
     menu = addAuth(menu, user);
-
-    console.log(menu);
 
     return menu;
 };
