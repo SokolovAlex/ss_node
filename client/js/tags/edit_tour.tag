@@ -89,12 +89,17 @@
         var data = this.opts.tour;
         this.hidden = this.opts.hidden;
 
-        this.id = data.id;
-        this.title = data.title;
-        this.description = data.description;
-        this.nights = data.nights;
-        this.cost = data.cost;
-        this.startDate = data.startDate;
+        var isNew = !data;
+
+        if(!isNew) {
+                this.id = data.id;
+                this.title = data.title;
+                this.description = data.description;
+                this.nights = data.nights;
+                this.cost = data.cost;
+                this.startDate = data.startDate;
+        }
+
 
         this.mixin('remove');
 

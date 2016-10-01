@@ -70,7 +70,7 @@
 
     <div class='tour__container'>
         <div class='tour__image'>
-            <img class="img-rounded" src="upload/tours/{imagePath}">
+            <img class="img-rounded" src="{imagePath}">
         </div>
         <div class='tour__info'>
             <div class='tour__title'>{title}</div>
@@ -105,7 +105,7 @@
                 self.date = date.toLocaleDateString();
 
                 var image = self.image;
-                self.imagePath = image ? image.name : "default.jpg";
+                self.imagePath = image ? 'upload/tours/' + image.name : "upload/tours/default.jpg";
 
                 this.editable = this.parent.isManager;
 

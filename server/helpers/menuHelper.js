@@ -1,24 +1,38 @@
-var submenu = () => {
-    return [{
-        title: 'Профиль',
-        link: '/profile'
-    }, {
+const submenu = () => {
+    var menu = [, {
         title: 'Фотографии',
         link: '/gallery'
     }, {
-        title: 'результаты игр',
-        link: '/game_results'
+        title: 'Игры',
+        link: '/games'
+    }, {
+        title: 'Наши партнеры',
+        link: '/partners'
     }, {
         separator: true
     }, {
         title: 'Выйти',
         link: '/auth/logout'
     }];
+
+    if(user) {
+        return menu.concat(
+            [{
+                title: 'Профиль',
+                link: '/profile'
+            }]);
+    }
+
+    return menu;
 };
 
 var addAuth = (menu, user) => {
     if(!user) {
-        return menu.concat([{
+        return menu.concat(
+            [{
+                title: 'Прочее',
+                submenu: submenu(user)
+            }, {
             title: 'Войти',
             modal: true,
             link: '#loginModal'
@@ -48,9 +62,6 @@ const welcome = (user) => {
         title: 'Заявка',
         link: '#contact',
         scroll: true
-    }, {
-        title: 'Прочее',
-        submenu: submenu()
     }];
 
     menu = addAuth(menu, user);
@@ -62,9 +73,6 @@ const back = (user, current) => {
     var menu = [{
         title: 'Назад',
         link: '/'
-    }, {
-        title: 'Прочее',
-        submenu: submenu()
     }];
 
     menu = addAuth(menu, user);

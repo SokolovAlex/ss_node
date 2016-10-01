@@ -7,7 +7,7 @@
     }
     </style>
 
-    <div class="tours__actions">
+    <div class="tours__actions" if={isManager}>
         <div class="ss-btn ss-btn-success add-btn" onclick="{create}">Создать новый тур</div>
     </div>
 

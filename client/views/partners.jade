@@ -1,0 +1,22 @@
+extends ../../build/views/components/layout
+
+block scripts
+    script(type="text/javascript" src='js/bundle.js')
+
+block styles
+
+block menu
+    +ss-menu(menu, true, 'Наши партнеры')
+
+block body
+
+    .rootContainer
+        .container
+            div
+                // BEGIN ski.ru banner
+                script(language='JavaScript').
+                    var rand = Math.floor(Math.random() * 1000000000);
+                    document.write('<iframe src="http://www.ski.ru/az/agency/show/?banner_id=3&agency_id=25&rand=' + rand + '&u=' + escape(document.URL) + '" frameborder="0" vspace="0" hspace="0" width="180" height="80" marginwidth="0" marginheight="0" scrolling="no">');
+                    document.write('<a href="http://www.ski.ru/az/agency/click/?banner_id=3&agency_id=25&rand=' + rand + '" target="_blank"><img src="http://ski.ru/banners/agencies/3.jpg" border="0" width="180" height="80"></a>');
+                    document.write('</iframe>');
+                // END ski.ru banner

@@ -10,7 +10,7 @@ if (argv.role) {
         if(!role) {
             models.Role.create({id: managerId, name: "Manager"}, (err, role) => {
                 if (err) throw new Error(error);
-                console.log("Role created: ", email, role.id);
+                console.log("Role created: ", role.id);
             });
         }
     });
@@ -42,13 +42,14 @@ models.User.findOne({where: {email: email}}, (err, user) => {
         lastName: lname,
         salt: salt,
         password: hashed,
-        birthDate: bdate
+        birthDate: bdate,
+        roleId: 5
     };
 
     if (user) {
 
         models.User.save(manager, (err, result) => {
-            if (err) throw new Error(error);
+            if (err) throw new Error(err);
 
             console.log("User updated: ", email, result.id);
 
@@ -57,7 +58,7 @@ models.User.findOne({where: {email: email}}, (err, user) => {
     } else {
 
         models.User.create(manager, (err, result) => {
-            if (err) throw new Error(error);
+            if (err) throw new Error(err);
 
             console.log("User created: ", email, result.id);
 

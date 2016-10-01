@@ -45,6 +45,11 @@ module.exports = app => {
         });
     });
 
+    router.get('/partners', (req, res) => {
+        var user = req.cookies[auth_cookie];
+        res.render('partners', {menu: menuHelper.back(user)});
+    });
+
     router.get('/401', (req, res) => {
         res.render('401');
     });
