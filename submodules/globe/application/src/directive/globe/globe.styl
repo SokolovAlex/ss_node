@@ -1,0 +1,54 @@
+@import "../../variables.styl"
+
+.globe-wrapper
+  position relative
+  background url("/assets/images/bg.jpg") no-repeat center top, #fff
+
+  .country-list-container
+    position absolute
+    bottom 0
+
+    .country-list-inner-container
+        position fixed
+        padding-left 8px
+        padding-top 4px
+        background-color: rgba(255,255,255, 0.2)
+        top: 0
+        left: 0
+
+      .country-list
+        width 30px
+
+        .country-list-item
+          display inline-block
+          margin-right 10px
+          background-color: transparent
+
+          .flag
+            cursor pointer
+
+          &:last-item
+            margin 0;
+
+  .zoom_control
+    position absolute
+    font-size 23px
+    top 41px
+    right 43px
+    text-align center
+
+    div
+      cursor: pointer;
+      background-color: transparent;
+      border: 2px solid #fff;
+      padding: 17px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 8px;
+      margin-bottom: 10px;
+      transition border-color $transition1ms, background-color $transition1ms
+
+      &:hover
+        border-color $blue
+        background-color $blue

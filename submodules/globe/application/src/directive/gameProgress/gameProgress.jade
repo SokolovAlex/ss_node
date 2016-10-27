@@ -1,0 +1,5 @@
+.game-progress-wrapper
+    .score
+        ul.score-scale
+            li.scale-item(ng-class="question.state" ng-repeat="question in gameProgressCtrl.questionStates")
+        span.score-number {{gameProgressCtrl.currentStateIndex}}/{{gameProgressCtrl.questionStates.length}}

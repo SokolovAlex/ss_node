@@ -1,0 +1,15 @@
+.modal-header(ng-if="error")
+    h3.modal-title
+        .status(ng-class="status_class")
+        span Не верно
+
+.modal-header(ng-if="!error")
+    h3.modal-title
+        .status(ng-class="status_class")
+        span Верно
+
+.modal-body {{text}}
+
+.modal-footer
+    button.btn(ng-click="close()")
+        | Ok

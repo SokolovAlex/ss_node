@@ -1,0 +1,40 @@
+@import '../../variables.styl'
+
+.game-progress-wrapper
+  width 230px
+  font-size 16px
+  font-weight 300
+  color $header-text-color
+
+  .score
+    display inline-block
+
+    .score-number
+      vertical-align middle
+      color $white
+      font-size 30px
+      font-weight 400
+
+    .score-scale
+      vertical-align middle
+      display inline-block
+
+      .scale-item
+        display inline-block
+        width 19px
+        height 6px
+        background-color $header-text-color
+        border 1px solid white
+        border-right none
+
+        &:last-child
+          border-right 1px solid white
+
+        &.correct
+          background-color $correct-color
+
+        &.wrong
+          background-color $wrong-color
+
+        &.active
+          background-color $white

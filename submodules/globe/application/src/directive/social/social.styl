@@ -1,0 +1,26 @@
+/**
+ * Created by Pavel Akulov on 24.11.2015.
+ * Email: akulov@magora-systems.ru
+ * Company: Magora Systems LLC
+ * Website: http://magora-systems.com
+ */
+
+@import "../../variables.styl"
+
+.social-wrapper
+  .social-list
+    display inline-block
+    font-size 23px
+
+    li
+      display inline-block
+      margin-right 28px
+
+      a
+        color: $header-text-color
+        text-decoration none
+        transition color $transition1ms
+
+        &:hover, &:focus
+          color: $white
+          cursor pointer

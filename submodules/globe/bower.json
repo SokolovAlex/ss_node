@@ -1,0 +1,43 @@
+{
+  "name": "mgr-gulp-angular-template",
+  "version": "1.0.0",
+  "authors": [
+    "Dmitry kalyuk"
+  ],
+  "description": "",
+  "license": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-animate": "~1.4.8",
+    "angular-bootstrap": "~0.14.3",
+    "angular-filter": "~0.5.7",
+    "angular-i18n": "~1.4.8",
+    "angular-loading-bar": "~0.8.0",
+    "angular-moment": "~0.10.3",
+    "angular-resource": "~1.4.7",
+    "angular-sanitize": "~1.4.8",
+    "angular-signalr-hub": "~1.5.0",
+    "angular-translate": "~2.8.1",
+    "angular-translate-loader-static-files": "~2.8.1",
+    "angular-translate-loader-url": "~2.8.1",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.5",
+    "d3": "~3.5.12",
+    "font-awesome": "~4.4.0",
+    "lodash": "~4.0.0",
+    "mgr-validation": "~1.0.19",
+    "moment": "~2.10.6",
+    "ng-confirm": "angular-confirm#~1.1.0",
+    "ng-table": "~0.8.3",
+    "signalr": "~2.2.0",
+    "three.js": "threejs#*",
+    "topojson": "~1.6.19",
+    "threejs-trackball-controls": "*",
+    "tween.js": "tweenjs#~16.3.4"
+  }
+}
