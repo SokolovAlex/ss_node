@@ -2,12 +2,13 @@
     h3.modal-title
         span Игра окончена
 
-.modal-body
+.modal-body.finish-results
     .text(ng-if="scores >= 15") Поздравляем. Не плохой результат.
     .text(ng-if="scores < 15 && scores !== 0") Не плохой результат, но есть к чему стремиться.
     .text(ng-if="scores === 0") Мда.. Вам следует поизучать карту мира.
-    .score-text Вы набрали:
-    .score {{scores}}
+    .score-row
+        .score-text Вы набрали:
+        .score {{scores}}
 
 .modal-footer
     button.btn(ng-click="restart()")

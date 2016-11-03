@@ -21,7 +21,7 @@
         .controller('finishModalCtrl', ['$scope', '$rootScope', '$uibModalInstance', function($scope, $rootScope, $uibModalInstance) {
             $rootScope.scores = $uibModalInstance.scores;
             $rootScope.restart = function () {
-                $uibModalInstance.dismiss('cancel');
+                location.reload();
             };
         }])
         .factory('modalservice', ['$modal', modal]);

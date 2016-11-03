@@ -13,10 +13,11 @@
 
         function setEvents(camera, items, type, wait) {
             var listener = function (event) {
+                var scrollTop = window.pageYOffset;
 
                 var mouse = {
                     x: ((event.clientX - offsetX - 1) / width) * 2 - 1,
-                    y: -((event.clientY - offsetY - 1) / height) * 2 + 1
+                    y: -((event.clientY - offsetY + scrollTop - 1) / height) * 2 + 1
                 };
 
                 var vector = new THREE.Vector3();

@@ -1,11 +1,3 @@
-/**
- *
- * Created by Pavel Akulov on 15.01.2016.
- * Email: akulov@magora-systems.ru
- * Company: Magora Systems LLC
- * Website: http://magora-systems.com
- */
-
 (function(angular) {
     'use strict';
 

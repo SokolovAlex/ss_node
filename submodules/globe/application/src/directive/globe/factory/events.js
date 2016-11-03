@@ -19,9 +19,11 @@
 
             function onDragOver(e) {
                 e.dataTransfer.dropEffect = 'copy';
-                // allows us to drop
                 if (e.preventDefault) e.preventDefault();
                 this.classList.add('over');
+
+
+                console.log('onDragOver', e);
 
                 return false;
             }
@@ -37,8 +39,9 @@
             }
 
             function onDrop(e) {
-                // Stops some browsers from redirecting.
                 if (e.stopPropagation) e.stopPropagation();
+
+                console.log('onDrop', e);
 
                 this.classList.remove('over');
 
@@ -46,17 +49,6 @@
                     flagCode: e.dataTransfer.getData('Text'),
                     mapCode: countriesCodes[currentCountry]
                 });
-
-                //var binId = this.id;
-                //var item = document.getElementById(e.dataTransfer.getData('Text'));
-                //this.appendChild(item);
-                //// call the passed drop function
-                //scope.$apply(function(scope) {
-                //    var fn = scope.drop();
-                //    if ('undefined' !== typeof fn) {
-                //        fn(item.id, binId);
-                //    }
-                //});
 
                 return false;
             }
@@ -66,6 +58,7 @@
                 if (dragging) {
                     return;
                 }
+
                 if (Math.abs(e.screenX - position.x) > precision
                     || Math.abs(e.screenY - position.y) > precision) {
                     dragging = true;
@@ -74,6 +67,7 @@
 
             function onMouseDown(e) {
                 dragging = false;
+
                 position.x = e.screenX;
                 position.y = e.screenY;
             }

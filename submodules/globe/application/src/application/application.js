@@ -10,7 +10,7 @@
             'ui.router',
             'ui.bootstrap',
             'ngResource',
-
+            'directive.brand',
             'application.guessCountry',
         ])
         .config(config)

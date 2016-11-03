@@ -22,19 +22,22 @@
         .country-list-item
           display inline-block
           margin-right 10px
-          background-color: transparent
 
           .flag
             cursor pointer
+
+          &.drag
+            .flag
+               cursor move
 
           &:last-item
             margin 0;
 
   .zoom_control
-    position absolute
+    position fixed
     font-size 23px
-    top 41px
-    right 43px
+    top 80px
+    right 30px
     text-align center
 
     div

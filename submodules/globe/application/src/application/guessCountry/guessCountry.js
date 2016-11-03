@@ -4,7 +4,6 @@
     angular
         .module('application.guessCountry', [
             'application.guessCountry.game',
-            'directive.social',
             'directive.gameTask',
             'directive.gameProgress',
             'common.utils',
@@ -26,7 +25,7 @@
         var guessCountryCtrl = this;
         guessCountryCtrl.questions = [];
         var currentQuestionIndex = 0;
-        var size = 2;
+        var size = 10;
         var fakeFlags = 5;
         var scores = 0;
 
@@ -78,6 +77,8 @@
                 });
             } else {
                 modalservice.open(message, status, scores);
+                var event = new CustomEvent("endGame", { 'detail': { scores: scores } });
+                document.dispatchEvent(event);
             }
 
             $scope.$apply();
