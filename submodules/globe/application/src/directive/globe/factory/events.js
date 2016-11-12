@@ -22,9 +22,6 @@
                 if (e.preventDefault) e.preventDefault();
                 this.classList.add('over');
 
-
-                console.log('onDragOver', e);
-
                 return false;
             }
 
@@ -40,8 +37,6 @@
 
             function onDrop(e) {
                 if (e.stopPropagation) e.stopPropagation();
-
-                console.log('onDrop', e);
 
                 this.classList.remove('over');
 
@@ -67,7 +62,6 @@
 
             function onMouseDown(e) {
                 dragging = false;
-
                 position.x = e.screenX;
                 position.y = e.screenY;
             }

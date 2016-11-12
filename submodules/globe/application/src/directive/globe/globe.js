@@ -41,6 +41,9 @@
             var height =  globeCtrl.height || window.innerHeight;
 
             globe.init(container, width, height);
+
+            var flagContainer = $element[0].getElementsByClassName('country-list-container');
+            initFlags(flagContainer[0]);
         };
 
         globeCtrl.zoomIn = globe.zoomIn;
@@ -55,6 +58,43 @@
     angular
         .module('directive.globe.draggableFlag', [])
         .directive('draggableFlag', draggableFlag);
+
+    function initFlags(el) {
+        var upEl = el.getElementsByClassName('js-flags-up')[0];
+        var downEl = el.getElementsByClassName('js-flags-down')[0];
+        var list = el.getElementsByClassName('country-list')[0];
+        var styleToAnimate = 'margin-top';
+        var maxSize = 15 * 43;
+        var height;
+
+        var value = 0;
+
+        upEl.addEventListener('click', function(e) {
+            value += 43;
+            if(value > 0) {
+                value = 0;
+            }
+            list.style[styleToAnimate] = value + 'px';
+            list.style['height'] = height - value + "px";
+        });
+
+        downEl.addEventListener('click', function(e) {
+            value -= 43;
+            if(Math.abs(value) > maxSize - height ) {
+                value = - maxSize + height;
+            }
+            list.style[styleToAnimate] = value + 'px';
+            list.style['height'] = height - value + "px";
+        });
+
+        function resize() {
+            height = window.innerHeight - 90;
+            list.style['height'] = height + "px";
+        }
+        resize();
+
+        window.addEventListener("resize", resize);
+    };
 
     function draggableFlag() {
         return {

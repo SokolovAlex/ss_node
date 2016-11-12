@@ -11,13 +11,18 @@
     .country-list-inner-container
         position fixed
         padding-left 8px
-        padding-top 4px
+        padding-top 5px
         background-color: rgba(255,255,255, 0.2)
         top: 0
         left: 0
+        color: white;
+
+      .country-list-scroller
+        overflow: hidden;
 
       .country-list
         width 30px
+        transition: all 1s ease-out;
 
         .country-list-item
           display inline-block
