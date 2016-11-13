@@ -88,7 +88,7 @@
         });
 
         function resize() {
-            height = window.innerHeight - 90;
+            height = window.innerHeight - 80;
             list.style['height'] = height + "px";
         }
         resize();

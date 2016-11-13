@@ -64,7 +64,7 @@
             var mesh = new THREE.Mesh(
                 new THREE.SphereGeometry(settings.starsRadius, segments, segments),
                 new THREE.MeshBasicMaterial({
-                    map:  loader.load('/assets/images/globe/images/galaxy_starfield.png'),
+                    map:  loader.load('/games/globe/assets/images/globe/images/galaxy_starfield.png'),
                     side: THREE.BackSide
                 })
             );
@@ -81,7 +81,7 @@
             var mesh = new THREE.Mesh(
                 new THREE.SphereGeometry(settings.cloudsRadius, segments, segments),
                 new THREE.MeshPhongMaterial({
-                    map: loader.load('/assets/images/globe/images/fair_clouds_4к.png'),
+                    map: loader.load('/games/globe/assets/images/globe/images/fair_clouds_4к.png'),
                     side: THREE.DoubleSide,
                     transparent: true
                 })
@@ -316,7 +316,7 @@
                 });
             }
 
-            d3.json('data/globe/data/world.json', onLoadWorld);
+            d3.json('/games/globe/data/globe/data/world.json', onLoadWorld);
         }
 
         return {

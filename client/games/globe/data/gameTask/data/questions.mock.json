@@ -1,0 +1,114 @@
+{
+  "questions": [
+    {
+      "code": "cz",
+      "name": "Czech Republic",
+      "capital": "Prague"
+    },
+    {
+      "code": "eg",
+      "name": "Egypt",
+      "capital": "Prague"
+    },
+    {
+      "code": "ee",
+      "name": "Estonia",
+      "capital": "Prague"
+    },
+    {
+      "code": "fi",
+      "name": "Finland",
+      "capital": "Prague"
+    },
+    {
+      "code": "fr",
+      "name": "France",
+      "capital": "Prague"
+    },
+    {
+      "code": "gi",
+      "name": "Gibraltar",
+      "capital": "Prague"
+    },
+    {
+      "code": "gr",
+      "name": "Greece",
+      "capital": "Prague"
+    },
+    {
+      "code": "il",
+      "name": "Israel",
+      "capital": "Prague"
+    },
+    {
+      "code": "it",
+      "name": "Italy",
+      "capital": "Prague"
+    },
+    {
+      "code": "jp",
+      "name": "Japan",
+      "capital": "Prague"
+    },
+    {
+      "code": "mk",
+      "name": "Macedonia, The Former Yugoslav Republic of",
+      "capital": "Prague"
+    },
+    {
+      "code": "sg",
+      "name": "Singapore",
+      "capital": "Prague"
+    },
+    {
+      "code": "tj",
+      "name": "Tajikistan",
+      "capital": "Prague"
+    },
+    {
+      "code": "sa",
+      "name": "Saudi Arabia",
+      "capital": "Prague"
+    },
+    {
+      "code": "cs",
+      "name": "Serbia and Montenegro",
+      "capital": "Prague"
+    },
+    {
+      "code": "es",
+      "name": "Spain",
+      "capital": "Prague"
+    },
+    {
+      "code": "tr",
+      "name": "Turkey",
+      "capital": "Prague"
+    },
+    {
+      "code": "ae",
+      "name": "United Arab Emirates",
+      "capital": "Prague"
+    },
+    {
+      "code": "tw",
+      "name": "Taiwan, Province of China",
+      "capital": "Prague"
+    },
+    {
+      "code": "lk",
+      "name": "Sri Lanka",
+      "capital": "Prague"
+    },
+    {
+      "code": "lv",
+      "name": "Latvia",
+      "capital": "Prague"
+    },
+    {
+      "code": "mo",
+      "name": "Macao",
+      "capital": "Prague"
+    }
+  ]
+}

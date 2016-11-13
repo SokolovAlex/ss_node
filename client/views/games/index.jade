@@ -1,33 +1,27 @@
 extends ../components/layout
 
 block styles
-    link(href='./games/couples/styles.css', rel='stylesheet')
+    link(href='./games/couples/games.css', rel='stylesheet')
 
 block menu
-    +ss-menu(menu, true, "Парочки")
+    +ss-menu(menu, true, Игры)
 
 block scripts
-    script(src='./games/couples/app.jsx')
-    script(src='js/bundle.js')
+    script(src='./js/bundle.js')
 
 block body
 
     #root.site-wrapper.rootContainer
 
-    #resultModal.modal.fade(tabindex='-1', role='dialog')
-        .modal-dialog(role='document')
-            .modal-content
-                .modal-header
-                    button.close(type='button', data-dismiss='modal', aria-label='Close')
-                        span(aria-hidden='true') ×
-                    h4#myModalLabel.modal-title Результат
-                .modal-body
-                    .row
-                        .col-md-4.col-md-offset-1 Время:
-                            span.js-time -
-                    .row
-                        .col-md-4.col-md-offset-1 Вы ошиблись:
-                            span.js-fails -
-                            span  раз
-                .modal-footer
-                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+        div(style="height:50px;")
+
+        h3 Выберите игру
+
+        .ss-actions.row
+                a.ss-actions__action.col-xs-4(href='games/globe')
+                    span.fa(class=`fa-globe`)
+                    .ss-actions__action-text Глобус
+
+                    a.ss-actions__action.col-xs-4(href='games/couples')
+                        span.fa(class=`fa-image`)
+                        .ss-actions__action-text Парочки

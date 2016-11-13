@@ -3,8 +3,6 @@ $(document).ready(function() {
 
     $gallery.slick({
         lazyLoad: 'ondemand',
-        centerMode: true,
-        centerPadding: '20px',
         slidesToShow: 1,
         autoplay: true,
         draggable: true,

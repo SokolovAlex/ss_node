@@ -84,7 +84,7 @@
             $scope.$apply();
         });
 
-        $http.get('data/gameTask/data/questions.mock.json')
+        $http.get('/games/globe/data/gameTask/data/questions.mock.json')
             .then(function(response) {
                 if (!response.data) {
                     return;

@@ -1,3 +1,14 @@
-//
-   Created by alexs_000 on 03.10.2016.
+html(ng-app='application')
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='stylesheet', href='/games/globe/css/vendor.css')
+        link(rel='stylesheet', href='/games/globe/css/application.css')
+        script(src='https://apis.google.com/js/client:platform.js', async='', defer='')
+        script(src='/games/globe/js/vendor.js')
+        script(src='/games/globe/js/application.js')
+        script(src='/games/globe/js/templates.js')
+        base(href='/')
+    body(ui-view='')
+
 

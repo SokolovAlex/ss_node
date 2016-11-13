@@ -1,0 +1,229 @@
+
+
+html {
+  height: 100%;
+}
+html body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+html body ul {
+  margin: 0;
+  padding: 0;
+}
+html body ul,
+html body li {
+  list-style-type: none;
+}
+html body a:focus,
+html body input:focus,
+html body button:focus,
+html body .btn:focus,
+html body a:hover,
+html body input:hover,
+html body button:hover,
+html body .btn:hover,
+html body a:active,
+html body input:active,
+html body button:active,
+html body .btn:active,
+html body a:active:focus,
+html body input:active:focus,
+html body button:active:focus,
+html body .btn:active:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+.brand {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: 200px;
+  height: 60px;
+  background-color: #fff;
+  border-bottom-left-radius: 6px;
+  padding: 5px;
+}
+.brand .logo img {
+  width: 100%;
+}
+
+.game-progress-wrapper {
+  width: 230px;
+  font-size: 16px;
+  font-weight: 300;
+  color: #084976;
+}
+.game-progress-wrapper .score {
+  display: inline-block;
+}
+.game-progress-wrapper .score .score-number {
+  vertical-align: middle;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 400;
+}
+.game-progress-wrapper .score .score-scale {
+  vertical-align: middle;
+  display: inline-block;
+}
+.game-progress-wrapper .score .score-scale .scale-item {
+  display: inline-block;
+  width: 19px;
+  height: 6px;
+  background-color: #084976;
+  border: 1px solid #fff;
+  border-right: none;
+}
+.game-progress-wrapper .score .score-scale .scale-item:last-child {
+  border-right: 1px solid #fff;
+}
+.game-progress-wrapper .score .score-scale .scale-item.correct {
+  background-color: #2cbb5f;
+}
+.game-progress-wrapper .score .score-scale .scale-item.wrong {
+  background-color: #e13332;
+}
+.game-progress-wrapper .score .score-scale .scale-item.active {
+  background-color: #fff;
+}
+
+.game-task-wrapper .task-country {
+  font-size: 36px;
+  color: #fff;
+}
+
+.globe-wrapper {
+  position: relative;
+}
+.globe-wrapper .country-list-container {
+  position: absolute;
+  bottom: 0;
+}
+.globe-wrapper .country-list-container .country-list-inner-container {
+  position: fixed;
+  padding-left: 8px;
+  padding-top: 5px;
+  background-color: rgba(255,255,255,0.2);
+  top: 0;
+  left: 0;
+  color: #fff;
+}
+.globe-wrapper .country-list-container .country-list-scroller {
+  overflow: hidden;
+}
+.globe-wrapper .country-list-container .country-list {
+  width: 30px;
+  -webkit-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+}
+.globe-wrapper .country-list-container .country-list .country-list-item {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 4px;
+}
+.globe-wrapper .country-list-container .country-list .country-list-item .flag {
+  cursor: pointer;
+}
+.globe-wrapper .country-list-container .country-list .country-list-item.drag .flag {
+  cursor: move;
+}
+.globe-wrapper .country-list-container .country-list .country-list-item:last-item {
+  margin: 0;
+}
+.globe-wrapper .zoom_control {
+  position: fixed;
+  font-size: 23px;
+  top: 80px;
+  right: 30px;
+  text-align: center;
+}
+.globe-wrapper .zoom_control div {
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid #fff;
+  padding: 17px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 8px;
+  margin-bottom: 10px;
+  -webkit-transition: border-color 0.1s ease-in, background-color 0.1s ease-in;
+  transition: border-color 0.1s ease-in, background-color 0.1s ease-in;
+}
+.globe-wrapper .zoom_control div:hover {
+  border-color: #0092ff;
+  background-color: #0092ff;
+}
+
+.status {
+  display: inline-block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+  vertical-align: middle;
+  margin-top: -5px;
+}
+.modal-title {
+  line-height: 40px;
+}
+.status-error {
+  background-image: url("../assets/images/modal/images/error.png");
+}
+.status-partly {
+  background-image: url("../assets/images/modal/images/partly.png");
+}
+.status-success {
+  background-image: url("../assets/images/modal/images/success.png");
+}
+.finish-results .text {
+  font-size: 16px;
+  color: $textColor;
+}
+.finish-results .score-row {
+  margin-top: 8px;
+  height: 40px;
+}
+.finish-results .score-text {
+  font-size: 16px;
+  height: 20px;
+  vertical-align: middle;
+  display: inline-block;
+}
+.finish-results .score {
+  font-size: 22px;
+  height: 26px;
+  margin-left: 10px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.guess-country-wrapper .navbar {
+  color: #fff;
+  padding: 0px 10px;
+  border-radius: 0;
+  margin: 0;
+  position: fixed;
+  top: 5px;
+  left: 40px;
+  z-index: 1;
+}
+.guess-country-wrapper .navbar .navbar-brand {
+  height: auto;
+  padding: 39px 0 39px 61px;
+}
+.guess-country-wrapper .navbar .socials {
+  display: inline-block;
+  padding: 52px 41px;
+}
+.guess-country-wrapper .navbar .find-country-wrapper,
+.guess-country-wrapper .navbar .counter-wrapper {
+  display: inline-block;
+}
+
+.guess-country-game-wrapper {
+  font-size: 24px;
+}

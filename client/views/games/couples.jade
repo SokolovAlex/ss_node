@@ -1,3 +1,36 @@
-//
-   Created by alexs_000 on 03.10.2016.
+extends ../components/layout
 
+block styles
+    link(href='/games/couples/styles.css', rel='stylesheet')
+
+block menu
+    +ss-menu(menu, true, "Парочки")
+
+block scripts
+    script(src='/games/couples/app.jsx')
+    script(src='/js/bundle.js')
+    script(src='/js/pages/couples.js')
+
+block body
+
+    #root.site-wrapper.rootContainer
+
+    #resultModal.modal.fade(tabindex='-1', role='dialog')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') ×
+                    h4#myModalLabel.modal-title Результат
+                .modal-body
+                    .row
+                        .col-md-4.col-md-offset-1 Время:
+                            span.js-time -
+
+                    .row
+                        .col-md-4.col-md-offset-1 Вы ошиблись:
+                            span.js-fails -
+                            span  раз
+
+                .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') Закрыть

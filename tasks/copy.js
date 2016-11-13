@@ -60,14 +60,19 @@ module.exports = function() {
             .pipe(gulp.dest('client/games/couples'));
     });
 
+    gulp.task('globe', () => {
+        return gulp.src('submodules/globe/application/public/**/*')
+            .on('data', (f) => console.log(f.relative))
+            .pipe(gulp.dest('client/games/globe'));
+    });
+
     gulp.task('games:inbuild', () => {
         return gulp.src('client/games/**/*')
             .pipe(gulp.dest('build/games/'));
     });
 
-    gulp.task('games', ['couples']);
+    gulp.task('games', ['couples', 'globe']);
 
     // Copy all third party dependencies from node_modules to vendor directory
     gulp.task('copy', ['games:inbuild', 'vendor:css', 'fonts', 'vendor:js', 'jquery', 'lodash', 'images']);
-
 };
