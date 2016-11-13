@@ -57,5 +57,5 @@ module.exports = function() {
 
     gulp.task('js:all', ['libs', 'scripts']);
 
-    gulp.task('js', ['scripts', 'js:pages', 'tags']);
+    gulp.task('js', ['scripts', 'js:pages', 'tags', 'webpack']);
 };
