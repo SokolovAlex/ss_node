@@ -35,6 +35,29 @@ html body .btn:active:focus {
   text-decoration: none;
 }
 
+.guess-country-wrapper .navbar {
+  color: #fff;
+  padding: 0px 10px;
+  border-radius: 0;
+  margin: 0;
+  position: fixed;
+  top: 5px;
+  left: 40px;
+  z-index: 1;
+}
+.guess-country-wrapper .navbar .navbar-brand {
+  height: auto;
+  padding: 39px 0 39px 61px;
+}
+.guess-country-wrapper .navbar .socials {
+  display: inline-block;
+  padding: 52px 41px;
+}
+.guess-country-wrapper .navbar .find-country-wrapper,
+.guess-country-wrapper .navbar .counter-wrapper {
+  display: inline-block;
+}
+
 .brand {
   position: fixed;
   top: 0px;
@@ -97,13 +120,16 @@ html body .btn:active:focus {
 .globe-wrapper {
   position: relative;
 }
+.globe-wrapper .js-flags-down {
+  padding-bottom: 5px;
+}
 .globe-wrapper .country-list-container {
   position: absolute;
   bottom: 0;
 }
 .globe-wrapper .country-list-container .country-list-inner-container {
   position: fixed;
-  padding-left: 8px;
+  padding-left: 2px;
   padding-top: 5px;
   background-color: rgba(255,255,255,0.2);
   top: 0;
@@ -198,29 +224,6 @@ html body .btn:active:focus {
   height: 26px;
   margin-left: 10px;
   vertical-align: middle;
-  display: inline-block;
-}
-
-.guess-country-wrapper .navbar {
-  color: #fff;
-  padding: 0px 10px;
-  border-radius: 0;
-  margin: 0;
-  position: fixed;
-  top: 5px;
-  left: 40px;
-  z-index: 1;
-}
-.guess-country-wrapper .navbar .navbar-brand {
-  height: auto;
-  padding: 39px 0 39px 61px;
-}
-.guess-country-wrapper .navbar .socials {
-  display: inline-block;
-  padding: 52px 41px;
-}
-.guess-country-wrapper .navbar .find-country-wrapper,
-.guess-country-wrapper .navbar .counter-wrapper {
   display: inline-block;
 }
 

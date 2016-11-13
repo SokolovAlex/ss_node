@@ -19,12 +19,22 @@
             templateUrl: 'directive/brand/brand.html',
             controllerAs: 'brandCtrl',
             bindToController: true,
-            controller: BrandCtrl
+            controller: BrandCtrl,
+            link: function($scope, $element) {
+                bind($element);
+            }
         }
     }
 
     function BrandCtrl(){
+    }
 
+    function bind($element){
+        var container = $element[0];
+        container.addEventListener('click', function() {
+            location.href = '/games';
+            location.reload();
+        });
     }
 
 })(angular);
