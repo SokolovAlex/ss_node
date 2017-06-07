@@ -140,9 +140,6 @@
                 request.open("POST", "api/tours");
                 request.send(formData);
 
-        console.log("this," , this);
-        debugger;
-
                 request.onreadystatechange = function() {
                         if (request.readyState == 4 && request.status == 200) {
                                 var responseData = JSON.parse(request.responseText);

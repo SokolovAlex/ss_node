@@ -8,21 +8,24 @@ module.exports = function() {
 
     gulp.task('vendor:css', function() {
         return gulp.src(['node_modules/bootstrap/dist/css/bootstrap.css',
-            'node_modules/font-awesome/css/font-awesome.css',
-            'node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css'])
+                'node_modules/font-awesome/css/font-awesome.css',
+                'node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css'
+            ])
             //.on('data', (f) => console.log(f.relative))
             .pipe(gulp.dest('client/libs/css'))
     });
 
     gulp.task('fonts', function() {
         return gulp.src(['node_modules/bootstrap/dist/fonts/*',
-                'node_modules/font-awesome/fonts/*'])
+                'node_modules/font-awesome/fonts/*'
+            ])
             .pipe(gulp.dest('build/fonts/'))
     });
 
     gulp.task('uploader', function() {
         return gulp.src(['node_modules/fine-uploader/fine-uploader',
-                'node_modules/font-awesome/fonts/*'])
+                'node_modules/font-awesome/fonts/*'
+            ])
             .pipe(gulp.dest('build/uploader/'))
     });
 
@@ -50,7 +53,7 @@ module.exports = function() {
     });
 
     gulp.task('images', () => {
-        return gulp.src('client/images/**/*')
+        return gulp.src(['client/images/**/*', '!client/images/temp/*'])
             .pipe(gulp.dest('build/images/'));
     });
 
