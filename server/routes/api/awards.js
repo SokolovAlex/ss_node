@@ -1,18 +1,19 @@
-var menuHelper = require('../../helpers/menuHelper');
-var authenticate = require('../../helpers/authenticate');
-var UploadHelper = require('../../helpers/uploadHelper');
-var mappers = require('../../helpers/mappers');
-var enums = require('../../enums');
+const menuHelper = require('../../helpers/menuHelper');
+const authenticate = require('../../helpers/authenticate');
+const UploadHelper = require('../../helpers/uploadHelper');
+const imageHelper = require('../../helpers/image');
+const mappers = require('../../helpers/mappers');
+const enums = require('../../enums');
 
 module.exports = (router, app) => {
 
-    var imageTypeId = enums.ImageTypes.Gallery.id;
+    const imageTypeId = enums.ImageTypes.Awards.id;
 
-    var uploadHelper = UploadHelper(app);
+    const uploadHelper = UploadHelper(app);
 
-    var Image = app.models.Image;
+    const Image = app.models.Image;
 
-    router.get('/photos', (req, res) => {
+    router.get('/awards', (req, res) => {
         var body = req.body;
         var page = body.page || 1;
         var size = body.size || 20;
@@ -26,8 +27,8 @@ module.exports = (router, app) => {
         });
     });
 
-    router.post('/photos', authenticate((req, res, user) => {
-        var selectedFile;
+    router.post('/awards', authenticate((req, res, user) => {
+        let selectedFile;
         if (req.files) {
             selectedFile = req.files.selectedFile;
             if (selectedFile && selectedFile.data.length == 0) {
@@ -36,10 +37,10 @@ module.exports = (router, app) => {
         }
 
         if (!selectedFile) {
-            return res.json({ error: true, message: 'не нашли файла' });
+            return res.json({ error: true, message: 'file not found' });
         }
 
-        var description = req.body.image_description;
+        const description = req.body.image_description;
 
         uploadHelper.create(selectedFile, imageTypeId, { description }, (err, result) => {
             if (err) {
@@ -49,8 +50,8 @@ module.exports = (router, app) => {
         });
     }));
 
-    router.delete('/photos/:id', authenticate((req, res, user) => {
-        var id = req.params.id;
+    router.delete('/awards/:id', authenticate((req, res, user) => {
+        const id = req.params.id;
 
         Image.find(id, (err, imageModel) => {
             if (err || !imageModel) res.status(500).json({ error: err.message });

@@ -9,21 +9,28 @@ module.exports = app => {
 
     var User = app.models.User;
 
-    router.post('/registration', function (req, res) {
-        var email = req.body.email;
-        var validResult = validators.checkUserData(email, req.body.password, req.body.repeat);
+    router.post('/registration', function(req, res) {
+        const body = req.body;
+        const email = body.email;
+        const fname = body.fname;
+        const lname = body.lname;
+        const password = body.password;
+        const repeat = body.repeat;
+        const birthDate = body.birthDate;
 
-        if(!validResult.valid) {
-            return res.json({success: false, message: validResult.messages });
+        var validResult = validators.checkUserData(email, password, repeat, fname, lname, birthDate);
+
+        if (!validResult.valid) {
+            return res.json({ success: false, message: validResult.messages });
         }
 
         var salt = crypter.salt();
         var hashed = crypter.sha(req.body.password, salt);
 
-        User.findOne({where: {email: email}}, (err, user) => {
+        User.findOne({ where: { email: email } }, (err, user) => {
 
             if (user) {
-                return res.json({success: false, message: 'Email already exist!'});
+                return res.json({ success: false, message: 'Email already exist!' });
             }
 
             User.create({
@@ -35,29 +42,29 @@ module.exports = app => {
                 password: hashed,
                 birthDate: req.body.birthDate
             }, (err, result) => {
-                if (err) return res.json({success: false, message: [err]});
+                if (err) return res.json({ success: false, message: [err] });
 
-                return res.json({success: true, userId: result.id, userHash: result.hash});
+                return res.json({ success: true, userId: result.id, userHash: result.hash });
             });
         });
     });
 
-    router.post('/login', function (req, res) {
+    router.post('/login', function(req, res) {
         var email = req.body.email;
         var validResult = validators.checkEmail(email);
 
-        if(!validResult.valid) {
-            return res.json({success: false, message: validResult.messages });
+        if (!validResult.valid) {
+            return res.json({ success: false, message: validResult.messages });
         }
 
-        User.findOne({where: {email: email}}, (err, user) => {
+        User.findOne({ where: { email: email } }, (err, user) => {
 
             if (!user) {
-                return res.json({success: false, message: 'No users with such email!'});
+                return res.json({ success: false, message: 'No users with such email!' });
             }
 
             if (!crypter.compare(req.body.password, user.password, user.salt)) {
-                return res.json({success: false, message: 'Password incorrect!'});
+                return res.json({ success: false, message: 'Password incorrect!' });
             }
 
             var userModel = {
@@ -68,14 +75,14 @@ module.exports = app => {
                 birthDate: user.birthDate,
                 role: user.roleId
             };
-            res.cookie(auth_cookie, userModel, {maxAge: 60 * 1000 * 60 * 24});
-            res.cookie(auth_cookie_client, JSON.stringify(userModel), {maxAge: 60 * 1000 * 60 * 24});
+            res.cookie(auth_cookie, userModel, { maxAge: 60 * 1000 * 60 * 24 });
+            res.cookie(auth_cookie_client, JSON.stringify(userModel), { maxAge: 60 * 1000 * 60 * 24 });
 
-            return res.json({success: true, redirect: '/profile'});
+            return res.json({ success: true, redirect: '/profile' });
         });
     });
 
-    router.get('/logout', function (req, res) {
+    router.get('/logout', function(req, res) {
         res.clearCookie(auth_cookie);
         res.clearCookie(auth_cookie_client);
         return res.redirect('/');

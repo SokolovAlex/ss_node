@@ -14,5 +14,6 @@ module.exports = {
         "username": "root",
         "password": "Xx102030"
     },
-    auth_cookie: 'x-auth'
+    auth_cookie: 'x-auth',
+    upload_path: __dirname + '/../upload/'
 };

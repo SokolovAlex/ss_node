@@ -1,5 +1,4 @@
 var checkEmail = (email) => {
-    console.log('email',email );
     if (!email) {
         return {
             valid: false,
@@ -15,7 +14,7 @@ var checkEmail = (email) => {
 };
 
 var checkPassword = (password, repeat) => {
-    if(!password || !repeat) {
+    if (!password || !repeat) {
         return {
             valid: false,
             message: 'password and repeat required'
@@ -45,7 +44,7 @@ var checkNames = (fname, lname) => {
 var checkRequired = (value, name) => {
     return {
         valid: !!value,
-        message: name +  ' required.'
+        message: name + ' required.'
     };
 };
 
@@ -55,7 +54,7 @@ var aggregateResults = function(rules) {
 
     rules.forEach(function(rule) {
         var res = rule();
-        if(!res.valid) {
+        if (!res.valid) {
             messages.push(res.message);
             valid = false;
         }

@@ -4,6 +4,7 @@ var mailer = require('../helpers/mailer');
 var authenticate = require('../helpers/authenticate');
 var toursApi = require('./api/tours');
 var galleryApi = require('./api/gallery');
+var awardsApi = require('./api/awards');
 
 module.exports = app => {
 
@@ -11,7 +12,7 @@ module.exports = app => {
     var Request = app.models.Request;
     var GameResult = app.models.GameResult;
 
-    router.post('/request', function (req, res) {
+    router.post('/request', function(req, res) {
         var body = req.body;
 
         var requestModel = {
@@ -22,13 +23,13 @@ module.exports = app => {
         };
 
         Request.create(requestModel, (err, request) => {
-            if(err) {
-                return res.json({success: false, message: "server error"});
+            if (err) {
+                return res.json({ success: false, message: "server error" });
             }
 
             mailer.sendRequest(requestModel);
 
-            return res.json({success: true, message: 'Ваша заявка принята. Наши менеджеры ответят Вам в ближайшее время.'});
+            return res.json({ success: true, message: 'Ваша заявка принята. Наши менеджеры ответят Вам в ближайшее время.' });
         });
     });
 
@@ -44,15 +45,17 @@ module.exports = app => {
             score: score,
             rules: rules
         }, (err, result) => {
-            if(err) throw err;
+            if (err) throw err;
 
-            return res.json({success: true, message: 'Результат сохранен'});
+            return res.json({ success: true, message: 'Результат сохранен' });
         });
     }));
 
     router = toursApi(router, app);
 
     router = galleryApi(router, app);
+
+    router = awardsApi(router, app);
 
     return router;
 };

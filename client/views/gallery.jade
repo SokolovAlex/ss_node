@@ -2,7 +2,7 @@ extends ../../build/views/components/layout
 
 block scripts
     script(type="text/javascript" src='js/bundle.js')
-    script(type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js")
+    script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js")
     script(type="text/javascript" src='js/pages/gallery.js')
 
 block styles
@@ -18,7 +18,7 @@ block body
             .row.gallery
                 each item in images
                     .gallery__item
-                        img.img-rounded(data-lazy=`/upload/gallery/${item.name}`)
+                        img.img-rounded(src=`/upload/` + folder + `/${item.name}`)
                         .gallery__description= item.description
 
             .gallery__line
@@ -27,4 +27,4 @@ block body
                 h3 Все фотографии
                 each item, i in images
                     .gallery__thumbnail.col-sm-6.col-md-4.col-lg-2(data-id=`${item.id}` data-index=`${i}`)
-                        img.img-thumbnail(src=`/upload/gallery/${item.name}`)
+                        img.img-thumbnail(src=`/upload/` + folder + `/${item.name}`)

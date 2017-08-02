@@ -1,20 +1,21 @@
 $(document).ready(function() {
+
     var $gallery = $('.gallery');
 
     $gallery.slick({
-        lazyLoad: 'ondemand',
+        lazyLoad: false,
         slidesToShow: 1,
-        autoplay: true,
+        autoplay: false,
         draggable: true,
         dots: true,
-        speed: 500,
-        slidesToScroll: 1
+        speed: 1000,
+        slidesToScroll: 1,
+        adaptiveHeight: true
     });
 
     $('.gallery__thumbnail').on('click', function(e) {
         var id = $(e.currentTarget).data('id');
         var index = $(e.currentTarget).data('index');
-        $gallery.slick('slickGoTo', parseInt(index, 10) );
+        $gallery.slick('slickGoTo', parseInt(index, 10));
     });
-
 });

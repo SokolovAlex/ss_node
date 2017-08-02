@@ -5,7 +5,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var fileUpload = require('express-fileupload');
 var config = require('./config');
-var connect = require('connect');
 var boot = require('./boot');
 var auth = require('./routes/auth');
 var pages = require('./routes/pages');
@@ -14,12 +13,10 @@ var upload = require('./routes/upload');
 
 boot(app);
 
-connect().use(connect.limit('5.5mb'));
-
 app.use(bodyParser.json({ limit: '150mb' }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(fileUpload());
+app.use(fileUpload({ limits: { fileSize: 50 * 1024 * 1024 } }));
 app.use('/', pages(app));
 app.use('/auth', auth(app));
 app.use('/api', api(app));

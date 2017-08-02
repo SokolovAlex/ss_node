@@ -10,10 +10,65 @@ var enums = require('../enums');
 
 module.exports = app => {
 
+    var Image = app.models.Image;
+    var imageTypeId = enums.ImageTypes.Gallery.id;
+
     router.get('/', (req, res) => {
         var user = req.cookies[auth_cookie];
         res.render('welcome', { menu: menuHelper.welcome(user), actions: menuHelper.commonActions() });
     });
+
+    router.get('/aviakassa', (req, res) => {
+        var user = req.cookies[auth_cookie];
+        res.render('aviakassa', { menu: menuHelper.back(user) });
+    });
+
+    router.get('/cruises', (req, res) => {
+        var user = req.cookies[auth_cookie];
+        res.render('cruises', { menu: menuHelper.back(user) });
+    });
+
+    router.get('/tours', (req, res) => {
+        var user = req.cookies[auth_cookie];
+        res.render('tours', { menu: menuHelper.back(user) });
+    });
+
+    router.get('/gallery', (req, res) => {
+        var user = req.cookies[auth_cookie];
+
+        Image.all({ where: { type: imageTypeId }, limit: 20 }, (err, result) => {
+            res.render('gallery', {
+                menu: menuHelper.back(user),
+                images: result,
+                folder: enums.ImageTypes.Gallery.folder
+            });
+        });
+    });
+
+    router.get('/awards-gallery', (req, res) => {
+        var user = req.cookies[auth_cookie];
+        var awardsTypeId = enums.ImageTypes.Awards.id;
+
+        Image.all({ where: { type: awardsTypeId }, limit: 20 }, (err, result) => {
+
+            console.log('------->', enums.ImageTypes.Awards.folder);
+
+            res.render('gallery', {
+                menu: menuHelper.back(user),
+                images: result,
+                folder: enums.ImageTypes.Awards.folder
+            });
+        });
+    });
+
+    router.get('/partners', (req, res) => {
+        var user = req.cookies[auth_cookie];
+        res.render('partners', { menu: menuHelper.back(user) });
+    });
+
+    router = profilePages(router);
+    router = errorPages(router);
+    router = gamesPages(router);
 
     return router;
 };

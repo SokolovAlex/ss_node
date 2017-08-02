@@ -1,0 +1,16 @@
+extends ../../build/views/components/layout
+
+block scripts
+    script(type="text/javascript" src='js/bundle.js')
+    script(type='text/javascript' src="/js/pages/awards.js")
+
+block styles
+
+block menu
+    +ss-menu(menu, true, 'Сертификаты')
+
+block body
+
+    .rootContainer
+        .container
+            award-list

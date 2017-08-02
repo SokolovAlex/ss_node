@@ -5,28 +5,31 @@ const submenu = (user) => {
     }] : [];
 
     return menu.concat([{
-            title: 'Фотографии',
-            link: '/gallery'
-        }, {
-            title: 'Игры',
-            link: '/games'
-        }, {
-            title: 'Наши партнеры',
-            link: '/partners'
-        }, {
-            separator: true
-        }, {
-            title: 'Выйти',
-            link: '/auth/logout'
+        title: 'Фотографии',
+        link: '/gallery'
+    }, {
+        title: 'Наши достижения',
+        link: '/awards-gallery'
+    }, {
+        title: 'Игры',
+        link: '/games'
+    }, {
+        title: 'Наши партнеры',
+        link: '/partners'
+    }, {
+        separator: true
+    }, {
+        title: 'Выйти',
+        link: '/auth/logout'
     }]);
 };
 
 var addAuth = (menu, user) => {
-    if(!user) {
+    if (!user) {
         return menu.concat([{
-                title: 'Прочее',
-                submenu: submenu(user)
-            }, {
+            title: 'Прочее',
+            submenu: submenu(user)
+        }, {
             title: 'Войти',
             modal: true,
             link: '#loginModal'
@@ -83,6 +86,10 @@ const profileActions = () => {
         text: 'Фотографии',
         href: '/photos',
         icon: 'photo'
+    }, {
+        text: 'Достижения',
+        href: '/awards',
+        icon: 'graduation-cap'
     }];
 };
 
@@ -95,7 +102,7 @@ const commonActions = () => {
         text: 'Авиабилеты',
         href: '/aviakassa',
         icon: 'plane'
-    },{
+    }, {
         text: 'Круизы',
         href: '/cruises',
         icon: 'ship'
