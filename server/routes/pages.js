@@ -39,6 +39,8 @@ module.exports = app => {
         Image.all({ where: { type: imageTypeId }, limit: 20 }, (err, result) => {
             res.render('gallery', {
                 menu: menuHelper.back(user),
+                title: "Галерея",
+                title_all: "Все фотографии",
                 images: result,
                 folder: enums.ImageTypes.Gallery.folder
             });
@@ -50,12 +52,11 @@ module.exports = app => {
         var awardsTypeId = enums.ImageTypes.Awards.id;
 
         Image.all({ where: { type: awardsTypeId }, limit: 20 }, (err, result) => {
-
-            console.log('------->', enums.ImageTypes.Awards.folder);
-
             res.render('gallery', {
                 menu: menuHelper.back(user),
                 images: result,
+                title: "Сертификаты",
+                title_all: "Все сертификаты",
                 folder: enums.ImageTypes.Awards.folder
             });
         });

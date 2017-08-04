@@ -4,10 +4,11 @@
             position: absolute;
             top: 10px;
             right: 25px;
-            color: white;
+            color: red;
+            
         }
         :scope .remove:hover {
-            color: grey;
+            color: orange;
         }
         </style>
 

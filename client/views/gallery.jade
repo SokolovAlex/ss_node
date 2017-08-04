@@ -10,7 +10,7 @@ block styles
     link(rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css")
 
 block menu
-    +ss-menu(menu, true, 'Галерея')
+    +ss-menu(menu, true, title)
 
 block body
     .rootContainer
@@ -24,7 +24,7 @@ block body
             .gallery__line
 
             .row.gallery__previews
-                h3 Все фотографии
+                h3= title_all
                 each item, i in images
                     .gallery__thumbnail.col-sm-6.col-md-4.col-lg-2(data-id=`${item.id}` data-index=`${i}`)
                         img.img-thumbnail(src=`/upload/` + folder + `/${item.name}`)

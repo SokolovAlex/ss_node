@@ -35,6 +35,7 @@ server/config.js
 
 upload/*
 !upload/default.jpg
+!upload/default-award.png
 
 # But not these files...
 

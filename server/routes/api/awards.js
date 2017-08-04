@@ -1,7 +1,6 @@
 const menuHelper = require('../../helpers/menuHelper');
 const authenticate = require('../../helpers/authenticate');
 const UploadHelper = require('../../helpers/uploadHelper');
-const imageHelper = require('../../helpers/image');
 const mappers = require('../../helpers/mappers');
 const enums = require('../../enums');
 
