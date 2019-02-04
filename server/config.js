@@ -14,6 +14,17 @@ module.exports = {
         "username": "root",
         "password": "Xx102030"
     },
+    db: {
+      dialect: 'sqlite',
+      pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+      },
+      storage: 'ssdb.sqlite',
+      operatorsAliases: false
+    },
     auth_cookie: 'x-auth',
     upload_path: __dirname + '/../upload/'
 };

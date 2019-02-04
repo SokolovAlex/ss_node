@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var menuHelper = require('../helpers/menuHelper');
-var authenticate = require('../helpers/authenticate');
 var profilePages = require('./pages/profile');
 var gamesPages = require('./pages/games');
 var errorPages = require('./pages/errorPages');
@@ -60,6 +59,16 @@ module.exports = app => {
                 folder: enums.ImageTypes.Awards.folder
             });
         });
+    });
+
+    router.get('/maldives', (req, res) => {
+      var user = req.cookies[auth_cookie];
+      res.render('maldives', { menu: menuHelper.back(user) });
+    });
+
+    router.get('/joali', (req, res) => {
+      var user = req.cookies[auth_cookie];
+      res.render('joali', { menu: menuHelper.back(user) });
     });
 
     router.get('/partners', (req, res) => {

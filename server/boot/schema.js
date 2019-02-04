@@ -50,17 +50,6 @@ module.exports = () => {
         table: 'roles'
     });
 
-    var Request = schema.define('Request', _.extend({
-        id: {type: Number, limit: 50, index: true},
-        userId: {type: Number, limit: 10},
-        email: {type: String, limit: 50},
-        name: {type: String, limit: 50},
-        phone: {type: String, limit: 50},
-        message: {type: String}
-    }, baseModel), {
-        table: 'requests'
-    });
-
     var Image = schema.define('Image', _.extend({
         id: {type: Number, limit: 50, index: true},
         name: {type: String, limit: 100},
@@ -111,8 +100,8 @@ module.exports = () => {
     schema.isActual(function (err, actual) {
         if (!actual) {
             console.log("db autoupdate");
-            //schema.automigrate();
-            schema.autoupdate();
+            schema.automigrate();
+            //schema.autoupdate();
         }
     });
 

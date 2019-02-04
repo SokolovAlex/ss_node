@@ -19,3 +19,5 @@ build project + start server
 ```javascript
 gulp
 ```
+
+yarn seed
