@@ -1,66 +1,64 @@
-var menuHelper = require('../../helpers/menuHelper');
-var authenticate = require('../../helpers/authenticate');
-var UploadHelper = require('../../helpers/uploadHelper');
-var mappers = require('../../helpers/mappers');
-var enums = require('../../enums');
+const menuHelper = require('../../helpers/menuHelper');
+const authenticate = require('../../helpers/authenticate');
+const UploadHelper = require('../../helpers/uploadHelper');
+const mappers = require('../../helpers/mappers');
+const enums = require('../../enums');
 
 module.exports = (router, app) => {
+  const imageTypeId = enums.ImageTypes.Gallery.id;
 
-    var imageTypeId = enums.ImageTypes.Gallery.id;
+  const uploadHelper = UploadHelper(app);
 
-    var uploadHelper = UploadHelper(app);
+  const Image = app.models.Image;
 
-    var Image = app.models.Image;
+  router.get('/photos', (req, res) => {
+    const body = req.body;
+    const page = body.page || 1;
+    const size = body.size || 20;
+    const order = body.order || 'name';
 
-    router.get('/photos', (req, res) => {
-        var body = req.body;
-        var page = body.page || 1;
-        var size = body.size || 20;
-        var order = body.order || 'name';
+    Image.findAll({ where: { type: imageTypeId }, limit: size, skip: (page - 1) * size, order: order })
+      .then((result) => res.json({ images: result }))
+      .catch(err => res.status(500).json({ message: err }));
+  });
 
-        Image.all({ where: { type: imageTypeId }, limit: size, skip: (page - 1) * size, order: order }, (err, result) => {
-            if (err) {
-                return res.status(500).json({ message: err });
-            }
-            res.json({ images: result });
-        });
+  router.post('/photos', authenticate((req, res, user) => {
+    const selectedFile;
+    if (req.files) {
+      selectedFile = req.files.selectedFile;
+      if (selectedFile && selectedFile.data.length == 0) {
+        selectedFile = null;
+      }
+    }
+
+    if (!selectedFile) {
+      return res.json({ error: true, message: 'не нашли файла' });
+    }
+
+    const description = req.body.image_description;
+
+    uploadHelper.create(selectedFile, imageTypeId, { description }, (err, result) => {
+      if (err) {
+        return res.json({ error: true });
+      }
+      res.json({ image: result });
     });
+  }));
 
-    router.post('/photos', authenticate((req, res, user) => {
-        var selectedFile;
-        if (req.files) {
-            selectedFile = req.files.selectedFile;
-            if (selectedFile && selectedFile.data.length == 0) {
-                selectedFile = null;
-            }
-        }
+  router.delete('/photos/:id', authenticate((req, res, user) => {
+    const id = req.params.id;
 
-        if (!selectedFile) {
-            return res.json({ error: true, message: 'не нашли файла' });
-        }
+    Image.find(id)
+      .then((imageModel) => {
+        if (!imageModel) res.status(500).json({ error: 'no image' });
 
-        var description = req.body.image_description;
-
-        uploadHelper.create(selectedFile, imageTypeId, { description }, (err, result) => {
-            if (err) {
-                return res.json({ error: true });
-            }
-            res.json({ image: result });
+        uploadHelper.remove(imageModel.id, () => {
+          if (err) res.status(500).json({ error: err.message });
+          res.json({ error: false });
         });
-    }));
+      })
+      .catch((err) => res.status(500).json({ error: err.message }));
+  }));
 
-    router.delete('/photos/:id', authenticate((req, res, user) => {
-        var id = req.params.id;
-
-        Image.find(id, (err, imageModel) => {
-            if (err || !imageModel) res.status(500).json({ error: err.message });
-
-            uploadHelper.remove(imageModel.id, () => {
-                if (err) res.status(500).json({ error: err.message });
-                res.json({ error: false });
-            });
-        });
-    }));
-
-    return router;
+  return router;
 };

@@ -1,33 +1,28 @@
-var express = require('express');
-var router = express.Router();
-var UploadHelper = require('../helpers/uploadHelper');
+const express = require('express');
+const router = express.Router();
+const UploadHelper = require('../helpers/uploadHelper');
 
 module.exports = app => {
+  const uploadHelper = UploadHelper(app);
 
-    var uploadHelper = UploadHelper(app);
+  router.post('/tour', function(req, res) {
+    if (!req.files) {
+      res.send('No files were uploaded.');
+      return;
+    }
 
-    router.post('/tour', function(req, res) {
-        if (!req.files) {
-            res.send('No files were uploaded.');
-            return;
-        }
+    const tourImage = req.files.tourImage;
 
-        var tourImage = req.files.tourImage;
+    if(tourImage) {
+      uploadHelper.save(tourImage, 'temp', () => {
+        res.json({message: '', error: true})
+      });
+    } else {
+      res.json({message: '', error: true})
+    }
+  });
 
-        console.log("body", req.body);
-
-        console.log("tourImage", tourImage);
-
-        if(tourImage) {
-            uploadHelper.save(tourImage, 'temp', () => {
-                res.json({message: '', error: true})
-            });
-        } else {
-            res.json({message: '', error: true})
-        }
-    });
-
-    return router;
+  return router;
 };
 
 

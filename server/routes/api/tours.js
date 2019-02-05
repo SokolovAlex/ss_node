@@ -1,111 +1,95 @@
-var menuHelper = require('../../helpers/menuHelper');
-var authenticate = require('../../helpers/authenticate');
-var UploadHelper = require('../../helpers/uploadHelper');
-var mappers = require('../../helpers/mappers');
-var enums = require('../../enums');
+const menuHelper = require('../../helpers/menuHelper');
+const authenticate = require('../../helpers/authenticate');
+const UploadHelper = require('../../helpers/uploadHelper');
+const mappers = require('../../helpers/mappers');
+const enums = require('../../enums');
 
 module.exports = (router, app) => {
+  const uploadHelper = UploadHelper(app);
 
-    var uploadHelper = UploadHelper(app);
+  const Tour = app.models.Tour;
 
-    var Tour = app.models.Tour;
+  const tourImageId = enums.ImageTypes.Tour.id;
 
-    var tourImageId = enums.ImageTypes.Tour.id;
+  router.get('/tours', (req, res) => {
+    const body = req.body;
+    const page = body.page || 1;
+    const size = body.size || 20;
+    const order = body.order || 'title';
 
-    router.get('/tours', (req, res) => {
-        var body = req.body;
-        var page = body.page || 1;
-        var size = body.size || 20;
-        var order = body.order || 'title';
+    Tour.findAll({limit: size, skip: (page - 1) * size, order: order, include: ['image']})
+      .then((result) => res.json({ tours: mappers.tours(result) }))
+      .catch((err) => res.status(500).json({ message: err }));
+  });
 
-        Tour.all({limit: size, skip: (page - 1) * size, order: order, include: ['image']}, (err, result) => {
-            if(err) {
-                return res.status(500).json({ message: err });
+  router.get('/tours/:id', (req, res) => {
+      res.json({});
+  });
+
+  router.post('/tours', authenticate((req, res, user) => {
+    const tourImage;
+    if (req.files) {
+      tourImage = req.files.tourImage;
+      if (tourImage && tourImage.data.length == 0) {
+          tourImage = null;
+      }
+    }
+
+    const body = req.body;
+
+    const dbData = {
+      title: body.title,
+      description: body.description,
+      cost: body.cost,
+      nights: body.nights,
+      startDate: body.start_date || new Date()
+    };
+
+    if (body.id) {
+      Tour.find(body.id)
+        .then((tourModel) => {
+          uploadHelper.save(tourModel.imageId, tourImage, tourImageId, (err, image) => {
+            if (!tourModel.imageId) {
+              dbData.imageId = image ? image.id : null;
             }
-            res.json({ tours: mappers.tours(result) });
-        });
-    });
+            tourModel.updateAttributes(dbData)
+              .then((err, result) => res.json({message: 'Success', tour: result, type: 'update', error: false}));
+          });
+        })
+        .catch((err) => res.status(500).json({ error: err.message }));
+    } else {
+        function createTour(err, image) {
+          if(err) {
+            return res.status(500).json({ error: err.message });
+          }
+          dbData.imageId = image ? image.id : null;
 
-    router.get('/tours/:id', (req, res) => {
-
-        res.json({});
-    });
-
-    router.post('/tours', authenticate((req, res, user) => {
-        var tourImage;
-        if (req.files) {
-            tourImage = req.files.tourImage;
-            if(tourImage && tourImage.data.length == 0) {
-                tourImage = null;
-            }
+          Tour.create(dbData)
+            .then((result) => res.json({message: 'Success', tour: result, type: 'new', error: false}))
+            .catch((err) => res.status(500).json({ error: err.message }));
         }
 
-        var body = req.body;
+        uploadHelper.create(tourImage, tourImageId, createTour);
+    }
+  }));
 
-        var dbData = {
-            title: body.title,
-            description: body.description,
-            cost: body.cost,
-            nights: body.nights,
-            startDate: body.start_date || new Date()
-        };
+  router.delete('/tours/:id', authenticate((req, res, user) => {
+    const id = req.params.id;
+    Tour.find(id)
+      .then((tourModel) => {
+        uploadHelper.remove(tourModel.imageId, destroy);
 
-        console.log("body", body);
+        function destroy(err) {
+          if (err) res.status(500).json({ error: err.message });
 
-        if(body.id) {
-            Tour.find(body.id, (err, tourModel) => {
-                uploadHelper.save(tourModel.imageId, tourImage, tourImageId, (err, image) => {
-                    if(err) {
-                        return res.status(500).json({ error: err.message });
-                    }
-                    if (!tourModel.imageId) {
-                        dbData.imageId = image ? image.id : null;
-                    }
-
-                    tourModel.updateAttributes(dbData, (err, result) => {
-                        return res.json({message: 'Success', tour: result, type: 'update', error: false})
-                    });
-                });
-            });
-        } else {
-            function createTour(err, image) {
-                if(err) {
-                    return res.status(500).json({ error: err.message });
-                }
-
-                dbData.imageId = image ? image.id : null;
-
-                console.log('dbData', dbData);
-
-                Tour.create(dbData, (err, result) => {
-                    if(err) {
-                        return res.status(500).json({ error: err.message });
-                    }
-                    return res.json({message: 'Success', tour: result, type: 'new', error: false})
-                });
-            }
-
-            uploadHelper.create(tourImage, tourImageId, createTour);
+          tourModel.destroy()
+            .then(() => res.json({error: false}))
+            .catch((err) => res.status(500).json({ error: err.message }));
         }
-    }));
+      })
+      .catch((err) =>res.status(500).json({ error: err.message }));
+  }));
 
-    router.delete('/tours/:id', authenticate((req, res, user) => {
-        var id = req.params.id;
-        Tour.find(id, (err, tourModel) => {
-            if(err || !tourModel) res.status(500).json({ error: err.message });
-
-            uploadHelper.remove(tourModel.imageId, destroy);
-
-            function destroy(err) {
-                if(err) res.status(500).json({ error: err.message });
-                tourModel.destroy((err) => {
-                    if(err) res.status(500).json({ error: err.message });
-                    res.json({error: false});
-                });
-            }
-        });
-    }));
-
-    return router;
+  return router;
 };
 

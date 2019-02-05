@@ -1,16 +1,15 @@
-var express = require('express');
-var app = express();
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var fileUpload = require('express-fileupload');
-var config = require('./config');
-var boot = require('./boot');
-var auth = require('./routes/auth');
-var pages = require('./routes/pages');
-var api = require('./routes/api');
-var upload = require('./routes/upload');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload');
+const config = require('./config');
+const boot = require('./boot');
+const auth = require('./routes/auth');
+const pages = require('./routes/pages');
+const api = require('./routes/api');
+const upload = require('./routes/upload');
 
+const app = express();
 boot(app);
 
 app.use(bodyParser.json({ limit: '150mb' }));
@@ -31,9 +30,9 @@ app.set('views', __dirname + '/../build/views');
 app.use(express.static(__dirname + '/../build'));
 app.use('/upload', express.static(__dirname + '/../upload'));
 
-var isProd = process.env.NODE_ENV === "prod";
-var port = isProd ? 80 : 3000;
+const isProd = process.env.NODE_ENV === "prod";
+const port = isProd ? 80 : 3000;
 
-app.listen(port, function() {
-    console.log(`Example app listening on port ${port}!`);
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}!`);
 });

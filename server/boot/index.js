@@ -1,14 +1,15 @@
-var schemaInit = require('./schema');
-var mailer = require('../helpers/mailer');
-var config = require('../config');
+const db = require('./db');
+const mailer = require('../helpers/mailer');
+const config = require('../config');
 
 module.exports = app => {
+  app.config = config;
 
-    app.config = config;
+  db.init();
 
-    app.models = schemaInit().models;
+  app.models = db.models;
 
-    require('./models_extend')(app);
+  // require('./models_extend')(app);
 
-    mailer.init(app);
+  mailer.init(app);
 };
