@@ -23,7 +23,7 @@ module.exports = (router, app) => {
   });
 
   router.post('/photos', authenticate((req, res, user) => {
-    const selectedFile;
+    let selectedFile;
     if (req.files) {
       selectedFile = req.files.selectedFile;
       if (selectedFile && selectedFile.data.length == 0) {

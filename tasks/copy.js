@@ -11,7 +11,7 @@ module.exports = function() {
                 'node_modules/font-awesome/css/font-awesome.css',
                 'node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css'
             ])
-            //.on('data', (f) => console.log(f.relative))
+            .on('data', (f) => console.log(f.relative))
             .pipe(gulp.dest('client/libs/css'))
     });
 

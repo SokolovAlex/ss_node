@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router();
+let router = express.Router();
 const menuHelper = require('../helpers/menuHelper');
 const profilePages = require('./pages/profile');
 const gamesPages = require('./pages/games');

@@ -74,7 +74,5 @@ Tour.belongsTo(Image, {as: 'image', foreignKey: 'imageId'});
 module.exports = {
   schema,
   models: schema.models,
-  init() {
-    return schema.sync({force: true});
-  }
+  init: () => schema.sync({force: false})
 };

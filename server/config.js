@@ -15,6 +15,7 @@ module.exports = {
         "password": "Xx102030"
     },
     db: {
+      logging: false,
       dialect: 'sqlite',
       pool: {
         max: 5,

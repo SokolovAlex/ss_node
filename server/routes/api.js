@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router();
+let router = express.Router();
 const mailer = require('../helpers/mailer');
 const authenticate = require('../helpers/authenticate');
 const toursApi = require('./api/tours');
@@ -7,7 +7,6 @@ const galleryApi = require('./api/gallery');
 const awardsApi = require('./api/awards');
 
 module.exports = app => {
-  const User = app.models.User;
   const Request = app.models.Request;
   const GameResult = app.models.GameResult;
 
@@ -22,7 +21,7 @@ module.exports = app => {
     };
 
     Request.create(requestModel)
-      .then((request) => {
+      .then(() => {
         mailer.sendRequest(requestModel);
         return res.json({ success: true, message: 'Ваша заявка принята. Наши менеджеры ответят Вам в ближайшее время.' });
       })
@@ -42,7 +41,7 @@ module.exports = app => {
       userId: user.id,
       score: score,
       rules: rules
-    }).then((result) => res.json({ success: true, message: 'Результат сохранен' }));
+    }).then(() => res.json({ success: true, message: 'Результат сохранен' }));
   }));
 
   router = toursApi(router, app);

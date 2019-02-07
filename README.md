@@ -20,4 +20,12 @@ build project + start server
 gulp
 ```
 
-yarn seed
+// seed data
+`node seed --role`
+`node seed`
+
+// build all
+`gulp all`
+
+// dev build
+`gulp`

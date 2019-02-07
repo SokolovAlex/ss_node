@@ -27,11 +27,11 @@ module.exports = (router, app) => {
   });
 
   router.post('/tours', authenticate((req, res, user) => {
-    const tourImage;
+    let tourImage;
     if (req.files) {
       tourImage = req.files.tourImage;
       if (tourImage && tourImage.data.length == 0) {
-          tourImage = null;
+        tourImage = null;
       }
     }
 
