@@ -1,0 +1,22 @@
+include components/article
+extends ./components/layout.jade
+
+block scripts
+
+block styles
+
+block menu
+  +ss-menu(menu, true, "Статьи")
+
+block body
+  .rootContainer
+    .container
+      h2 Путеводители
+      ul
+        +article('dadwdawdawdawdawdawdawdwad')
+        +article('dadwdawdawdawdawdawdawdwad')
+        +article('dadwdawdawdawdawdawdawdwad')
+
+      h2 Наши любимые отели
+      ul
+        +article('dadwdawdawdawdawdawdawdwad')

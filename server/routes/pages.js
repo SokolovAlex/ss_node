@@ -13,7 +13,8 @@ module.exports = app => {
 
   router.get('/', (req, res) => {
     const user = req.cookies[auth_cookie];
-    res.render('welcome', { menu: menuHelper.welcome(user), actions: menuHelper.commonActions() });
+    res.render('welcome', 
+      { menu: menuHelper.welcome(user), actions: menuHelper.commonActions() });
   });
 
   router.get('/aviakassa', (req, res) => {
@@ -46,23 +47,28 @@ module.exports = app => {
   });
 
   router.get('/awards-gallery', (req, res) => {
-      const user = req.cookies[auth_cookie];
-      const awardsTypeId = enums.ImageTypes.Awards.id;
+    const user = req.cookies[auth_cookie];
+    const awardsTypeId = enums.ImageTypes.Awards.id;
 
-      Image.findAll({ where: { type: awardsTypeId }, limit: 20 }).then((result) => {
-        res.render('gallery', {
-          menu: menuHelper.back(user),
-          images: result,
-          title: "Сертификаты",
-          title_all: "Все сертификаты",
-          folder: enums.ImageTypes.Awards.folder
-        });
+    Image.findAll({ where: { type: awardsTypeId }, limit: 20 }).then((result) => {
+      res.render('gallery', {
+        menu: menuHelper.back(user),
+        images: result,
+        title: "Сертификаты",
+        title_all: "Все сертификаты",
+        folder: enums.ImageTypes.Awards.folder
       });
+    });
   });
 
   router.get('/maldives', (req, res) => {
     const user = req.cookies[auth_cookie];
     res.render('maldives', { menu: menuHelper.back(user) });
+  });
+
+  router.get('/articles', (req, res) => {
+    const user = req.cookies[auth_cookie];
+    res.render('articles', { menu: menuHelper.back(user) });
   });
 
   router.get('/joali', (req, res) => {

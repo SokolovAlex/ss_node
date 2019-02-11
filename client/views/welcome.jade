@@ -14,252 +14,252 @@ block menu
     +ss-menu(menu)
 
 block body
-   .bg-sun
-       header
-           .container
-               .intro-text
-                   div
-                       +photoCard({
-                           title: 'Эксклюзивно',
-                           desc: 'Свадьбы праздники',
-                           img: 'images/presents/paris.jpg'
-                       })
-                       +photoCard({
-                           title: 'Незабываемо',
-                           desc: 'Экскурсии музеи',
-                           img: 'images/presents/uk2.jpg'
-                       })
-                       +photoCard({
-                           title: 'Вальяжно',
-                           desc: 'Пляжи спа массажи',
-                           img: 'images/presents/beach.jpg'
-                       })
+  .bg-sun
+    header
+      .container
+        .intro-text
+          div
+            +photoCard({
+              title: 'Эксклюзивно',
+              desc: 'Свадьбы праздники',
+              img: 'images/presents/paris.jpg'
+            })
+            +photoCard({
+              title: 'Незабываемо',
+              desc: 'Экскурсии музеи',
+              img: 'images/presents/uk2.jpg'
+            })
+            +photoCard({
+              title: 'Вальяжно',
+              desc: 'Пляжи спа массажи',
+              img: 'images/presents/beach.jpg'
+            })
 
-       +ss-actions(actions)
+    +ss-actions(actions)
 
-       section#hot.first_section
-            .container
-                .row
+    section#hot.first_section
+          .container
+              .row
+                  .col-lg-12.text-center
+                      h2.section-heading Горящие туры
+                      h3.section-subheading.text-muted Выберете путешествие для себя
+              .row
+                  .col-md-6.col-sm-6.col-xs-12.col-lg-4
+                      +tourCard({
+                          title: 'Филлипины',
+                          img: 'images/tours/philippine.jpg',
+                          tags: 'Пляж, Море',
+                          cost: '52 т. р.',
+                          hotel: 'Grand Hotel',
+                          duration: '6 ночей',
+                          likes: 8
+                      })
+                  .col-md-6.col-sm-6.col-xs-12.col-lg-4
+                      +tourCard({
+                          title: 'Париж',
+                          img: 'images/tours/paris.jpg',
+                          tags: 'Экскурсии, море, дегустации, шоппинг',
+                          cost: '62 т. р.',
+                          hotel: 'Grand Hotel',
+                          duration: '7 ночей',
+                          likes: 1
+                      })
+                  .col-md-6.col-sm-6.col-xs-12.col-lg-4
+                      +tourCard({
+                          title: 'Рим',
+                          img: 'images/tours/rome.jpg',
+                          tags: 'Экскурсии, с детьми',
+                          cost: '44 т. р.',
+                          hotel: 'Grand Hotel',
+                          duration: '7 ночей',
+                          likes: 5
+                      })
+
+                  .col-md-6.col-sm-6.col-xs-12.col-lg-4
+                      +tourCard({
+                          title: 'Бали',
+                          img: 'images/tours/bali.jpg',
+                          tags: 'Пляж, Море',
+                          cost: '63 т. р.',
+                          hotel: 'Grand Hotel',
+                          duration: '6 ночей',
+                          likes: 6
+                      })
+
+                  .col-md-6.col-sm-6.col-xs-12.col-lg-4
+                      +tourCard({
+                          title: 'Амстердам',
+                          img: 'images/tours/amsterdam.jpg',
+                          tags: 'Экскурсии, молодежный отдых, шоппинг',
+                          cost: '43 т. р.',
+                          hotel: 'Grand Hotel',
+                          duration: '9 ночей',
+                          likes: 2
+                      })
+                  .col-md-6.col-sm-6.col-xs-12.col-lg-4
+                      +tourCard({
+                          title: 'Лондон',
+                          img: 'images/tours/london.jpg',
+                          tags: 'Экскурсии, шоппинг',
+                          cost: '33 т. р.',
+                          hotel: 'Grand Hotel',
+                          duration: '7 ночей',
+                          likes: 4
+                      })
+
+      // About Section
+    section#about
+          .container
+              .row
                     .col-lg-12.text-center
-                        h2.section-heading Горящие туры
-                        h3.section-subheading.text-muted Выберете путешествие для себя
-                .row
-                    .col-md-6.col-sm-6.col-xs-12.col-lg-4
-                        +tourCard({
-                            title: 'Филлипины',
-                            img: 'images/tours/philippine.jpg',
-                            tags: 'Пляж, Море',
-                            cost: '52 т. р.',
-                            hotel: 'Grand Hotel',
-                            duration: '6 ночей',
-                            likes: 8
-                        })
-                    .col-md-6.col-sm-6.col-xs-12.col-lg-4
-                        +tourCard({
-                            title: 'Париж',
-                            img: 'images/tours/paris.jpg',
-                            tags: 'Экскурсии, море, дегустации, шоппинг',
-                            cost: '62 т. р.',
-                            hotel: 'Grand Hotel',
-                            duration: '7 ночей',
-                            likes: 1
-                        })
-                    .col-md-6.col-sm-6.col-xs-12.col-lg-4
-                        +tourCard({
-                            title: 'Рим',
-                            img: 'images/tours/rome.jpg',
-                            tags: 'Экскурсии, с детьми',
-                            cost: '44 т. р.',
-                            hotel: 'Grand Hotel',
-                            duration: '7 ночей',
-                            likes: 5
-                        })
-
-                    .col-md-6.col-sm-6.col-xs-12.col-lg-4
-                        +tourCard({
-                            title: 'Бали',
-                            img: 'images/tours/bali.jpg',
-                            tags: 'Пляж, Море',
-                            cost: '63 т. р.',
-                            hotel: 'Grand Hotel',
-                            duration: '6 ночей',
-                            likes: 6
-                        })
-
-                    .col-md-6.col-sm-6.col-xs-12.col-lg-4
-                        +tourCard({
-                            title: 'Амстердам',
-                            img: 'images/tours/amsterdam.jpg',
-                            tags: 'Экскурсии, молодежный отдых, шоппинг',
-                            cost: '43 т. р.',
-                            hotel: 'Grand Hotel',
-                            duration: '9 ночей',
-                            likes: 2
-                        })
-                    .col-md-6.col-sm-6.col-xs-12.col-lg-4
-                        +tourCard({
-                            title: 'Лондон',
-                            img: 'images/tours/london.jpg',
-                            tags: 'Экскурсии, шоппинг',
-                            cost: '33 т. р.',
-                            hotel: 'Grand Hotel',
-                            duration: '7 ночей',
-                            likes: 4
-                        })
-
-       // About Section
-       section#about
-            .container
-                .row
-                      .col-lg-12.text-center
-                            h2.section-heading О нас
-                            h3.section-subheading.text-muted Путь надежного туристического партнера.
-                .row
-                      .col-lg-12
-                            ul.timeline
-                                  li
-                                        .timeline-image
-                                            img.img-circle.img-responsive(src='images/about/1.jpg', alt='')
-                                        .timeline-panel
-                                              .timeline-heading
-                                                    h4 Май 2003
-                                                    h4.subheading Открытие компании.
-                                              .timeline-body
-                                                    p.text-muted
-                                                      | Открытие офиса в городе Новосибирск. Первые надежные партнеры, первый интересные страны, первые благодарные туристы
-                                  li.timeline-inverted
-                                        .timeline-image
-                                            img.img-circle.img-responsive(src='images/about/2.jpg', alt='')
-                                        .timeline-panel
-                                              .timeline-heading
-                                                    h4 Лето 2006
-                                                    h4.subheading Лучшие в своем деле
-                                              .timeline-body
-                                                    p.text-muted
-                                                      | Наши сотрудники становятся лучшими профессионалами по Чехии, Америке, Болгарии.
-                                                      | Число наших туристов превысило отметку в одну тысячу.
-                                  li.timeline
-                                        .timeline-image
-                                            img.img-circle.img-responsive(src='images/about/4.jpg', alt='')
-                                        .timeline-panel
-                                              .timeline-heading
-                                                    h4 Сентябрь 2016
-                                                    h4.subheading Ваш надежный помощник
-                                              .timeline-body
-                                                    p.text-muted
-                                                      | Нас спектр услуг покрывает все виды путешествий от круизов до йога туров, наши стены заполнены наградами, а галлереи - фотографиями туристов из всех уголков мира!
-                                  li.timeline-inverted
-                                        .timeline-image
-                                              h4.timeline-slogan
-                                                    | Летим
-                                                    br
-                                                    | Вместе
-                                                    br
-                                                    | С нами!
-
-        // Team Section
-       section#team.bg-sun2
-           .container
-               .row
-                   .col-lg-12.text-center
-                       h2.section-heading Наши специалисты
-                       h3.section-subheading.text-muted Мы гордимся своими специалистами.
-               .row
-                   .col-sm-4
-                       .team-member
-                           img.img-responsive.img-circle(src='../images/team/elena.jpg', alt='')
-                           h4 Елена Викторовна
-                           p.text-muted
-                             u Генеральный Директор
-                           p.text-muted
-                               b email:
-                               span  ssibir.elena@gmail.com
-                           p.text-muted
-                               b skype:
-                               span  sokolova.elena2
-                           p.text-muted
-                               b тел:
-                               span  214-13-15
-                           ul.list-inline.social-buttons
-                               li
-                                   a(href='https://new.vk.com/id144666515')
-                                       i.fa.fa-vk
-                               li
-                                   a(href='https://www.ok.ru/profile/516191279610')
-                                       i.fa.fa-odnoklassniki
-                   .col-sm-4
-                       .team-member
-                           img.img-responsive.img-circle(src='../images/team/alina.jpg', alt='')
-                           h4 Сторожук Алина
-                           p.text-muted
-                              u Специалист по Европе
-                           p.text-muted
-                               b email:
-                               span  s5sibir@yandex.ru
-                           ul.list-inline.social-buttons
-                               li
-                                   a(href='https://new.vk.com/storozhuk')
-                                       i.fa.fa-vk
-                   .col-sm-4
-                       .team-member
-                           img.img-responsive.img-circle(src='images/team/irina.jpg', alt='')
-                           h4 Ирина Науменко
-                           p.text-muted
-                               u Специалист по Востоку
-                           p.text-muted
-                              b email:
-                              span  nmkirina@gmail.com
-                           ul.list-inline.social-buttons
-                               li
-                                   a(href='https://new.vk.com/naumenko')
-                                       i.fa.fa-vk
-               .row
-                   .col-lg-8.col-lg-offset-2.text-center
-                       p.large.text-muted
-                            i Наши специалисты помогут вам в любом вопросе по турам и перелетам, по направлениям и странам. Помогут оформить все документы и подготовиться к путешествию.
-
-       // Contact Section
-       section#contact
-            .container
-                .row
-                    .col-lg-12.text-center
-                        h2.section-heading Заявка
-                        h3.section-subheading.text-muted Напишите нам свои вопросы и мы подскажем Вам.
-                .row
+                          h2.section-heading О нас
+                          h3.section-subheading.text-muted Путь надежного туристического партнера.
+              .row
                     .col-lg-12
-                        form#contactForm(name='sentMessage', novalidate='')
-                            .row
-                                .col-md-6
-                                    .form-group
-                                        input#name.form-control(name='name' type='text', placeholder='Ваше имя *', required='', data-validation-required-message='Please enter your name.')
-                                        p.help-block.text-danger
-                                    .form-group
-                                        input#email.form-control(name='email' type='email', placeholder='Почтовый адрес *', required='', data-validation-required-message='Please enter your email address.')
-                                        p.help-block.text-danger
-                                    .form-group
-                                        input#phone.form-control(name='phone' type='tel', placeholder='Телефон', required='', data-validation-required-message='Please enter your phone number.')
-                                        p.help-block.text-danger
-                                .col-md-6
-                                    .form-group
-                                        textarea#message.form-control(name='message' placeholder='Ваш вопрос *', required='', data-validation-required-message='Please enter a message.')
-                                        p.help-block.text-danger
-                                .clearfix
-                                .col-lg-12.text-center
-                                    #success
-                                    button.btn.btn-xl.contactForm_submit Отправить
-       footer
-            .container
-                .row
-                    .col-md-4
-                        span.copyright Copyright © Stolica Sibiri 2016
-                    .col-md-4
+                          ul.timeline
+                                li
+                                      .timeline-image
+                                          img.img-circle.img-responsive(src='images/about/1.jpg', alt='')
+                                      .timeline-panel
+                                            .timeline-heading
+                                                  h4 Май 2003
+                                                  h4.subheading Открытие компании.
+                                            .timeline-body
+                                                  p.text-muted
+                                                    | Открытие офиса в городе Новосибирск. Первые надежные партнеры, первый интересные страны, первые благодарные туристы
+                                li.timeline-inverted
+                                      .timeline-image
+                                          img.img-circle.img-responsive(src='images/about/2.jpg', alt='')
+                                      .timeline-panel
+                                            .timeline-heading
+                                                  h4 Лето 2006
+                                                  h4.subheading Лучшие в своем деле
+                                            .timeline-body
+                                                  p.text-muted
+                                                    | Наши сотрудники становятся лучшими профессионалами по Чехии, Америке, Болгарии.
+                                                    | Число наших туристов превысило отметку в одну тысячу.
+                                li.timeline
+                                      .timeline-image
+                                          img.img-circle.img-responsive(src='images/about/4.jpg', alt='')
+                                      .timeline-panel
+                                            .timeline-heading
+                                                  h4 Сентябрь 2016
+                                                  h4.subheading Ваш надежный помощник
+                                            .timeline-body
+                                                  p.text-muted
+                                                    | Нас спектр услуг покрывает все виды путешествий от круизов до йога туров, наши стены заполнены наградами, а галлереи - фотографиями туристов из всех уголков мира!
+                                li.timeline-inverted
+                                      .timeline-image
+                                            h4.timeline-slogan
+                                                  | Летим
+                                                  br
+                                                  | Вместе
+                                                  br
+                                                  | С нами!
+
+    // Team Section
+    section#team.bg-sun2
+        .container
+            .row
+                .col-lg-12.text-center
+                    h2.section-heading Наши специалисты
+                    h3.section-subheading.text-muted Мы гордимся своими специалистами.
+            .row
+                .col-sm-4
+                    .team-member
+                        img.img-responsive.img-circle(src='../images/team/elena.jpg', alt='')
+                        h4 Елена Викторовна
+                        p.text-muted
+                          u Генеральный Директор
+                        p.text-muted
+                            b email:
+                            span  ssibir.elena@gmail.com
+                        p.text-muted
+                            b skype:
+                            span  sokolova.elena2
+                        p.text-muted
+                            b тел:
+                            span  214-13-15
                         ul.list-inline.social-buttons
                             li
-                                a(href='https://new.vk.com/ssibir')
+                                a(href='https://new.vk.com/id144666515')
                                     i.fa.fa-vk
                             li
-                                a(href='https://ok.ru/group/52476079571194')
+                                a(href='https://www.ok.ru/profile/516191279610')
                                     i.fa.fa-odnoklassniki
+                .col-sm-4
+                    .team-member
+                        img.img-responsive.img-circle(src='../images/team/alina.jpg', alt='')
+                        h4 Сторожук Алина
+                        p.text-muted
+                            u Специалист по Европе
+                        p.text-muted
+                            b email:
+                            span  s5sibir@yandex.ru
+                        ul.list-inline.social-buttons
+                            li
+                                a(href='https://new.vk.com/storozhuk')
+                                    i.fa.fa-vk
+                .col-sm-4
+                    .team-member
+                        img.img-responsive.img-circle(src='images/team/irina.jpg', alt='')
+                        h4 Ирина Науменко
+                        p.text-muted
+                            u Специалист по Востоку
+                        p.text-muted
+                            b email:
+                            span  nmkirina@gmail.com
+                        ul.list-inline.social-buttons
+                            li
+                                a(href='https://new.vk.com/naumenko')
+                                    i.fa.fa-vk
+            .row
+                .col-lg-8.col-lg-offset-2.text-center
+                    p.large.text-muted
+                          i Наши специалисты помогут вам в любом вопросе по турам и перелетам, по направлениям и странам. Помогут оформить все документы и подготовиться к путешествию.
+
+    // Contact Section
+    section#contact
+          .container
+              .row
+                  .col-lg-12.text-center
+                      h2.section-heading Заявка
+                      h3.section-subheading.text-muted Напишите нам свои вопросы и мы подскажем Вам.
+              .row
+                  .col-lg-12
+                      form#contactForm(name='sentMessage', novalidate='')
+                          .row
+                              .col-md-6
+                                  .form-group
+                                      input#name.form-control(name='name' type='text', placeholder='Ваше имя *', required='', data-validation-required-message='Please enter your name.')
+                                      p.help-block.text-danger
+                                  .form-group
+                                      input#email.form-control(name='email' type='email', placeholder='Почтовый адрес *', required='', data-validation-required-message='Please enter your email address.')
+                                      p.help-block.text-danger
+                                  .form-group
+                                      input#phone.form-control(name='phone' type='tel', placeholder='Телефон', required='', data-validation-required-message='Please enter your phone number.')
+                                      p.help-block.text-danger
+                              .col-md-6
+                                  .form-group
+                                      textarea#message.form-control(name='message' placeholder='Ваш вопрос *', required='', data-validation-required-message='Please enter a message.')
+                                      p.help-block.text-danger
+                              .clearfix
+                              .col-lg-12.text-center
+                                  #success
+                                  button.btn.btn-xl.contactForm_submit Отправить
+    footer
+          .container
+              .row
+                  .col-md-4
+                      span.copyright Copyright © Stolica Sibiri 2016
+                  .col-md-4
+                      ul.list-inline.social-buttons
+                          li
+                              a(href='https://new.vk.com/ssibir')
+                                  i.fa.fa-vk
+                          li
+                              a(href='https://ok.ru/group/52476079571194')
+                                  i.fa.fa-odnoklassniki
 
 
 
