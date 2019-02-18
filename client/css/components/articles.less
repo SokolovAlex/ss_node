@@ -1,0 +1,48 @@
+.articles{
+  padding:0;
+  margin:0;
+}
+
+.article{
+  width:100%;
+  display: flex;
+
+  &.left{
+    flex-direction: row-reverse;
+  }
+}
+
+.article-title{
+  cursor: pointer;
+  color:black;
+  &:hover {
+    color:black;
+  }
+}
+
+.article-image-block {
+  width:200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.article-text-block {
+  padding: 15px;
+  display: inline-block;
+}
+
+.article-image {
+  width:200px;
+  display: inline-block;
+}
+
+.separator{
+  text-align: center;
+}
+
+.separator-line{
+  display: inline-block;
+  border-top: 1px solid grey;
+  width: 60%;
+}

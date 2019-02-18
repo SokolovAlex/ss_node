@@ -1,2 +1,16 @@
-mixin article(text, image)
-  .article= text
+mixin article(params)
+  - var params = params || {};
+  - var title = params.title || '';
+  - var img = params.img || '';
+  - var link = params.link || '';
+  - var desc = params.description || '';
+  - var leftImage = params.leftImage || false;
+  - var imageClass={ left: leftImage };
+
+  .article(class=imageClass)
+    .article-image-block
+      img.article-image(src=img alt=title)
+    .article-text-block
+      h6
+        a.article-title(href=link)= title
+      .article-decription= desc
