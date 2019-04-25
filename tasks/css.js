@@ -11,11 +11,8 @@ module.exports = function() {
         'client/libs/css/bootstrap-datepicker3.css',
         'client/libs/css/font-awesome.css'
       ])
-      .pipe($.sourcemaps.init())
       .on('data', (f) => console.log(' --> ', f.relative))
-      .pipe($.concat('libs.less'))
-      .pipe($.less())
-      .pipe($.sourcemaps.write())
+      .pipe($.concat('libs.css'))
       .pipe(gulp.dest('build/css'));
   });
 
