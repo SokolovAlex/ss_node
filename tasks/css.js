@@ -9,7 +9,7 @@ module.exports = function() {
     return gulp.src([
         'client/libs/css/font-awesome.css',
         'client/libs/css/bootstrap.css',
-        //'client/libs/css/bootstrap-datepicker3.css',
+        'client/libs/css/bootstrap-datepicker3.css',
       ])
       .on('data', (f) => console.log(' --> ', f.relative))
       .pipe($.concat('libs.css'))
@@ -18,10 +18,8 @@ module.exports = function() {
 
   gulp.task('styles', function() {
     return gulp.src(['client/css/theme.css', 'client/css/**/*.less'])
-      .pipe($.sourcemaps.init())
       .pipe($.concat('styles.less'))
       .pipe($.less())
-      .pipe($.sourcemaps.write())
       .pipe(gulp.dest('build/css'));
   });
 
