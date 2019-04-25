@@ -144,6 +144,9 @@
 .fa-heart:before {
   content: "\f004";
 }
+.fa-plane:before {
+  content: "\f072";
+}
 
 .fa-globe:before {
   content: "\f0ac";
@@ -152,4 +155,9 @@
 .fa-google-plus-circle:before,
 .fa-google-plus-official:before {
   content: "\f2b3";
+}
+
+
+.fa-ship:before {
+  content: "\f21a";
 }
